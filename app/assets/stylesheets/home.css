@@ -1,0 +1,38 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box !important;
+    font-family: 'Cabin', sans-serif;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    background-color: #EEEEEE;
+}
+
+body {
+    padding: 5rem;
+}
+
+.card-container {
+    padding: 2rem;
+    background-color: #FFFFFF;
+    border-radius: 1rem;
+    display: flex;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-content {
+    margin: auto 0 auto 2rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.card-icon {
+    font-size: 4rem !important;
+    height: fit-content;
+}
