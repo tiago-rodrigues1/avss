@@ -1,0 +1,18 @@
+footer#global {
+    background-color: #272A23;
+    color: #FFFFFF;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+footer#global p {
+    display: block;
+    color: rgba(255, 255, 255, .5);
+    margin-bottom: 2rem;
+}
+
+footer#global ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
