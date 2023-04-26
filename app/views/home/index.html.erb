@@ -1,44 +1,53 @@
 <header class="home-header">
-   <%= render "header-menu" %>
+    <%= render "partials/header-menu" %>
     <%= image_tag "avss-logo.svg" %>
 </header>
 <main class="home-content">
-    <h1>
-        Funcionalidades
-    </h1>
-    <div>
-        <%= render "card" %>
-    </div>
+    <section class="section">
+        <h1>
+            Funcionalidades
+        </h1>
+        <div class="cards">
+            <div class="col">
+                <%= render "partials/card", 
+                    title: "Cadastre situações problema", 
+                    iconName: "add",
+                    content: "Cadastre novos circuitos para serem aplicados a partir do zero e/ou reaproveitando as estações previamente criadas"
+                %>
+                <%= render "partials/card", 
+                    title: "Consulte suas situações problema", 
+                    iconName: "list_alt",
+                    content: "Acesse sua lista de OSCEs para gerenciá-los ou aplicá-los"
+                %>
+            </div>
+            <div class="col">
+                <%= render "partials/card", 
+                    title: "Cadastre novas estações", 
+                    iconName: "add",
+                    content: "Crie novas estações independentementes de um circuito OSCE, e utilize-as quando formular o circuito"
+                %>
+                <%= render "partials/card", 
+                    title: "Consulte suas estações", 
+                    iconName: "list_alt",
+                    content: "Acesse sua lista de todas estações já cadastradas para gerenciá-las ou inspirar-se para elaboração de novas práticas"
+                %>
+            </div>
+    </section>
+    <section class="section about">
+        <h1>
+            Sobre nós
+        </h1>
+        <div class="cards">
+            <%= render "partials/card", 
+                title: "FACISA", 
+                iconPath: "ufrn.svg",
+                content: "A Faculdade de Ciências da Saúde do Trairi (FACISA), criada por meio da Resolução nº 011/2008-CONSUNI, de 01 de dezembro de 2008, é uma Unidade Acadêmica Especializada pertencente à estrutura da Universidade Federal do Rio Grande Norte – UFRN."
+            %>
+            <%= render "partials/card", 
+                title: "IFRN", 
+                iconPath: "ifrn.svg",
+                content: "Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte | Santa Cruz"
+            %>
+        </div>
+    </section>
 </main>
-
-<div class="avss-section">
-  <div class="avss-section__small_cards">
-    <%= render "small_card", 
-        icon: 'add',
-        title: 'Cadastre situações problemas',
-        body: 'Cadastre novos circuitos para serem aplicados a partir do zero e/ou reaproveitando as estações previamente criadas' 
-    %>
-
-    <%= render "small_card", 
-        icon: 'add',
-        title: 'Cadastre novas estações',
-        body: 'Crie novas estações independentementes de um circuito OSCE, e utilize-as quando formular o circuito'
-    %>
-
-    <%= render "small_card", 
-        icon: 'add',
-        title: 'Cadastre situações problemas',
-        body: 'Cadastre novos circuitos para serem aplicados a partir do zero e/ou reaproveitando as estações previamente criadas' 
-    %>
-
-    <%= render "small_card", 
-        icon: 'add',
-        title: 'Cadastre novas estações',
-        body: 'Crie novas estações independentementes de um circuito OSCE, e utilize-as quando formular o circuito'
-    %>
-  </div>
-</div>
-
-<footer>
-
-</footer>
