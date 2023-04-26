@@ -1,10 +1,7 @@
 .card {
-    display: flex !important;
-    align-items: center;
-    align-content: stretch;
     margin-bottom: 2rem;
     height: 9rem;
-    width: 30rem;
+    width: 100%;
 }
 
 .card-container {
@@ -19,6 +16,10 @@
 
 .card-content {
     margin: auto 0 auto 1rem;
+}
+
+.card-content p {
+    font-size: 12px;
 }
 
 .card-title {
