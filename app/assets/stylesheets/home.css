@@ -56,11 +56,29 @@ ul {
     justify-content: center;
 }
 
-
+.home-header-mobile {
+    display: none;
+}
 
 @media screen and (max-width: 768px) {
     .section .cards {
         width: 100%;
         flex-wrap: wrap;
+    }
+
+    .home-header, .home-header nav {
+        display: none;
+    }
+
+    .home-header-mobile {
+        background-color: #83BEDF;
+        padding: 1rem 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .menu-icon {
+        font-size: 32px;
     }
 }
