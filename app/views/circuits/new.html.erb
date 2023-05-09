@@ -1,0 +1,19 @@
+<%= form_with model: @circuit do |form| %>
+    <% if @circuit.errors[:title].length > 0 %>
+        <%= form.text_field :title, style:"border-color: red;" %>
+    <% else %>
+        <%= form.text_field :title %>
+    <% end %>
+    <%= form.text_area :resume %>
+    <%= form.submit value:"Criar" %>
+<% end %>
+
+<% if @circuit.errors.any? %>
+    <div>erro</div>
+    <ul>
+        <% @circuit.errors.each do |error| %>
+            <li><%= error.type %></li>
+        <% end %>
+    </ul>
+    
+<% end %>

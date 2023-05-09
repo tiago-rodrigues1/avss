@@ -1,0 +1,12 @@
+<% flash.each do |type, msg| %>
+    <div>
+        <%= msg %>
+        <%= type %>
+    </div>
+<% end %>
+
+<% @circuits.each do | c | %>
+<h1><%= c.title %></h1>
+<% end %>
+
+<%= link_to 'Novo circuito', new_circuit_path %>
