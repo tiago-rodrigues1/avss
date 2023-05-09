@@ -1,14 +1,32 @@
-<header class="home-header">
-    <%= render "partials/header-menu" %>
-    <%= image_tag "avss-logo.svg" %>
+<header class="header">
+    <nav class="header__navbar">
+        <h5 class="header__title">AVSS</h5>
+        <ul class="header__navbar__items">
+            <li>Início</li>
+            <li>Funcionalidades</li>
+            <li>Sobre nós</li>
+            <li>Cadastre-se</li>
+        </ul>
+        <div class="header__buttons-container">
+            <button type="button" class="avaliacao">Avaliação</button>
+            <button type="button" class="entrar">Entrar</button>
+        </div>
+    </nav>
+    <%= image_tag("avss-logo.svg", class:"header__logo") %>
+</header>
+<header class="header--mobile">
+    <h5 class="header__title">AVSS</h5>
+    <span class="material-symbols-outlined home-header__icon--mobile">
+        menu
+    </span>
 </header>
 <main class="home-content">
-    <section class="section">
+    <section class="home-content__section">
         <h1>
             Funcionalidades
         </h1>
-        <div class="cards">
-            <div class="col">
+        <div class="home-content__section__cards">
+            <div>
                 <%= render "partials/card", 
                     title: "Cadastre situações problema", 
                     iconName: "add",
@@ -20,7 +38,7 @@
                     content: "Acesse sua lista de OSCEs para gerenciá-los ou aplicá-los"
                 %>
             </div>
-            <div class="col">
+            <div>
                 <%= render "partials/card", 
                     title: "Cadastre novas estações", 
                     iconName: "add",
@@ -33,15 +51,15 @@
                 %>
             </div>
     </section>
-    <section class="section about">
+    <section class="home-content__section --with-mt">
         <h1>
             Sobre nós
         </h1>
-        <div class="cards">
+        <div class="home-content__section__cards">
             <%= render "partials/card", 
                 title: "FACISA", 
                 iconPath: "ufrn.svg",
-                content: "A Faculdade de Ciências da Saúde do Trairi (FACISA), criada por meio da Resolução nº 011/2008-CONSUNI, de 01 de dezembro de 2008, é uma Unidade Acadêmica Especializada pertencente à estrutura da Universidade Federal do Rio Grande Norte – UFRN."
+                content: "Faculdade de Ciências da Saúde do Trairi (FACISA)"
             %>
             <%= render "partials/card", 
                 title: "IFRN", 
