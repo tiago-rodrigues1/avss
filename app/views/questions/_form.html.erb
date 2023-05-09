@@ -1,0 +1,40 @@
+<%= form_with(model: question) do |form| %>
+  <% if question.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+        <% question.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="avss-card avss-card--big">
+    <span class="avss-card__icon">description</span>
+    <div>
+      <h1 class="avss-card__title">Enunciado</h1>
+      <%= form.text_area :statement %>
+    </div>
+  </div>
+
+    <b>Tipo de resposta</b>
+  <div style="display: flex">
+    <%= form.radio_button :kind, 0 %> Discursiva
+    <%= form.radio_button :kind, 1 %> Objetiva
+    <%= form.radio_button :kind, 2 %> Anexo
+  </div>
+
+    <%= form.submit %>
+<% end %>
+
+<%= turbo_frame_tag "teste" do %>
+  aqui vai as alternativas
+  <%= link_to 'Discursiva', test1_path, class: 'btt' %>
+  <%= link_to 'Objetiva', test_path, class: 'btt' %>
+  <%= link_to 'Anexo', test2_path, class: 'btt' %>
+<% end %>
+
+<button class="avss-button">Voltar</button>
+<button class="avss-button avss-button--danger">Remover</button>
