@@ -1,0 +1,106 @@
+.header--transparent {
+    padding: 1.5rem;
+}
+
+.new-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 2rem 1.5rem;
+}
+
+.new-content__title {
+    font-size: 1.5rem;
+    margin: 1rem 0 1.5rem 0;
+}
+
+.new-content__form-container {
+    display: flex;
+    background-color: #FFFFFF;
+    border-radius: 1rem;
+    padding: 1.5rem;
+}
+
+.new-content__form {
+    width: 60%;
+    margin-right: 2.5rem;
+}
+
+.new-content__form__fields-container {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-bottom: 1.25rem;
+}
+
+.new-content__form__label {
+    color: #474A4F;
+}
+
+.new-content__form__input::placeholder {
+    color: rgba(71, 74, 79, .5);
+}
+
+.new-content__form__input {
+    border-radius: .25rem;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(71, 74, 79, .5);
+    padding: .5rem 0 .5rem 1rem;
+}
+
+textarea.new-content__form__input {
+    resize: vertical;
+}
+
+.new-content__form__input:focus, 
+.new-content__form__input:focus-visible {
+    outline: 1px solid #83BEDF;
+}
+
+.stations-list__stations {
+    overflow-y: auto;
+    max-height: 20em;
+}
+
+.new-content__form__buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: end;
+    align-items: center;
+}
+
+.new-content__form__buttons input[type=submit] {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    color: #FFFFFF;
+    background-color: #117BDD;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 200ms;
+    width: 100%;
+}
+
+.new-content__form__buttons input[type=submit]:hover {
+    filter: brightness(.9);
+}
+
+.new-content__form__buttons a {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 200ms;
+    color: #117BDD;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+}
+
+.new-content__form__buttons a:hover {
+    background-color: rgba(17, 123, 221, .15);
+}
