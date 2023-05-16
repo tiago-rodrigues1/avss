@@ -29,6 +29,10 @@
     height: fit-content;
 }
 
+.card--bg-blue {
+    background-color: #EAF3F5;
+}
+
 @media screen and (max-width: 768px) {
     .card__title {
         font-size: 1rem;

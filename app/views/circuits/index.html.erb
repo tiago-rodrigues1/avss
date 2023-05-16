@@ -1,0 +1,22 @@
+<header class="header--transparent">
+    <%= render "partials/navbar" %>
+</header>
+<main class="wrapper">
+    <h1 class="page-title">Situações problema</h1>
+    <%= form_with url:"/search" , class:"circuits__filter", data:{controller:"circuit-search"} do |form| %>
+        <div class="field">
+            <%= form.label :term, "Pesquisar por título", class:"field__label" %>
+            <% form.text_field :term, class:"field__input", data:{ target:"CircuitSearch.searchInput", action:"change->circuit-search#greet" } %>
+                        <input class="field__input" data-circuit-search-target="searchInput" data-action="input->circuit-search#greet" type="text" name="term" id="term" />
+        </div>
+        <% form.submit "Filtrar" %>
+        <input type="submit" name="commit" value="Filtrar" data-disable-with="Filtrar" data-circuit-search-target="searchButton" />
+    <% end %>
+    <div class="circuits__list">
+        <%= turbo_frame_tag "test" do %>
+            <% @circuits.each do |c| %>
+            <%= render "partials/list-card", title:c.title, resume:c.resume %>
+            <% end %>
+        <% end %>
+    </div>
+</main>

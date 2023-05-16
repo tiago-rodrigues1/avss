@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Avss</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="csrf-param" content="authenticity_token" />
+    <meta name="csrf-token"
+        content="RRCo_9yB8mpSAMz8ye89rmwHn4wqoHZXMlxtCVwfwSGU1ZoxC-BZwcCRwiD6Wj1FbdyH20BMCorVWqMFCKc6Dg" />
+
+
+    <link rel="stylesheet"
+        href="/assets/application-eab36591bf03b21956441fa21f20ad03173f681d88a82ede979d2d03b717adcb.css"
+        data-turbo-track="reload" />
+    <script type="importmap" data-turbo-track="reload">{
+  "imports": {
+    "application": "/assets/application-37f365cbecf1fa2810a8303f4b6571676fa1f9c56c248528bc14ddb857531b95.js",
+    "@hotwired/turbo-rails": "/assets/turbo.min-f309baafa3ae5ad6ccee3e7362118b87678d792db8e8ab466c4fa284dd3a4700.js",
+    "@hotwired/stimulus": "/assets/stimulus.min-d03cf1dff41d6c5698ec2c5d6a501615a7a33754dbeef8d1edd31c928d17c652.js",
+    "@hotwired/stimulus-loading": "/assets/stimulus-loading-1fc59770fb1654500044afd3f5f6d7d00800e5be36746d55b94a2963a7a228aa.js",
+    "controllers/application": "/assets/controllers/application-368d98631bccbf2349e0d4f8269afb3fe9625118341966de054759d96ea86c7e.js",
+    "controllers/circuit_search_controller": "/assets/controllers/circuit_search_controller-c39dd5d95944ecf269f187a5de82a908b160e292a4ac28479eb7fe77bb98d39f.js",
+    "controllers/hello_controller": "/assets/controllers/hello_controller-549135e8e7c683a538c3d6d517339ba470fcfb79d62f738a0a089ba41851a554.js",
+    "controllers": "/assets/controllers/index-2db729dddcc5b979110e98de4b6720f83f91a123172e87281d5a58410fc43806.js"
+  }
+}</script>
+    <link rel="modulepreload"
+        href="/assets/application-37f365cbecf1fa2810a8303f4b6571676fa1f9c56c248528bc14ddb857531b95.js">
+    <link rel="modulepreload"
+        href="/assets/turbo.min-f309baafa3ae5ad6ccee3e7362118b87678d792db8e8ab466c4fa284dd3a4700.js">
+    <link rel="modulepreload"
+        href="/assets/stimulus.min-d03cf1dff41d6c5698ec2c5d6a501615a7a33754dbeef8d1edd31c928d17c652.js">
+    <link rel="modulepreload"
+        href="/assets/stimulus-loading-1fc59770fb1654500044afd3f5f6d7d00800e5be36746d55b94a2963a7a228aa.js">
+    <script src="/assets/es-module-shims.min-d89e73202ec09dede55fb74115af9c5f9f2bb965433de1c2446e1faa6dac2470.js"
+        async="async" data-turbo-track="reload"></script>
+    <script type="module">import "application"</script>
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header--transparent">
+        <nav class="header__navbar">
+            <h5 class="header__title">AVSS</h5>
+            <ul class="header__navbar__items">
+                <li>Início</li>
+                <li>Funcionalidades</li>
+                <li>Sobre nós</li>
+                <li>Cadastre-se</li>
+            </ul>
+            <div class="header__buttons-container">
+                <button type="button" class="button button--blue">Avaliação</button>
+                <button type="button" class="button button--green">Entrar</button>
+            </div>
+        </nav>
+    </header>
+    <main class="wrapper">
+        <h1 class="page-title">Situações problema</h1>
+        <form class="circuits__filter" data-controller="circuit-search" action="/search" accept-charset="UTF-8"
+            method="post"><input type="hidden" name="authenticity_token"
+                value="l65c7TS1XNrII8sdQTKH-seH7DXTWpoSXN5o3Kw9XabRB2Fx3P2SYbIgbYDRrdOdvc6oExXKlvmhprrq3UdYwg"
+                autocomplete="off" />
+            <div class="field">
+                <label class="field__label" for="term">Pesquisar por título</label>
+                <input class="field__input" data-circuit-search-target="searchInput"
+                    data-action="input->circuit-search#greet" type="text" name="term" id="term" />
+            </div>
+            <input type="submit" name="commit" value="Filtrar" data-disable-with="Filtrar"
+                data-circuit-search-target="searchButton" />
+        </form>
+        <div class="circuits__list">
+            <div class="list-card">
+                <div class="list-card__header">
+                    <h4>Rails</h4>
+                    <span>Estações: 5</span>
+                </div>
+                <p class="list-card__text">
+
+                </p>
+                <div class="list-card__footer">
+                    <span class="list-card__footer__update">Última atualização 20/04/2021</span>
+                    <div class="list-card__buttons">
+                        <button type="button">Aplicar</button>
+                        <button type="button">Acessar</button>
+                        <div>
+                        </div>
+                        <div>
+                            <div class="list-card">
+                                <div class="list-card__header">
+                                    <h4>AVSS</h4>
+                                    <span>Estações: 5</span>
+                                </div>
+                                <p class="list-card__text">
+                                    AVSS resumo ufrn
+                                </p>
+                                <div class="list-card__footer">
+                                    <span class="list-card__footer__update">Última atualização 20/04/2021</span>
+                                    <div class="list-card__buttons">
+                                        <button type="button">Aplicar</button>
+                                        <button type="button">Acessar</button>
+                                        <div>
+                                        </div>
+                                        <div>
+                                            <div class="list-card">
+                                                <div class="list-card__header">
+                                                    <h4>AVSS</h4>
+                                                    <span>Estações: 5</span>
+                                                </div>
+                                                <p class="list-card__text">
+                                                    FACIsa
+                                                </p>
+                                                <div class="list-card__footer">
+                                                    <span class="list-card__footer__update">Última atualização
+                                                        20/04/2021</span>
+                                                    <div class="list-card__buttons">
+                                                        <button type="button">Aplicar</button>
+                                                        <button type="button">Acessar</button>
+                                                        <div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="list-card">
+                                                                <div class="list-card__header">
+                                                                    <h4>UFRN</h4>
+                                                                    <span>Estações: 5</span>
+                                                                </div>
+                                                                <p class="list-card__text">
+                                                                    FACISA
+                                                                </p>
+                                                                <div class="list-card__footer">
+                                                                    <span class="list-card__footer__update">Última
+                                                                        atualização 20/04/2021</span>
+                                                                    <div class="list-card__buttons">
+                                                                        <button type="button">Aplicar</button>
+                                                                        <button type="button">Acessar</button>
+                                                                        <div>
+                                                                        </div>
+                                                                        <div>
+                                                                            <div class="list-card">
+                                                                                <div class="list-card__header">
+                                                                                    <h4>FACISA</h4>
+                                                                                    <span>Estações: 5</span>
+                                                                                </div>
+                                                                                <p class="list-card__text">
+                                                                                    UFRN
+
+                                                                                </p>
+                                                                                <div class="list-card__footer">
+                                                                                    <span
+                                                                                        class="list-card__footer__update">Última
+                                                                                        atualização 20/04/2021</span>
+                                                                                    <div class="list-card__buttons">
+                                                                                        <button
+                                                                                            type="button">Aplicar</button>
+                                                                                        <button
+                                                                                            type="button">Acessar</button>
+                                                                                        <div>
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            <div class="list-card">
+                                                                                                <div
+                                                                                                    class="list-card__header">
+                                                                                                    <h4>INFO</h4>
+                                                                                                    <span>Estações:
+                                                                                                        5</span>
+                                                                                                </div>
+                                                                                                <p
+                                                                                                    class="list-card__text">
+                                                                                                    informatica
+                                                                                                    jfdlkajdlfjaldfk
+                                                                                                </p>
+                                                                                                <div
+                                                                                                    class="list-card__footer">
+                                                                                                    <span
+                                                                                                        class="list-card__footer__update">Última
+                                                                                                        atualização
+                                                                                                        20/04/2021</span>
+                                                                                                    <div
+                                                                                                        class="list-card__buttons">
+                                                                                                        <button
+                                                                                                            type="button">Aplicar</button>
+                                                                                                        <button
+                                                                                                            type="button">Acessar</button>
+                                                                                                        <div>
+                                                                                                        </div>
+            <div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p class="footer__copyright">Todos os direitos reservados © 2021</p>
+        <ul class="footer__list">
+            <li>FACISA</li>
+            <li>IFRN</li>
+            <li>Santa Cruz/RN</li>
+        </ul>
+    </footer>
+</body>
+
+</html>
