@@ -1,0 +1,7 @@
+<%= turbo_stream.replace("test") do %>
+    <%= turbo_frame_tag "test" do %>
+            <% @circuits.each do |c| %>
+            <%= render "partials/list-card", title:c.title, resume:c.resume %>
+            <% end %>
+        <% end %>
+<% end %>

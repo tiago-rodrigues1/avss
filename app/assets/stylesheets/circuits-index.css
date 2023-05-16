@@ -1,9 +1,15 @@
 .circuits__filter {
     display: flex;
-    background-color: blue;
+    background-color: cornsilk;
 }
 
 .circuits__filter,
 .circuits__list {
     width: 80%;
+}
+
+.circuits__list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }

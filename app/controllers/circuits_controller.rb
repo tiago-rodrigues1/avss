@@ -21,6 +21,17 @@ class CircuitsController < ApplicationController
         end
     end
 
+    def search
+        @circuits = Circuit.where("title LIKE ?", "%" + params[:term] + "%")
+
+        # @circuits = Circuit.where(title: 'Rails')
+        
+
+        respond_to do |format|
+            format.turbo_stream
+        end
+    end
+
     private
 
     def circuit_params

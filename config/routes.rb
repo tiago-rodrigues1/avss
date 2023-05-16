@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'home/index'
 
   resources :circuits
+
+  post 'search', to: 'circuits#search'
   # get 'circuits/new', to: 'circuits#new'
   # get 'circuits', to: 'circuits#index'
   # post 'circuits', to: 'circuits#create'
