@@ -11,7 +11,7 @@
     padding: 2rem 1.5rem;
 }
 
-.new-content__title {
+.page-title {
     font-size: 1.5rem;
     margin: 1rem 0 1.5rem 0;
 }
@@ -28,35 +28,8 @@
     margin-right: 2.5rem;
 }
 
-.new-content__form__fields-container {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-    margin-bottom: 1.25rem;
-}
-
-.new-content__form__label {
-    color: #474A4F;
-}
-
-.new-content__form__input::placeholder {
-    color: rgba(71, 74, 79, .5);
-}
-
-.new-content__form__input {
-    border-radius: .25rem;
-    background-color: #FFFFFF;
-    border: 1px solid rgba(71, 74, 79, .5);
-    padding: .5rem 0 .5rem 1rem;
-}
-
-textarea.new-content__form__input {
+textarea.field_input {
     resize: vertical;
-}
-
-.new-content__form__input:focus, 
-.new-content__form__input:focus-visible {
-    outline: 1px solid #83BEDF;
 }
 
 .stations-list__stations {
@@ -72,7 +45,7 @@ textarea.new-content__form__input {
     align-items: center;
 }
 
-.new-content__form__buttons input[type=submit] {
+/* .new-content__form__buttons input[type=submit] {
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 0.25rem;
@@ -82,7 +55,7 @@ textarea.new-content__form__input {
     cursor: pointer;
     transition: 200ms;
     width: 100%;
-}
+} */
 
 .new-content__form__buttons input[type=submit]:hover {
     filter: brightness(.9);

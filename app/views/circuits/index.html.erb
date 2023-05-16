@@ -1,0 +1,20 @@
+<header class="header--transparent">
+    <%= render "partials/navbar" %>
+</header>
+<main class="wrapper">
+    <h1 class="page-title">Situações problema</h1>
+    <%= form_with class:"circuits__filter" do |form| %>
+        <div class="circuits__filter__search">
+            <%= form.label :term, "Pesquisar por título" %>
+            <%= form.text_field :term %>
+        </div>
+        <div class="circuits__filter__options">
+            <%= form.label :filters, "Filtros" %>
+            <%= form.select :filters, ["Berlin", "Chicago", "Madrid"] %>
+        </div>
+        <%= form.submit "Filtrar" %>
+    <% end %>
+    <div class="circuits__list">
+        <%= render "partials/list-card" %>
+    </div>
+</main>

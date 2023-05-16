@@ -1,0 +1,9 @@
+.circuits__filter {
+    display: flex;
+    background-color: blue;
+}
+
+.circuits__filter,
+.circuits__list {
+    width: 80%;
+}

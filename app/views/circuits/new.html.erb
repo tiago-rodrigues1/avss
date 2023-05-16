@@ -1,24 +1,24 @@
 <header class="header--transparent">
     <%= render "partials/navbar" %>
 </header>
-<main class="new-content">
-    <h1 class="new-content__title">Nova situação problema</h1>
+<main class="wrapper">
+    <h1 class="page-title">Nova situação problema</h1>
     <%= form_with model: @circuit, class:"new-content__form-container" do |form| %>
         <div class="new-content__form">
-            <div class="new-content__form__fields-container">
+            <div class="field">
                 <%= form.label :title, 
                     "Título", 
                     class:"new-content__form__label"
                 %>
                 <%= form.text_field :title, 
-                    class:"new-content__form__input",
+                    class:"field__input",
                     placeholder: "Título da situação problema"
                 %>
             </div>
-            <div class="new-content__form__fields-container">
-                <%= form.label :resume, "Resumo", class:"new-content__form__label" %>
+            <div class="field">
+                <%= form.label :resume, "Resumo", class:"field__label" %>
                 <%= form.text_area :resume, 
-                    class:"new-content__form__input",
+                    class:"field__input",
                     placeholder:"Resumo da situação problema",
                     rows:"15"
                 %>
@@ -77,7 +77,7 @@
 
             <div class="new-content__form__buttons">
                 <%= link_to "Cancelar", "#" %>
-                <%= form.submit "Salvar" %>
+                <%= form.submit "Salvar", class:"button button--blue" %>
             </div>
         </div>
     <% end %>
