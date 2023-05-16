@@ -1,19 +1,17 @@
 <div class="card">
-    <div class="card-container">
         <% if defined?(iconPath) %>
             <%= image_tag iconPath %>
         <% else %>
-            <span class="material-symbols-outlined card-icon">
+            <span class="material-symbols-outlined card__icon">
                 <%= defined?(iconName) ? iconName : "" %>
             </span>
         <% end %>
-        <div class="card-content">
-            <h4 class="card-title">
+        <div class="card__content">
+            <h4 class="card__title">
                 <%= defined?(title) ? title : "" %>
             </h4>
-            <p>
+            <p class="card__text">
                 <%= defined?(content) ? content : "" %>
             </p>
         </div>
-    </div>
 </div>
