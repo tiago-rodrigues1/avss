@@ -22,29 +22,6 @@ ul {
     padding: 2rem 1.5rem;
 }
 
-.button {
-    display: inline;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 0.25rem;
-    color: #FFFFFF;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 200ms;
-    width: 100%;
-}
-
-.button:hover {
-    filter: brightness(.9);
-}
-
-.button--blue {
-    background-color: #117BDD;
-}
-
-.button--green {
-    background-color: #86D900;
-}
 
 .field {
     display: flex;

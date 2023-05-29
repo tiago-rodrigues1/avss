@@ -30,11 +30,5 @@
 <% end %>
 
 <%= turbo_frame_tag "teste" do %>
-  aqui vai as alternativas
-  <%= link_to 'Discursiva', test1_path, class: 'btt' %>
-  <%= link_to 'Objetiva', test_path, class: 'btt' %>
-  <%= link_to 'Anexo', test2_path, class: 'btt' %>
+  <%= render "question_kind" %>
 <% end %>
-
-<button class="avss-button">Voltar</button>
-<button class="avss-button avss-button--danger">Remover</button>

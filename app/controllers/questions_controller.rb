@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: %i[ show edit update destroy ]
+  before_action :set_question, only: %i[ show edit update destroy set_kind ]
 
   # GET /questions or /questions.json
   def index
@@ -13,6 +13,14 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   def new
     @question = Question.new
+
+    respond_to do |format|
+      if @question.save
+        format.html { redirect_to edit_question_path(@question) }
+      else
+        format.html { render :new }
+      end
+    end
   end
 
   # GET /questions/1/edit
@@ -47,13 +55,24 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def teste
-  end
+  def set_kind
+    kind = params[:kind]
 
-  def teste1
-  end
-
-  def teste2
+    respond_to do |format|
+      if kind == "objective"
+        @question.kind = 1
+        @question.save
+        format.html { render partial: 'teste' }
+      elsif kind == "discursive"
+        @question.kind = 0
+        @question.save
+        format.html { render partial: 'teste1' }
+      elsif kind == "attachment"
+        @question.kind = 2
+        @question.save
+        format.html { render partial: 'teste2' }
+      end
+    end
   end
 
   # DELETE /questions/1 or /questions/1.json

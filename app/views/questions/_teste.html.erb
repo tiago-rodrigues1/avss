@@ -2,7 +2,5 @@
 <input type="radio" />Alternativa 1<br>
 <input type="radio" />Alternativa 2<br>
 <input type="radio" />Alternativa 3<br>
-  <%= link_to 'Discursiva', test1_path, class: 'btt' %>
-  <%= link_to 'Objetiva', test_path, class: 'btt' %>
-  <%= link_to 'Anexo', test2_path, class: 'btt' %>
+  <%= render "question_kind" %>
 <% end %>

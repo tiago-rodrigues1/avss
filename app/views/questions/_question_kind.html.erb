@@ -1,0 +1,13 @@
+<% if @question.kind == 0 %>
+  <%= link_to 'Discursiva', question_set_kind_path(@question, 'discursive'), class: 'button button--option-selected' %>
+  <%= link_to 'Objetiva', question_set_kind_path(@question, 'objective'), class: 'button button--option' %>
+  <%= link_to 'Anexo', question_set_kind_path(@question, 'attachment'), class: 'button button--option' %>
+<% elsif @question.kind == 1 %>
+  <%= link_to 'Discursiva', question_set_kind_path(@question, 'discursive'), class: 'button button--option' %>
+  <%= link_to 'Objetiva', question_set_kind_path(@question, 'objective'), class: 'button button--option-selected' %>
+  <%= link_to 'Anexo', question_set_kind_path(@question, 'attachment'), class: 'button button--option' %>
+<% else %>
+  <%= link_to 'Discursiva', question_set_kind_path(@question, 'discursive'), class: 'button button--option' %>
+  <%= link_to 'Objetiva', question_set_kind_path(@question, 'objective'), class: 'button button--option' %>
+  <%= link_to 'Anexo', question_set_kind_path(@question, 'attachment'), class: 'button button--option-selected' %>
+<% end %>
