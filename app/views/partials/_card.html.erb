@@ -1,17 +1,18 @@
 <div class="card <%= defined?(myclass) ? myclass : "" %>">
-        <% if defined?(iconPath) %>
-            <%= image_tag iconPath %>
-        <% else %>
-            <span class="material-symbols-outlined card__icon">
-                <%= defined?(iconName) ? iconName : "" %>
-            </span>
-        <% end %>
-        <div class="card__content">
-            <h4 class="card__title">
-                <%= defined?(title) ? title : "" %>
-            </h4>
-            <p class="card__text">
-                <%= defined?(content) ? content : "" %>
-            </p>
-        </div>
+  <% if defined?(iconPath) %>
+    <%= image_tag iconPath %>
+  <% else %>
+    <span class="material-symbols-outlined card__icon">
+      <%= defined?(iconName) ? iconName : "" %>
+    </span>
+  <% end %>
+
+  <div class="card__content">
+    <h4 class="card__title">
+        <%= defined?(title) ? title : "" %>
+    </h4>
+    <p class="card__text">
+        <%= defined?(content) ? content : "" %>
+    </p>
+  </div>
 </div>
