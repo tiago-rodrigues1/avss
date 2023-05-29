@@ -1,5 +1,5 @@
 .button {
-    display: inline;
+    display: block;
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 0.25rem;
@@ -7,7 +7,7 @@
     font-weight: 700;
     cursor: pointer;
     transition: 200ms;
-    width: 100%;
+    /*width: 100%;*/
     text-decoration: none;
 }
 

@@ -4,7 +4,7 @@
 
 <br>
 
-<div>
-  <%= link_to "Show this question", @question %> |
-  <%= link_to "Back to questions", questions_path, class: 'button button--red' %>
+<div style="display: flex">
+  <%= button_to "Voltar", questions_path, method: :get, class: 'button button--blue' %>
+  <%= button_to "Excluir", @question, method: :delete, class: 'button button--red' %>
 </div>
