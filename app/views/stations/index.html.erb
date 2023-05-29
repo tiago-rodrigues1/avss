@@ -11,4 +11,13 @@
   <% end %>
 </div>
 
+<% [1,2,3,4,5].each do %>
+<div style="width: 972px; height: 160px; background: #fff; border: 1px solid #000">
+  <div style="display: flex; justify-content: space-between">
+    <h1 style="font-size: 20px">Título da estação</h1>
+    <h1 style="font-size: 20px">Grau de dificuldade: 4</h1>
+  </div>
+</div>
+<% end %>
+
 <%= link_to "New station", new_station_path %>

@@ -1,10 +1,10 @@
 <nav class="header__navbar">
-    <h5 class="header__title">AVSS</h5>
+    <h5 class="header__title"><%= link_to 'AVSS', root_path, class: 'navbar__link' %></h5>
     <ul class="header__navbar__items">
-        <li>Início</li>
-        <li>Funcionalidades</li>
-        <li>Sobre nós</li>
-        <li>Cadastre-se</li>
+        <li><%= link_to 'Início', root_path, class: 'navbar__link' %></li>
+        <li><%= link_to 'Funcionalidades', root_path, class: 'navbar__link' %></li>
+        <li><%= link_to 'Sobre nós', root_path, class: 'navbar__link' %></li>
+        <li><%= link_to 'Cadastre-se', root_path, class: 'navbar__link' %></li>
     </ul>
     <div class="header__buttons-container">
         <button type="button" class="button button--blue">Avaliação</button>
