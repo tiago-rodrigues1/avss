@@ -1,5 +1,11 @@
 .navbar__link {
     text-decoration: none;
+    font-family: 'Cabin';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
 }
 
 .navbar__link:visited {

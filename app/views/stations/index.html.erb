@@ -1,23 +1,41 @@
-<p style="color: green"><%= notice %></p>
+<header class="header--transparent">
+  <%= render "partials/navbar" %>
+</header>
 
-<h1>Stations</h1>
+<main class="wrapper">
+  <h1 class="page-title">Estações</h1>
+  <%= form_with url:"/search" , class:"circuits__filter", data:{controller:"circuit-search"} do |form| %>
+      <div class="field">
+          <%= form.label :term, "Pesquisar por título", class:"field__label" %>
+          <% form.text_field :term, class:"field__input", data:{ target:"CircuitSearch.searchInput", action:"change->circuit-search#greet" } %>
+                        <input class="field__input" data-circuit-search-target="searchInput" data-action="input->circuit-search#greet" type="text" name="term" id="term" />
+        </div>
+        <% form.submit "Filtrar" %>
+        <input type="submit" name="commit" value="Filtrar" data-disable-with="Filtrar" data-circuit-search-target="searchButton" />
+    <% end %>
+    <div class="circuits__list">
+        <%= turbo_frame_tag "test" do %>
+            <% @stations.each do |c| %>
+              <div class="list-card">
+                <div class="list-card__header">
+                    <h4 class="list-card__title"><%= c.title %></h4>
+                    <span class="list-card__info">Grau de dificuldade: <%= c.difficulty %></span>
+                </div>
 
-<div id="stations">
-  <% @stations.each do |station| %>
-    <%= render station %>
-    <p>
-      <%= link_to "Show this station", station %>
-    </p>
-  <% end %>
-</div>
+                <p class="list-card__text">
+                    <%= c.context %>
+                </p>
 
-<% [1,2,3,4,5].each do %>
-<div style="width: 972px; height: 160px; background: #fff; border: 1px solid #000">
-  <div style="display: flex; justify-content: space-between">
-    <h1 style="font-size: 20px">Título da estação</h1>
-    <h1 style="font-size: 20px">Grau de dificuldade: 4</h1>
-  </div>
-</div>
-<% end %>
-
-<%= link_to "New station", new_station_path %>
+                <div class="list-card__footer">
+                  <span class="list-card__footer__update">Última atualização em <%= c.updated_at %></span>
+                  <div class="list-card__buttons">
+                      <%= link_to 'Acessar', c, class: 'button button--blue', data: { turbo_frame: '_top' } %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+        <% end %>
+                      
+        <%= link_to 'Voltar', root_path, class: 'button button--blue' %>
+    </div>
+</main>

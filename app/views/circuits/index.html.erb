@@ -15,8 +15,28 @@
     <div class="circuits__list">
         <%= turbo_frame_tag "test" do %>
             <% @circuits.each do |c| %>
-            <%= render "partials/list-card", title:c.title, resume:c.resume %>
+              <div class="list-card">
+                <div class="list-card__header">
+                    <h4 class="list-card__title"><%= c.title %></h4>
+                    <span class="list-card__info">Estações: 5</span>
+                </div>
+
+                <p class="list-card__text">
+                    <%= c.resume %>
+                </p>
+
+                <div class="list-card__footer">
+                  <span class="list-card__footer__update">Última atualização em <%= c.updated_at %></span>
+                  <div class="list-card__buttons">
+                      <%= button_to 'Aplicar', root_path, class: 'button button--green', method: :get %>
+                      <%= button_to 'Acessar', c, class: 'button button--blue', method: :get, data: { turbo_frame: '_top' } %>
+                      <%= link_to 'Acessar2', c, class: 'button button--blue', data: { turbo_frame: '_top' } %>
+                  </div>
+                </div>
+              </div>
             <% end %>
         <% end %>
+                      
+        <%= link_to 'Voltar', root_path, class: 'button button--blue' %>
     </div>
 </main>
