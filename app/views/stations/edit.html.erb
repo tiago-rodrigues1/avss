@@ -1,17 +1,12 @@
-<header class="header">
-    <%= render "partials/navbar" %>
-</header>
+<section class="section">
+  <%= render "form", station: @station %>
 
-<h1>Título da Estação Editável</h1>
+  <div>
+    <%= link_to "Show this station", @station %> |
+    <%= link_to "Back to stations", stations_path %>
+  </div>
 
-<%= render "form", station: @station %>
+  <%= button_to 'Voltar', stations_path, method: :get, class: 'button button--blue' %>
+  <%= button_to 'Excluir', @station, method: :delete, class: 'button button--red' %>
+</section>
 
-<br>
-
-<div>
-  <%= link_to "Show this station", @station %> |
-  <%= link_to "Back to stations", stations_path %>
-</div>
-
-<%= button_to 'Voltar', stations_path, method: :get, class: 'button button--blue' %>
-<%= button_to 'Excluir', @station, method: :delete, class: 'button button--red' %>
