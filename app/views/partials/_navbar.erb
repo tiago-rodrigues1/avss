@@ -1,7 +1,7 @@
-<nav class="header__navbar">
-  <h1 class="header__title"><%= link_to 'AVSS', root_path, class: 'navbar__link' %></h1>
+<nav class="navbar">
+  <h1 class="navbar__avss"><%= link_to 'AVSS', root_path, class: 'navbar__link' %></h1>
 
-  <ul class="header__navbar__items">
+  <ul class="navbar__items">
     <% if user_signed_in? %>
       <li><%= link_to 'Início', root_path, class: 'navbar__link' %></li>
       <li><%= link_to 'Controles', root_path, class: 'navbar__link' %></li>
@@ -15,12 +15,12 @@
     <% end %>
   </ul>
 
-  <div class="header__buttons-container">
+  <div class="navbar__buttons-container">
     <% if user_signed_in? %>
-      <button type="button" class="button button--blue">Logout</button>
+      <%= link_to "Sair", destroy_user_session_path, class: "button button--blue",  data: { "turbo-method": :delete } %>
     <% else %>
-      <button type="button" class="button button--blue">Avaliação</button>
-      <button type="button" class="button button--green">Entrar</button>
+      <button type="button" class="button button--green">Avaliação</button>
+      <%= link_to "Entrar", new_user_session_path, class: "button button--blue" %>
     <% end %>
   </div>
 </nav>

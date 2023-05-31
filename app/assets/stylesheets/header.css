@@ -1,0 +1,16 @@
+.header {
+    width: 100%;
+    padding: 2rem;
+    background-color: #83BEDF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header__logo {
+    width: 20rem;
+    height: 20rem;
+    padding: 1.5rem 0;
+    align-self: center;
+}
+
