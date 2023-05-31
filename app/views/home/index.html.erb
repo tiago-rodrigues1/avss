@@ -1,65 +1,62 @@
 <header class="header--mobile">
-    <h5 class="header__title">AVSS</h5>
-    <span class="material-symbols-outlined home-header__icon--mobile">
-        menu
-    </span>
+  <h5 class="header__title">AVSS</h5>
+  <span class="material-symbols-outlined home-header__icon--mobile">
+    menu
+  </span>
 </header>
-<main class="home-content">
-    <section class="home-content__section">
-        <h1>
-            Funcionalidades
-        </h1>
-        <div class="home-content__section__cards">
-            <div>
-                <%= link_to new_circuit_path, style: 'text-decoration: none; color: #000' do %>
-                <%= render "partials/card", 
-                    title: "Cadastre situações problema", 
-                    iconName: "add",
-                    content: "Cadastre novos circuitos para serem aplicados a partir do zero e/ou reaproveitando as estações previamente criadas"
-                %>
-                <% end %>
 
-                <%= link_to circuits_path, style: 'text-decoration: none; color: #000' do %>
-                <%= render "partials/card", 
-                    title: "Consulte suas situações problema", 
-                    iconName: "list_alt",
-                    content: "Acesse sua lista de OSCEs para gerenciá-los ou aplicá-los"
-                %>
-                <% end %>
-            </div>
-            <div>
-                <%= link_to new_station_path, style: 'text-decoration: none; color: #000' do %>
-                <%= render "partials/card", 
-                    title: "Cadastre novas estações", 
-                    iconName: "add",
-                    content: "Crie novas estações independentementes de um circuito OSCE, e utilize-as quando formular o circuito"
-                %>
-                <% end %>
+<main>
+  <section class="section section--with-mt">
+    <h1 class="section__title">Funcionalidades</h1>
 
-                <%= link_to stations_path, style: 'text-decoration: none; color: #000' do %>
-                <%= render "partials/card", 
-                    title: "Consulte suas estações", 
-                    iconName: "list_alt",
-                    content: "Acesse sua lista de todas estações já cadastradas para gerenciá-las ou inspirar-se para elaboração de novas práticas"
-                %>
-                <% end %>
-            </div>
-    </section>
-    <section class="home-content__section --with-mt">
-        <h1>
-            Sobre nós
-        </h1>
-        <div class="home-content__section__cards">
-            <%= render "partials/card", 
-                title: "FACISA", 
-                iconPath: "ufrn.svg",
-                content: "Faculdade de Ciências da Saúde do Trairi (FACISA)"
-            %>
-            <%= render "partials/card", 
-                title: "IFRN", 
-                iconPath: "ifrn.svg",
-                content: "Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte | Santa Cruz"
-            %>
-        </div>
-    </section>
+    <div class="section__cards">
+        <%= link_to new_circuit_path, style: 'text-decoration: none; color: #000' do %>
+        <%= render "partials/card", 
+          title: "Cadastre situações problema", 
+          iconName: "add",
+          content: "Cadastre novos circuitos para serem aplicados a partir do zero e/ou reaproveitando as estações previamente criadas"
+        %>
+        <% end %>
+
+        <%= link_to circuits_path, style: 'text-decoration: none; color: #000' do %>
+        <%= render "partials/card", 
+          title: "Consulte suas situações problema", 
+          iconName: "list_alt",
+          content: "Acesse sua lista de OSCEs para gerenciá-los ou aplicá-los"
+        %>
+        <% end %>
+        <%= link_to new_station_path, style: 'text-decoration: none; color: #000' do %>
+        <%= render "partials/card", 
+          title: "Cadastre novas estações", 
+          iconName: "add",
+          content: "Crie novas estações independentementes de um circuito OSCE, e utilize-as quando formular o circuito"
+        %>
+        <% end %>
+
+        <%= link_to stations_path, style: 'text-decoration: none; color: #000' do %>
+        <%= render "partials/card", 
+          title: "Consulte suas estações", 
+          iconName: "list_alt",
+          content: "Acesse sua lista de todas estações já cadastradas para gerenciá-las ou inspirar-se para elaboração de novas práticas"
+        %>
+        <% end %>
+      </div>
+  </section>
+
+  <section class="section section--with-mb section--with-mt">
+    <h1 class="section__title">Sobre nós</h1>
+
+    <div class="section__cards">
+      <%= render "partials/card", 
+        title: "FACISA", 
+        iconPath: "ufrn.svg",
+        content: "Faculdade de Ciências da Saúde do Trairi (FACISA)"
+      %>
+      <%= render "partials/card", 
+        title: "IFRN", 
+        iconPath: "ifrn.svg",
+        content: "Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte | Santa Cruz"
+      %>
+    </div>
+  </section>
 </main>

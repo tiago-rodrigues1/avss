@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  get 'dashboard/index', as: 'dashboard'
+  get 'dashboard', to: 'dashboard#index', as: 'dashboard'
+  get 'home', to: 'home#index', as: 'home'
+
   devise_for :users
   resources :questions
   resources :stations
-  get 'home/index'
+
   get 'teste', to: 'questions#teste', as: 'test'
   get 'teste1', to: 'questions#teste1', as: 'test1'
   get 'teste2', to: 'questions#teste2', as: 'test2'
