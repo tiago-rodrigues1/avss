@@ -1,6 +1,43 @@
-<section class="section">
-  <%= render "form", station: @station %>
+<div id="not"></div>
 
+<section class="section">
+  <div data-controller="station-inputs">
+    <%= form_with(model: @station, data: {station_inputs_target: "form"}) do |form| %>
+      <%= form.text_field :title, placeholder: 'Digite aqui o título da estação', 
+            class: 'section__test', data: {action: "input->station-inputs#submitForm"} %>
+    <% end %>
+  </div>
+
+  <%= render "partials/card_input",
+    title: "Contextualização",
+    model: @station, 
+    field: :context, 
+    placeholder: "desc", 
+    icon: 'description' %>
+
+  <%= render "partials/card_input",
+    title: "Procedimentos",
+    model: @station, 
+    field: :procedure, 
+    placeholder: "desc", 
+    icon: 'account_tree' %>
+
+  <%= render "partials/card_input",
+    title: "Avaliação",
+    model: @station, 
+    field: :evaluation, 
+    placeholder: "desc", 
+    icon: 'whatshot' %>
+
+  <div class="section__cards">
+    <%= render "time_card", station: @station %>
+    <%= render "score_card", station: @station %>
+    <%= render "difficulty_card", station: @station %>
+  </div>
+
+  <section class="section">
+    <h1 class="section__title">Perguntas</h1>
+  </section>
   <%= button_to 'Voltar', stations_path, method: :get, class: 'button button--blue' %>
   <%= button_to 'Excluir', @station, method: :delete, class: 'button button--red' %>
 </section>

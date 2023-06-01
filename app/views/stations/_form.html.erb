@@ -1,36 +1,5 @@
-<div id="not"></div>
 
-<section class="section">
-  <div data-controller="station-inputs">
-    <%= form_with(model: station, data: {station_inputs_target: "form"}) do |form| %>
-      <%= form.text_field :title, placeholder: 'Digite aqui o título da estação', 
-            class: 'section__test', data: {action: "input->station-inputs#submitForm"} %>
-    <% end %>
-  </div>
-
-  <%= render "partials/card_input",
-    title: "Contextualização",
-    model: station, 
-    field: :context, 
-    placeholder: "desc", 
-    icon: 'description' %>
-
-  <%= render "partials/card_input",
-    title: "Procedimentos",
-    model: station, 
-    field: :procedure, 
-    placeholder: "desc", 
-    icon: 'account_tree' %>
-
-  <%= render "partials/card_input",
-    title: "Avaliação",
-    model: station, 
-    field: :evaluation, 
-    placeholder: "desc", 
-    icon: 'whatshot' %>
-</section>
-
-
+<% if false %>
 <%= form_with(model: station) do |form| %>
   <% if station.errors.any? %>
     <div style="color: red">
@@ -44,10 +13,5 @@
     </div>
   <% end %>
 <% end %>
-
-<div class="section__cards">
-  <%= render "time_card", station: station %>
-  <%= render "score_card", station: station %>
-  <%= render "difficulty_card", station: station %>
-</div>
+<% end %>
 

@@ -49,7 +49,9 @@ class StationsController < ApplicationController
   def update
     respond_to do |format|
       if @station.update(station_params)
-        format.turbo_stream
+        format.turbo_stream do
+          flash.now[:notice] = "Salvo!"
+        end
         format.html { redirect_to station_url(@station), notice: "Station was successfully updated." }
         format.json { render :show, status: :ok, location: @station }
       else
