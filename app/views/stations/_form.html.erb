@@ -1,3 +1,36 @@
+<div id="not"></div>
+
+<section class="section">
+  <div data-controller="station-inputs">
+    <%= form_with(model: station, data: {station_inputs_target: "form"}) do |form| %>
+      <%= form.text_field :title, placeholder: 'Digite aqui o título da estação', 
+            class: 'section__test', data: {action: "input->station-inputs#submitForm"} %>
+    <% end %>
+  </div>
+
+  <%= render "partials/card_input",
+    title: "Contextualização",
+    model: station, 
+    field: :context, 
+    placeholder: "desc", 
+    icon: 'description' %>
+
+  <%= render "partials/card_input",
+    title: "Procedimentos",
+    model: station, 
+    field: :procedure, 
+    placeholder: "desc", 
+    icon: 'account_tree' %>
+
+  <%= render "partials/card_input",
+    title: "Avaliação",
+    model: station, 
+    field: :evaluation, 
+    placeholder: "desc", 
+    icon: 'whatshot' %>
+</section>
+
+
 <%= form_with(model: station) do |form| %>
   <% if station.errors.any? %>
     <div style="color: red">
@@ -10,118 +43,11 @@
       </ul>
     </div>
   <% end %>
-
-  <%= form.text_field :title, placeholder: 'Digite aqui o título da estação', 
-        class: 'section__test' %>
-
-  <div class="card card--large">
-    <div class="card__icon material-symbols-outlined">
-      description
-    </div>
-
-    <div class="card__content">        
-      <%= form.label :context, "Contextualização", style: "display: block", class: "card__title" %>
-      <%= form.text_area :context, placeholder: 'Descreva um contexto para que o aluno se situe para realização da Estação. Texto que será apresentado aos alunos no ato de selecionar a Estação!', class: 'card__input-textarea' %>
-    </div>
-  </div>
-
-  <div>
-    <%= form.label :procedure, style: "display: block" %>
-    <%= form.text_area :procedure %>
-  </div>
-
-  <div>
-    <%= form.label :evaluation, style: "display: block" %>
-    <%= form.text_area :evaluation %>
-  </div>
-
-  <div>
-    <%= form.label :time, style: "display: block" %>
-    <%= form.number_field :time %>
-  </div>
-
-  <div>
-    <%= form.label :difficulty, style: "display: block" %>
-    <%= form.number_field :difficulty %>
-  </div>
-
-  <div>
-    <%= form.label :score, style: "display: block" %>
-    <%= form.number_field :score %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>
 
 <div class="section__cards">
-<div class="card card--small">
-  <div class="card__icon material-symbols-outlined">
-    timer
-  </div>
-
-  <div class="card__content">
-    <h1 class="card__title">Tempo (minutos)</h1>
-
-    <div style="display: flex; justify-content: space-between; width: 340px; align-items: center">
-      <div class="card__button card__button--red">
-        <span class="card__button-material-icon">
-          navigate_before
-        </span>
-      </div>
-  
-      <span class="card__counter">5</span>
-      <div class="card__button card__button--blue">
-        <span class="card__button-material-icon">
-          navigate_next
-        </span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="card card--small">
-  <div class="card__icon material-symbols-outlined">
-    whatshot
-  </div>
-
-  <div class="card__content">
-    <h1 class="card__title">Dificuldade</h1>
-
-    <div style="display: flex; justify-content: space-between; width: 340px; align-items: center">
-      <div class="card__button card__button--blue">
-        <span>
-          1
-        </span>
-      </div>
-
-      <div class="card__button card__button--navy">
-        <span>
-          2
-        </span>
-      </div>
-
-      <div class="card__button card__button--yellow">
-        <span>
-          3
-        </span>
-      </div>
-
-      <div class="card__button card__button--gold">
-        <span>
-          4
-        </span>
-      </div>
-
-      <div class="card__button card__button--red">
-        <span>
-          5
-        </span>
-      </div>
-
-    </div>
-  </div>
-</div>
+  <%= render "time_card", station: station %>
+  <%= render "score_card", station: station %>
+  <%= render "difficulty_card", station: station %>
 </div>
 

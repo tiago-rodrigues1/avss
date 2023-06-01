@@ -1,0 +1,19 @@
+<div data-controller="station-inputs">
+  <div style="display: flex; justify-content: space-between; width: 340px; align-items: center">
+    <button class="card__button card__button--red" data-action="click->station-inputs#decrement">
+      <span class="card__button-material-icon">
+        navigate_before
+      </span>
+    </button>
+  
+    <%= form_with(model: model, data: {station_inputs_target: "form"}) do |form| %>
+      <%= form.number_field field, class: "card__counter", data: {station_inputs_target: "field"} %>
+    <% end %>
+  
+    <button class="card__button card__button--blue" data-action="click->station-inputs#increment">
+      <span class="card__button-material-icon">
+        navigate_next
+      </span>
+    </button>
+  </div>
+</div>

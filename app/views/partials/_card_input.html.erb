@@ -1,0 +1,12 @@
+<div class="card card--large" data-controller="station-inputs">
+  <div class="card__icon material-symbols-outlined">
+    <%= icon %>
+  </div>
+
+  <div class="card__content"> 
+    <%= form_with(model: model, data: {station_inputs_target: "form"}) do |form| %>
+      <%= form.label field, title, style: "display: block", class: "card__title" %>
+      <%= form.text_area field, placeholder: placeholder, class: 'card__input-textarea', data: {action: "input->station-inputs#submitForm"} %>
+    <% end %>
+  </div>
+</div>

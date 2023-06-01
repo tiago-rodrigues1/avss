@@ -49,6 +49,7 @@ class StationsController < ApplicationController
   def update
     respond_to do |format|
       if @station.update(station_params)
+        format.turbo_stream
         format.html { redirect_to station_url(@station), notice: "Station was successfully updated." }
         format.json { render :show, status: :ok, location: @station }
       else
@@ -76,6 +77,6 @@ class StationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def station_params
-      params.require(:station).permit(:context, :procedure, :evaluation, :time, :difficulty, :score)
+      params.require(:station).permit(:title, :context, :procedure, :evaluation, :time, :difficulty, :score)
     end
 end
