@@ -1,6 +1,23 @@
 <%= turbo_frame_tag question do %>
-  <div class="card card--large">
+  <div class="card card--large" data-controller="station-inputs">
+    <div class="card__icon material-symbols-outlined">
+      description
+    </div>
+
+    <div class="card__content"> 
+      <%= form_with(model: question, data: {station_inputs_target: "form"}) do |form| %>
+        <%= form.label :statement, "Enunciado", style: "display: block", class: "card__title" %>
+        <%= form.text_area :statement, placeholder: 'Digite aqui o enunciado da questão...', class: 'card__input-textarea', data: {action: "input->station-inputs#submitForm"} %>
+      <% end %>
+    </div>
+  </div>
+
+    <%= form_with(model: question) do |f| %>
+      <%= f.text_area :statement %>
+      <%= f.submit %>
+    <% end %>
     <%= question.id %>
+    <%= question.statement %>
     <%= link_to 'Excluir', question, class: 'button button--red', data: { turbo_method: :delete } %>
   </div>
 <% end %>
