@@ -7,7 +7,7 @@
     </button>
   
     <%= form_with(model: model, data: {station_inputs_target: "form"}) do |form| %>
-      <%= form.number_field field, class: "card__counter", data: {station_inputs_target: "field"} %>
+      <%= form.number_field field, class: "card__counter", data: {station_inputs_target: "field", action: "input->station-inputs#submitForm"} %>
     <% end %>
   
     <button class="card__button card__button--blue" data-action="click->station-inputs#increment">

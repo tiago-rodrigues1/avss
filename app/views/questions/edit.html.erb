@@ -1,6 +1,5 @@
+<%= turbo_frame_tag @question do %>
 <h1>Editing question</h1>
-
-<%= render "form", question: @question %>
 
 <br>
 
@@ -8,3 +7,4 @@
   <%= button_to "Voltar", questions_path, method: :get, class: 'button button--blue' %>
   <%= button_to "Excluir", @question, method: :delete, class: 'button button--red' %>
 </div>
+<% end %>

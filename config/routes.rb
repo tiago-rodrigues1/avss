@@ -3,16 +3,13 @@ Rails.application.routes.draw do
   get 'home', to: 'home#index', as: 'home'
 
   devise_for :users
-  resources :questions
-  resources :stations
-
-  get 'teste', to: 'questions#teste', as: 'test'
-  get 'teste1', to: 'questions#teste1', as: 'test1'
-  get 'teste2', to: 'questions#teste2', as: 'test2'
-
-  get 'question/:id/set_kind/:kind', to: 'questions#set_kind', as: 'question_set_kind'
-
   resources :circuits
+  resources :questions
+  resources :stations do
+    resources :questions do
+      post :newq, on: :member, to: 'questions#new'
+    end
+  end
 
   post 'search', to: 'circuits#search'
   # get 'circuits/new', to: 'circuits#new'

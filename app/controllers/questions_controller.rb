@@ -13,9 +13,11 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   def new
     @question = Question.new
+    @question.station_id = params[:station_id]
 
     respond_to do |format|
       if @question.save
+        format.turbo_stream
         format.html { redirect_to edit_question_path(@question) }
       else
         format.html { render :new }
@@ -80,6 +82,7 @@ class QuestionsController < ApplicationController
     @question.destroy
 
     respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.remove(@question) }
       format.html { redirect_to questions_url, notice: "Question was successfully destroyed." }
       format.json { head :no_content }
     end

@@ -1,5 +1,3 @@
-<div id="not"></div>
-
 <section class="section">
   <div data-controller="station-inputs">
     <%= form_with(model: @station, data: {station_inputs_target: "form"}) do |form| %>
@@ -34,11 +32,26 @@
     <%= render "score_card", station: @station %>
     <%= render "difficulty_card", station: @station %>
   </div>
+</section>
 
-  <section class="section">
-    <h1 class="section__title">Perguntas</h1>
+<section class="section section--with-mt">
+  <h1 class="section__title">Perguntas</h1>
+
+  <%= turbo_frame_tag "questions" do %>
+    <% @station.questions.each do |q| %>
+      <%= render "question_card", question: q %>
+    <% end %>
+  <% end %>
+
+  <section class="section__buttons section__buttons--align-center">
+    <%= link_to 'Nova Pergunta', newq_station_question_path(@station), class: 'button button--blue', data: { turbo_method: :post } %>
   </section>
-  <%= button_to 'Voltar', stations_path, method: :get, class: 'button button--blue' %>
-  <%= button_to 'Excluir', @station, method: :delete, class: 'button button--red' %>
+</section>
+
+<section class="section section--with-mt">
+  <section class="section__buttons section__buttons--align-center">
+    <%= link_to 'Voltar', :back, class: 'button button--blue' %>
+    <%= link_to 'Excluir', @station, class: 'button button--red', data: { turbo_method: :delete } %>
+  </section>
 </section>
 

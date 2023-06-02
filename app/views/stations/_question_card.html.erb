@@ -1,0 +1,6 @@
+<%= turbo_frame_tag question do %>
+  <div class="card card--large">
+    <%= question.id %>
+    <%= link_to 'Excluir', question, class: 'button button--red', data: { turbo_method: :delete } %>
+  </div>
+<% end %>

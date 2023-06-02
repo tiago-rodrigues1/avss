@@ -1,5 +1,5 @@
-<main class="wrapper">
-  <h1 class="page-title">Estações</h1>
+<section class="section">  
+  <h1 class="section__title">Estações</h1>
   <%= form_with url:"/search" , class:"circuits__filter", data:{controller:"circuit-search"} do |form| %>
       <div class="field">
           <%= form.label :term, "Pesquisar por título", class:"field__label" %>
@@ -9,29 +9,14 @@
         <% form.submit "Filtrar" %>
         <input type="submit" name="commit" value="Filtrar" data-disable-with="Filtrar" data-circuit-search-target="searchButton" />
     <% end %>
-    <div class="circuits__list">
-        <%= turbo_frame_tag "test" do %>
-            <% @stations.each do |c| %>
-              <div class="list-card">
-                <div class="list-card__header">
-                    <h4 class="list-card__title"><%= c.title %></h4>
-                    <span class="list-card__info">Grau de dificuldade: <%= c.difficulty %></span>
-                </div>
 
-                <p class="list-card__text">
-                    <%= c.context %>
-                </p>
+  <%= turbo_frame_tag "filter-list" do %>
+    <% @stations.each do |station| %>
+      <%= render "station_list_card", station: station %>
+    <% end %>
+  <% end %>
 
-                <div class="list-card__footer">
-                  <span class="list-card__footer__update">Última atualização em <%= c.updated_at %></span>
-                  <div class="list-card__buttons">
-                      <%= link_to 'Acessar', c, class: 'button button--blue', data: { turbo_frame: '_top' } %>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-        <% end %>
-                      
-        <%= link_to 'Voltar', root_path, class: 'button button--blue' %>
-    </div>
-</main>
+  <div class="section__buttons section__buttons--align-center">
+    <%= link_to 'Voltar', :back, class: 'button button--blue', data: { turbo_frame: '_top' } %>
+  </div>
+</section>

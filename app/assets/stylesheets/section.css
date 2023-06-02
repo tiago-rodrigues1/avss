@@ -49,3 +49,21 @@
     row-gap: 2rem;
     column-gap: 2rem;
 }
+
+.section__buttons {
+    display: flex;
+    gap: 1rem;
+    width: 58rem;
+}
+
+.section__buttons--align-left {
+    justify-content: flex-start;
+}
+
+.section__buttons--align-center {
+    justify-content: center;
+}
+
+.section__buttons--align-right {
+    justify-content: flex-end;
+}
