@@ -4,10 +4,23 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :circuits
-  resources :questions
+
+  resources :questions do
+    post 'set_kind/:kind', on: :member, to: 'questions#set_kind', as: :set_kind
+  end
+
   resources :stations do
     resources :questions do
       post :newq, on: :member, to: 'questions#new'
+    end
+  end
+
+  resources :question_alternatives
+  resources :questions do
+    resources :question_alternatives do
+      member do
+        post :new
+      end
     end
   end
 

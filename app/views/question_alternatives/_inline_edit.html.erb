@@ -1,0 +1,7 @@
+<div data-controller="station-inputs">
+  <%= form_with(model: question_alternative, data: {station_inputs_target: "form"}) do |f| %>
+    <%= f.check_box :correct, data: {action: "input->station-inputs#submitForm"} %>
+    <%= f.text_field :body, data: {action: "input->station-inputs#submitForm"} %>
+  <% end %>
+  <%= link_to "Excluir", question_alternative_path(question_alternative), data: {turbo_method: :delete } %>
+</div>

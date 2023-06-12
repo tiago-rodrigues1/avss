@@ -4,20 +4,27 @@
       description
     </div>
 
-    <div class="card__content"> 
+    <div class="card__content">
       <%= form_with(model: question, data: {station_inputs_target: "form"}) do |form| %>
-        <%= form.label :statement, "Enunciado", style: "display: block", class: "card__title" %>
+        <div style="display: flex; align-items: center; justify-content: space-between">
+          <%= form.label :statement, "Enunciado", style: "display: block", class: "card__title" %>
+
+          <div class="card__buttons" style="display: flex; gap: 10px">
+            <%= link_to "Discursiva", set_kind_question_path(question, 0), data: { turbo_method: :post }, class: 'button button--blue' %>
+            <%= link_to "Objetiva", set_kind_question_path(question, 1), data: { turbo_method: :post }, class: 'button button--blue' %>
+            <%= link_to "Anexo", set_kind_question_path(question, 2), data: { turbo_method: :post }, class: 'button button--blue' %>
+          </div>
+        </div>
         <%= form.text_area :statement, placeholder: 'Digite aqui o enunciado da questão...', class: 'card__input-textarea', data: {action: "input->station-inputs#submitForm"} %>
       <% end %>
-    </div>
-  </div>
 
-    <%= form_with(model: question) do |f| %>
-      <%= f.text_area :statement %>
-      <%= f.submit %>
-    <% end %>
-    <%= question.id %>
-    <%= question.statement %>
-    <%= link_to 'Excluir', question, class: 'button button--red', data: { turbo_method: :delete } %>
+      <%= turbo_frame_tag "question_kind_#{question.id}" do %>
+        <%= render "questions/question_kind", question: question %>
+      <% end %>
+    </div>
+
+    <div class="card__buttons">
+      <%= link_to 'Excluir', question, class: 'button button--red', data: { turbo_method: :delete } %>
+    </div>
   </div>
 <% end %>

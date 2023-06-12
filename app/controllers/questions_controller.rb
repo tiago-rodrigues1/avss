@@ -59,21 +59,12 @@ class QuestionsController < ApplicationController
   end
 
   def set_kind
-    kind = params[:kind]
+    @question = Question.find(params[:id])
+    @question.kind = params[:kind]
 
     respond_to do |format|
-      if kind == "objective"
-        @question.kind = 1
-        @question.save
-        format.html { render partial: 'teste' }
-      elsif kind == "discursive"
-        @question.kind = 0
-        @question.save
-        format.html { render partial: 'teste1' }
-      elsif kind == "attachment"
-        @question.kind = 2
-        @question.save
-        format.html { render partial: 'teste2' }
+      if @question.save
+        format.turbo_stream
       end
     end
   end

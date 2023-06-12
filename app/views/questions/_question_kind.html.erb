@@ -1,13 +1,21 @@
-<% if @question.kind == 0 %>
-  <%= button_to 'Discursiva', question_set_kind_path(@question, 'discursive'), method: :get, class: 'button button--option-selected' %>
-  <%= button_to 'Objetiva', question_set_kind_path(@question, 'objective'), method: :get, class: 'button button--option' %>
-  <%= button_to 'Anexo', question_set_kind_path(@question, 'attachment'), method: :get, class: 'button button--option' %>
-<% elsif @question.kind == 1 %>
-  <%= button_to 'Discursiva', question_set_kind_path(@question, 'discursive'), method: :get, class: 'button button--option' %>
-  <%= button_to 'Objetiva', question_set_kind_path(@question, 'objective'), method: :get, class: 'button button--option-selected' %>
-  <%= button_to 'Anexo', question_set_kind_path(@question, 'attachment'), method: :get, class: 'button button--option' %>
+<% if question.kind == 0 %>
+  Espelho de resposta
+<% elsif question.kind == 1 %>
+  <%= turbo_frame_tag "question_#{question.id}_alternatives" do %>
+  <ul>
+  <% question.question_alternatives.each do |a| %>
+    <div>
+      <%= turbo_frame_tag a do %>
+        <%= render "question_alternatives/inline_edit", question_alternative: a %>
+      <% end %>
+    </div>
+  <% end %>
+  </ul>
+  <% end %>
+
+  <div class="card__buttons">
+    <%= link_to "Nova alternativa", new_question_question_alternative_path(question), class: "button button--blue", data: { turbo_method: :post } %>
+  </div>
 <% else %>
-  <%= button_to 'Discursiva', question_set_kind_path(@question, 'discursive'), method: :get, class: 'button button--option' %>
-  <%= button_to 'Objetiva', question_set_kind_path(@question, 'objective'), method: :get, class: 'button button--option' %>
-  <%= button_to 'Anexo', question_set_kind_path(@question, 'attachment'), method: :get, class: 'button button--option-selected' %>
+  Anexos
 <% end %>

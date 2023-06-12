@@ -1,0 +1,5 @@
+<%= turbo_stream.append "question_#{@id}_alternatives" do %>
+  <%= turbo_frame_tag @question_alternative do %>
+    <%= render "question_alternatives/inline_edit", question_alternative: @question_alternative %>
+  <% end %>
+<% end %>
