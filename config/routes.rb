@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   resources :stations do
     resources :questions do
       post :newq, on: :member, to: 'questions#new'
+      #member do
+      #  post :new, to: 'questions#new'
+      #end
     end
   end
 

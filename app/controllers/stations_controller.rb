@@ -14,6 +14,9 @@ class StationsController < ApplicationController
   # GET /stations/new
   def new
     @station = Station.new
+    @station.difficulty = 3
+    @station.score = 5
+    @station.time = 10
 
     respond_to do |format|
       if @station.save

@@ -50,7 +50,7 @@
 
 <section class="section section--with-mt">
   <section class="section__buttons section__buttons--align-center">
-    <%= link_to 'Voltar', :back, class: 'button button--blue' %>
+    <%= link_to 'Voltar', stations_path, class: 'button button--blue' %>
     <%= link_to 'Excluir', @station, class: 'button button--red', data: { turbo_method: :delete } %>
   </section>
 </section>

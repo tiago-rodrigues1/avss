@@ -9,37 +9,11 @@
   <h1 class="section__title">Funcionalidades</h1>
 
   <div class="section__cards">
-      <%= link_to new_circuit_path, style: 'text-decoration: none; color: #000' do %>
-      <%= render "partials/card", 
-        title: "Cadastre situações problema", 
-        iconName: "add",
-        content: "Cadastre novos circuitos para serem aplicados a partir do zero e/ou reaproveitando as estações previamente criadas"
-      %>
-      <% end %>
-
-      <%= link_to circuits_path, style: 'text-decoration: none; color: #000' do %>
-      <%= render "partials/card", 
-        title: "Consulte suas situações problema", 
-        iconName: "list_alt",
-        content: "Acesse sua lista de OSCEs para gerenciá-los ou aplicá-los"
-      %>
-      <% end %>
-      <%= link_to new_station_path, style: 'text-decoration: none; color: #000' do %>
-      <%= render "partials/card", 
-        title: "Cadastre novas estações", 
-        iconName: "add",
-        content: "Crie novas estações independentementes de um circuito OSCE, e utilize-as quando formular o circuito"
-      %>
-      <% end %>
-
-      <%= link_to stations_path, style: 'text-decoration: none; color: #000' do %>
-      <%= render "partials/card", 
-        title: "Consulte suas estações", 
-        iconName: "list_alt",
-        content: "Acesse sua lista de todas estações já cadastradas para gerenciá-las ou inspirar-se para elaboração de novas práticas"
-      %>
-      <% end %>
-    </div>
+    <%= render "partials/new_circuit_card" %>
+    <%= render "partials/view_circuits_card" %>
+    <%= render "partials/new_station_card" %>
+    <%= render "partials/view_stations_card" %>
+  </div>
 </section>
 
 <section class="section section--with-mb section--with-mt">

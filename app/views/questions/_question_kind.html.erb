@@ -1,6 +1,7 @@
 <% if question.kind == 0 %>
   Espelho de resposta
 <% elsif question.kind == 1 %>
+  Alternativas:
   <%= turbo_frame_tag "question_#{question.id}_alternatives" do %>
   <ul>
   <% question.question_alternatives.each do |a| %>

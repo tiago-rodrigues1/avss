@@ -3,13 +3,10 @@
     <h1 class="section__title">Funcionalidades</h1>
 
     <div class="section__cards">
-    <% 6.times.each do %>
-    <%= render "partials/card", 
-        title: "Cadastre situações problema", 
-        iconName: "add",
-        content: "Cadastre novos circuitos para serem aplicados a partir do zero e/ou reaproveitando as estações previamente criadas"
-    %>
-    <% end %>
+      <%= render "partials/new_circuit_card" %>
+      <%= render "partials/view_circuits_card" %>
+      <%= render "partials/new_station_card" %>
+      <%= render "partials/view_stations_card" %>
     </div>
   </section>
 </main>

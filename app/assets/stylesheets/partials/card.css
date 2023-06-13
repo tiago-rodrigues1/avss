@@ -114,3 +114,28 @@
     outline: none;
     resize: none;
 }
+
+.card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 800px;
+}
+
+.card__footer {
+
+}
+
+.card__body {
+
+}
+
+
+.card__buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.card__buttons--align-right {
+    justify-content: flex-end;
+}
