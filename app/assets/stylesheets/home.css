@@ -11,20 +11,4 @@
         width: 100%;
         flex-wrap: wrap;
     }
-
-    .header, .header nav {
-        display: none;
-    }
-
-    .header--mobile {
-        background-color: #83BEDF;
-        padding: 1rem 1.5rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .header__icon--mobile {
-        font-size: 32px;
-    }
 }
