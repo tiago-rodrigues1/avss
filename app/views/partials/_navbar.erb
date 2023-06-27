@@ -15,7 +15,7 @@
 		<% end %>
 	</ul>
 
-	<div class="navbar__buttons-container">
+	<div class="buttons-container">
 		<% if user_signed_in? %>
 			<%= link_to "Sair", destroy_user_session_path, class: "button button--blue",  data: { "turbo-method": :delete } %>
 		<% else %>
