@@ -36,6 +36,7 @@ ul {
     background-color: #FFFFFF;
     border: 1px solid rgba(71, 74, 79, .5);
     padding: .5rem 0 .5rem 1rem;
+    font-size: 1rem;
 }
 
 .field__label {
