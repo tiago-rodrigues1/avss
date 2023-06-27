@@ -1,82 +1,41 @@
-
-<main class="wrapper">
-    <h1 class="page-title">Nova situação problema</h1>
-    <%= form_with model: @circuit, class:"new-content__form-container" do |form| %>
-        <div class="new-content__form">
-            <div class="field">
-                <%= form.label :title, 
-                    "Título", 
-                    class:"new-content__form__label"
-                %>
-                <%= form.text_field :title, 
-                    class:"field__input",
-                    placeholder: "Título da situação problema"
-                %>
+<div class="container">
+    <div class="form-wrapper">
+        <section class="container__section" id="circuits">
+            <h1>
+                Situação problema
+            </h1>
+            <%= form_with model: @circuit, class: "container__form" do |form| %>
+                <div class="field">
+                    <%= form.label :title, 
+                        "Título", 
+                        class:"new-content__form__label"
+                    %>
+                    <%= form.text_field :title, 
+                        class:"field__input",
+                        placeholder: "Título da situação problema"
+                    %>
+                </div>
+                <div class="field">
+                    <%= form.label :resume, "Resumo", class:"field__label" %>
+                    <%= form.text_area :resume, 
+                        class:"field__input",
+                        placeholder:"Resumo da situação problema",
+                        rows:"15"
+                    %>
+                </div>
+            <% end %>
+        </section>
+        <section class="container__section" id="stations">
+            <h2 class="container__section__title">Estações</h2>
+            <div class="buttons-container">
+                <button class="button button--blue">Nova estação</button>
+                <button class="button button--outlined-blue">Buscar estação</button>
             </div>
-            <div class="field">
-                <%= form.label :resume, "Resumo", class:"field__label" %>
-                <%= form.text_area :resume, 
-                    class:"field__input",
-                    placeholder:"Resumo da situação problema",
-                    rows:"15"
-                %>
-            </div>
-        </div>
-        <div class="new-content__stations-list">
-            <%= render "partials/card", 
-                title: "Adicionar estações", 
-                iconName: "add",
-                content: "Crie novas estações independentementes de um circuito OSCE, e utilize-as quando formular o circuito",
-                myclass: "card--bg-blue"
-            %>
-
-            <ul class="stations-list__stations">
+            <ul class="stations-list">
                 <li>
-                    <%= render "partials/card", 
-                        title: "Estação I", 
-                        iconName: "class",
-                        content: "Resumo da primeira estação aqui...",
-                        myclass: "card--bg-blue"
-                    %>
-                </li>
-                <li>
-                    <%= render "partials/card", 
-                        title: "Estação I", 
-                        iconName: "class",
-                        content: "Resumo da primeira estação aqui...",
-                        myclass: "card--bg-blue"
-                    %>
-                </li>
-                <li>
-                    <%= render "partials/card", 
-                        title: "Estação I", 
-                        iconName: "class",
-                        content: "Resumo da primeira estação aqui...",
-                        myclass: "card--bg-blue"
-                    %>
-                </li>
-                <li>
-                    <%= render "partials/card", 
-                        title: "Estação I", 
-                        iconName: "class",
-                        content: "Resumo da primeira estação aqui...",
-                        myclass: "card--bg-blue"
-                    %>
-                </li>
-                <li>
-                    <%= render "partials/card", 
-                        title: "Estação I", 
-                        iconName: "class",
-                        content: "Resumo da primeira estação aqui...",
-                        myclass: "card--bg-blue"
-                    %>
+                    <%= render "stations/card_station" %>
                 </li>
             </ul>
-
-            <div class="new-content__form__buttons">
-                <%= link_to "Cancelar", "#" %>
-                <%= form.submit "Salvar", class:"button button--blue" %>
-            </div>
-        </div>
-    <% end %>
-</main>
+        </section>
+    </div>
+</div>
