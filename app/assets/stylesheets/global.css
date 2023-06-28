@@ -13,6 +13,21 @@ ul {
     list-style: none;
 }
 
+.container {
+    display: grid;
+    place-items: center;
+    padding-top: 2rem;
+    padding-bottom: 2.5rem;
+}
+
+.form-wrapper {
+    width: 65%;
+    background-color: #FFFFFF;
+    padding: 1.5rem;
+    padding-bottom: 2rem;
+    border-radius: .5rem;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -37,6 +52,10 @@ ul {
     border: 1px solid rgba(71, 74, 79, .5);
     padding: .5rem 0 .5rem 1rem;
     font-size: 1rem;
+}
+
+textarea.field_input {
+    resize: vertical;
 }
 
 .field__label {

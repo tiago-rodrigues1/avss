@@ -7,6 +7,10 @@
     justify-content: center;
 }
 
+.header--mobile {
+    display: none;
+}
+
 .header__logo {
     width: 20rem;
     height: 20rem;
