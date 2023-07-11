@@ -1,57 +1,129 @@
-<section class="section">
-  <div data-controller="station-inputs">
-    <%= form_with(model: @station, data: {station_inputs_target: "form"}) do |form| %>
-      <%= form.text_field :title, placeholder: 'Digite aqui o título da estação', 
-            class: 'section__test', data: {action: "input->station-inputs#submitForm"} %>
-    <% end %>
-  </div>
-
-  <%= render "partials/card_input",
-    title: "Contextualização",
-    model: @station, 
-    field: :context, 
-    placeholder: "desc", 
-    icon: 'description' %>
-
-  <%= render "partials/card_input",
-    title: "Procedimentos",
-    model: @station, 
-    field: :procedure, 
-    placeholder: "desc", 
-    icon: 'account_tree' %>
-
-  <%= render "partials/card_input",
-    title: "Avaliação",
-    model: @station, 
-    field: :evaluation, 
-    placeholder: "desc", 
-    icon: 'whatshot' %>
-
-  <div class="section__cards">
-    <%= render "time_card", station: @station %>
-    <%= render "score_card", station: @station %>
-    <%= render "difficulty_card", station: @station %>
-  </div>
-</section>
-
-<section class="section section--with-mt">
-  <h1 class="section__title">Perguntas</h1>
-
-  <%= turbo_frame_tag "questions" do %>
-    <% @station.questions.each do |q| %>
-      <%= render "question_card", question: q %>
-    <% end %>
-  <% end %>
-
-  <section class="section__buttons section__buttons--align-center">
-    <%= link_to 'Nova Pergunta', newq_station_question_path(@station), class: 'button button--blue', data: { turbo_method: :post } %>
-  </section>
-</section>
-
-<section class="section section--with-mt">
-  <section class="section__buttons section__buttons--align-center">
-    <%= link_to 'Voltar', stations_path, class: 'button button--blue' %>
-    <%= link_to 'Excluir', @station, class: 'button button--red', data: { turbo_method: :delete } %>
-  </section>
-</section>
-
+<div class="container">
+    <div class="form-wrapper">
+        <section class="container__section" id="circuits">
+            <h1>
+                Nova estação
+            </h1>
+            <%= form_with model: @station, class: "container__form", multipart: true do |form| %>
+                <div class="field">
+                    <%= form.label :title, "Título", class:"field__label" %>
+                    <%= form.text_field :title, 
+                        class:"field__input",
+                        placeholder: "Título da estação"
+                    %>
+                </div>
+                <div class="field">
+                    <%= form.label :context, "Contextualização", class:"field__label" %>
+                    <%= form.text_area :context, 
+                        class:"field__input",
+                        placeholder:"Descreva um contexto para que o aluno se situe para realização da Estação. Texto que será apresentado aos alunos no ato de selecionar a Estação!",
+                        rows:"15"
+                    %>
+                </div>
+				<div class="field">
+                    <%= form.label :procedure, "Procedimento", class:"field__label" %>
+                    <%= form.text_area :procedure, 
+                        class:"field__input",
+                        placeholder:"Descreva o procedimento esperado na realização da Estação",
+                        rows:"15"
+                    %>
+                </div>
+				<div class="field">
+                    <%= form.label :evaluation, "Avaliação", class:"field__label" %>
+                    <%= form.text_area :evaluation, 
+                        class:"field__input",
+                        placeholder:"Entregas esperadas",
+                        rows:"10"
+                    %>
+                </div>
+				<div class="fields--inline">
+					<div class="field">
+						<%= form.label :time, "Tempo (minutos)", class:"field__label" %>
+						<%= form.number_field  :time, 
+							class:"field__input",
+							placeholder: "Tempo da situação problema",
+							value: @station.time
+						%>
+                	</div>
+					<div class="field">
+						<%= form.label :score, "Pontuação", class:"field__label" %>
+						<%= form.number_field  :score, 
+							class:"field__input",
+							placeholder: "Pontuação da situação problema",
+							value: @station.score
+						%>
+                	</div>
+				</div>
+				<div class="fields--inline">
+					<fieldset class="difficulty-container">
+						<legend>Dificuldade</legend>
+						<div class="stars">
+							<button type="button" class="star-btn" data-value="1">
+								<span class="material-symbols-outlined star-btn__icon">
+									star
+								</span>
+							</button>
+							<button type="button" class="star-btn" data-value="2">
+								<span class="material-symbols-outlined star-btn__icon">
+									star
+								</span>
+							</button>
+							<button type="button" class="star-btn" data-value="3">
+								<span class="material-symbols-outlined star-btn__icon">
+									star
+								</span>
+							</button>
+							<button type="button" class="star-btn" data-value="4">
+								<span class="material-symbols-outlined star-btn__icon">
+									star
+								</span>
+							</button>
+							<button type="button" class="star-btn" data-value="5">
+								<span class="material-symbols-outlined star-btn__icon">
+									star
+								</span>
+							</button>
+						</div>
+					</fieldset>
+					<fieldset class="radio-inputs">
+						<legend class="field__label">Receber feedback</legend>
+						<div class="radio-field">
+							<%= form.radio_button :feedback, "1" %>
+							<%= form.label :feedback, "Sim", class:"field__label" %>
+						</div>
+						<div class="radio-field">
+							<%= form.radio_button :feedback, "0" %>
+							<%= form.label :feedback, "Não", class:"field__label" %>
+						</div>
+					</fieldset>
+				</div>
+				<fieldset class="attachments-container">
+					<legend class="field__label">Anexos</legend>
+					<ul>
+						<li>
+							<%= form.file_field :attachments, class: "field__input--file" %>
+							<%= form.label :attachments, "Escolha um arquivo", class:"field__label--file" %>
+						</li>
+					</ul>
+					<button type="button" class="attachments__btn-add">
+						<span class="material-symbols-outlined">
+							add
+						</span>
+					</button>
+				</fieldset>
+            <% end %>
+        </section>
+        <section class="container__section" id="questions">
+            <h2 class="container__section__title">Perguntas</h2>
+            <div class="buttons-container">
+                <button class="button button--blue">Nova pergunta</button>
+                <button class="button button--outlined-blue">Buscar pergunta</button>
+            </div>
+            <ul class="stations-list">
+                <li>
+                    <%= render "stations/card_station" %>
+                </li>
+            </ul>
+        </section>
+    </div>
+</div>
