@@ -1,8 +1,8 @@
 <section class="section">
-  <div data-controller="station-inputs">
+  <div data-controller="debounced">
     <%= form_with(model: @station, data: {station_inputs_target: "form"}) do |form| %>
       <%= form.text_field :title, placeholder: 'Digite aqui o título da estação', 
-            class: 'section__test', data: {action: "input->station-inputs#submitForm"} %>
+            class: 'section__test', data: {action: "input->debounced#submitForm"} %>
     <% end %>
   </div>
 

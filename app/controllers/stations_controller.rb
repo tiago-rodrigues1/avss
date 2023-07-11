@@ -13,10 +13,7 @@ class StationsController < ApplicationController
 
   # GET /stations/new
   def new
-    @station = Station.new
-    @station.difficulty = 3
-    @station.score = 5
-    @station.time = 10
+    @station = Station.new(difficulty: 3, score: 5, time: 15)
 
     respond_to do |format|
       if @station.save
