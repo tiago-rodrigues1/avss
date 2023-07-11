@@ -1,0 +1,18 @@
+<div class="stars">
+    <% 5.times do |i| %>
+        <% c = i + 1 %>
+        <% if (c <= station.difficulty) %>
+            <%= link_to set_station_difficulty_path(station, c), class: "star-btn star-btn--active", data: { turbo_method: :post }   do %>
+                <span class="material-symbols-outlined star-btn__icon">
+                    star
+                </span>
+            <% end %>
+        <% else %>
+            <%= link_to set_station_difficulty_path(station, c), class: "star-btn", data: { turbo_method: :post } do %>
+                <span class="material-symbols-outlined star-btn__icon">
+                    star
+                </span>
+            <% end %>
+        <% end %>
+    <% end %>
+</div>

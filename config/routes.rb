@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     end
   end
 
+  post 'station/:id/difficulty/:value', to: 'stations#set_station_difficulty', as: 'set_station_difficulty'
   post 'search', to: 'circuits#search'
   # get 'circuits/new', to: 'circuits#new'
   # get 'circuits', to: 'circuits#index'
