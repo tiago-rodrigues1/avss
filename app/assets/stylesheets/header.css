@@ -7,10 +7,24 @@
     justify-content: center;
 }
 
+.header--mobile {
+    display: none;
+}
+
 .header__logo {
     width: 20rem;
     height: 20rem;
     padding: 1.5rem 0;
     align-self: center;
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 1.5rem;
+    }
+    
+    .header__logo {
+        display: none;
+    }
 }
 

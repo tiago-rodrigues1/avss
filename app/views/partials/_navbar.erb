@@ -1,26 +1,55 @@
 <nav class="navbar">
-  <h1 class="navbar__avss"><%= link_to 'AVSS', root_path, class: 'navbar__link' %></h1>
+	<h1 class="navbar__avss"><%= link_to 'AVSS', root_path, class: 'navbar__link' %></h1>
 
-  <ul class="navbar__items">
-    <% if user_signed_in? %>
-      <li><%= link_to 'Início', root_path, class: 'navbar__link' %></li>
-      <li><%= link_to 'Controles', dashboard_path, class: 'navbar__link' %></li>
-      <li><%= link_to 'Sobre nós', root_path, class: 'navbar__link' %></li>
-      <li><%= link_to 'Perfil', root_path, class: 'navbar__link' %></li>
-    <% else %>
-      <li><%= link_to 'Início', root_path, class: 'navbar__link' %></li>
-      <li><%= link_to 'Funcionalidades', root_path, class: 'navbar__link' %></li>
-      <li><%= link_to 'Sobre nós', root_path, class: 'navbar__link' %></li>
-      <li><%= link_to 'Cadastre-se', new_user_registration_path, class: 'navbar__link' %></li>
-    <% end %>
-  </ul>
+	<ul class="navbar__items">
+		<% if user_signed_in? %>
+			<li><%= link_to 'Início', root_path, class: 'navbar__link' %></li>
+			<li><%= link_to 'Controles', dashboard_path, class: 'navbar__link' %></li>
+			<li><%= link_to 'Sobre nós', root_path, class: 'navbar__link' %></li>
+			<li><%= link_to 'Perfil', root_path, class: 'navbar__link' %></li>
+		<% else %>
+			<li><%= link_to 'Início', root_path, class: 'navbar__link' %></li>
+			<li><%= link_to 'Funcionalidades', root_path, class: 'navbar__link' %></li>
+			<li><%= link_to 'Sobre nós', root_path, class: 'navbar__link' %></li>
+			<li><%= link_to 'Cadastre-se', new_user_registration_path, class: 'navbar__link' %></li>
+		<% end %>
+	</ul>
 
-  <div class="navbar__buttons-container">
-    <% if user_signed_in? %>
-      <%= link_to "Sair", destroy_user_session_path, class: "button button--blue",  data: { "turbo-method": :delete } %>
-    <% else %>
-      <button type="button" class="button button--green">Avaliação</button>
-      <%= link_to "Entrar", new_user_session_path, class: "button button--blue" %>
-    <% end %>
-  </div>
+	<div class="buttons-container">
+		<% if user_signed_in? %>
+			<%= link_to "Sair", destroy_user_session_path, class: "button button--blue",  data: { "turbo-method": :delete } %>
+		<% else %>
+			<button type="button" class="button button--green">Avaliação</button>
+			<%= link_to "Entrar", new_user_session_path, class: "button button--blue" %>
+		<% end %>
+	</div>
+</nav>
+
+<nav class="navbar--mobile">
+	<div class="menu-container">
+		<h1 class="navbar__avss"><%= link_to 'AVSS', root_path, class: 'navbar__link' %></h1>
+		<button class="navbar--mobile__menu-btn" data-controller="menu-mobile" data-action="click->menu-mobile#expand">
+			<span class="material-symbols-outlined menu-icon" id="btn-expand">
+    			menu
+  			</span>
+			<span class="material-symbols-outlined menu-icon" id="btn-close" style="display: none;">
+    			close
+  			</span>
+		</button>
+	</div>
+	<ul class="navbar--mobile__items">
+		<% if user_signed_in? %>
+			<li class="navbar--mobile__nav-item"><%= link_to 'Início', root_path, class: 'navbar__link' %></li>
+			<li class="navbar--mobile__nav-item"><%= link_to 'Controles', dashboard_path, class: 'navbar__link' %></li>
+			<li class="navbar--mobile__nav-item"><%= link_to 'Sobre nós', root_path, class: 'navbar__link' %></li>
+			<li class="navbar--mobile__nav-item"><%= link_to 'Perfil', root_path, class: 'navbar__link' %></li>
+			<li class="navbar--mobile__nav-item"><%= link_to 'Sair', destroy_user_session_path, class: 'navbar__link' %></li>
+		<% else %>
+			<li class="navbar--mobile__nav-item"><%= link_to 'Início', root_path, class: 'navbar__link' %></li>
+			<li class="navbar--mobile__nav-item"><%= link_to 'Funcionalidades', root_path, class: 'navbar__link' %></li>
+			<li class="navbar--mobile__nav-item"><%= link_to 'Sobre nós', root_path, class: 'navbar__link' %></li>
+			<li class="navbar--mobile__nav-item"><%= link_to 'Entrar', new_user_session_path, class: 'navbar__link' %></li>
+			<li class="navbar--mobile__nav-item"><%= link_to 'Cadastre-se', new_user_registration_path, class: 'navbar__link' %></li>
+		<% end %>
+	<ul>
 </nav>
