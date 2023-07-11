@@ -1,3 +1,8 @@
+.buttons-container {
+    display: flex;
+    gap: 1.5rem;
+}
+
 .button {
     display: block;
     padding: 0.5rem 1rem;
@@ -25,6 +30,32 @@
 
 .button--red {
     background-color: #f55147;
+}
+
+.button--outlined-blue {
+    background-color: transparent;
+    border: 2px solid #117bdd;
+    color: #117bdd;
+    transition: 200ms;
+}
+
+.button--outlined-blue:hover {
+    background-color: #117bdd;
+    color: #FFFFFF;
+    filter: brightness(1);
+}
+
+.button--outlined-red {
+    background-color: transparent;
+    border: 2px solid #f55147;
+    color: #f55147;
+    transition: 200ms;
+}
+
+.button--outlined-red:hover {
+    background-color: #f55147;
+    color: #FFFFFF;
+    filter: brightness(1);
 }
 
 .button--option {
