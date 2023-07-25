@@ -13,7 +13,7 @@ class StationsController < ApplicationController
 
   # GET /stations/new
   def new
-    @station = Station.new(difficulty: 3, score: 5, time: 15)
+    @station = Station.new(difficulty: 3, score: 5, time: 15, feedback: 1)
 
     respond_to do |format|
       if @station.save
@@ -48,7 +48,12 @@ class StationsController < ApplicationController
   # PATCH/PUT /stations/1 or /stations/1.json
   def update
     respond_to do |format|
+      @station = Station.find(params[:id])
+
+      @attachments = params[:attachments]
+      @station.attachments.attach(@attachments)
       if @station.update(station_params)
+
         format.turbo_stream do
           flash.now[:notice] = "Salvo!"
         end
@@ -91,6 +96,6 @@ class StationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def station_params
-      params.require(:station).permit(:title, :context, :procedure, :evaluation, :time, :difficulty, :score)
+      params.require(:station).permit(:title, :context, :procedure, :evaluation, :time, :difficulty, :score, :feedback, attachments:[])
     end
 end
