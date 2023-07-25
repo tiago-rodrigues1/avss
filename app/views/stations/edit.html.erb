@@ -1,15 +1,17 @@
 <div class="container">
     <div class="form-wrapper">
-        <section class="container__section" id="circuits">
+        <section class="container__section" id="circuits" data-controller="debounced">
             <h1>
                 Nova estação
             </h1>
-            <%= form_with model: @station, class: "container__form", multipart: true do |form| %>
+            <%= form_with model: @station, class: "container__form", multipart: true, data: {debounced_target: "form"} do |form| %>
                 <div class="field">
                     <%= form.label :title, "Título", class:"field__label" %>
                     <%= form.text_field :title, 
                         class:"field__input",
-                        placeholder: "Título da estação"
+                        placeholder: "Título da estação",
+						data: {action: "input->debounced#submitForm"},
+						value: @station.title
                     %>
                 </div>
                 <div class="field">
@@ -17,7 +19,9 @@
                     <%= form.text_area :context, 
                         class:"field__input",
                         placeholder:"Descreva um contexto para que o aluno se situe para realização da Estação. Texto que será apresentado aos alunos no ato de selecionar a Estação!",
-                        rows:"15"
+                        rows:"15",
+						data: {action: "input->debounced#submitForm"},
+						value: @station.context
                     %>
                 </div>
 				<div class="field">
@@ -25,7 +29,9 @@
                     <%= form.text_area :procedure, 
                         class:"field__input",
                         placeholder:"Descreva o procedimento esperado na realização da Estação",
-                        rows:"15"
+                        rows:"15",
+						data: {action: "input->debounced#submitForm"},
+						value: @station.procedure
                     %>
                 </div>
 				<div class="field">
@@ -33,7 +39,9 @@
                     <%= form.text_area :evaluation, 
                         class:"field__input",
                         placeholder:"Entregas esperadas",
-                        rows:"10"
+                        rows:"10",
+						data: {action: "input->debounced#submitForm"},
+						value: @station.evaluation
                     %>
                 </div>
 				<div class="fields--inline">
@@ -42,6 +50,7 @@
 						<%= form.number_field  :time, 
 							class:"field__input",
 							placeholder: "Tempo da situação problema",
+							data: {action: "input->debounced#submitForm"},
 							value: @station.time
 						%>
                 	</div>
@@ -50,6 +59,7 @@
 						<%= form.number_field  :score, 
 							class:"field__input",
 							placeholder: "Pontuação da situação problema",
+							data: {action: "input->debounced#submitForm"},
 							value: @station.score
 						%>
                 	</div>
@@ -64,11 +74,11 @@
 					<fieldset class="radio-inputs">
 						<legend class="field__label">Receber feedback</legend>
 						<div class="radio-field">
-							<%= form.radio_button :feedback, "1" %>
+							<%= form.radio_button :feedback, "1", checked: @station.feedback, data: {action: "click->debounced#submitForm"} %>
 							<%= form.label :feedback, "Sim", class:"field__label" %>
 						</div>
 						<div class="radio-field">
-							<%= form.radio_button :feedback, "0" %>
+							<%= form.radio_button :feedback, "0", checked: !@station.feedback, data: {action: "click->debounced#submitForm"} %>
 							<%= form.label :feedback, "Não", class:"field__label" %>
 						</div>
 					</fieldset>
@@ -77,7 +87,7 @@
 					<legend class="field__label">Anexos</legend>
 					<ul class="fields-list" id="attachments-fields">
 						<li>
-							<%= form.file_field :attachments, class: "field__input--file" %>
+							<%= form.file_field :attachments, class: "field__input--file", data: {action: "change->debounced#submitForm"} %>
 							<%= form.label :attachments, "Escolha um arquivo", class:"field__label--file" %>
 						</li>
 					</ul>
