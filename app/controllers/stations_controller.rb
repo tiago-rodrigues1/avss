@@ -71,6 +71,18 @@ class StationsController < ApplicationController
     end
   end
 
+  def set_station_difficulty
+    @station = Station.find(params[:id])
+    @value = params[:value]
+
+    @station.difficulty = @value
+    @station.save
+
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_station

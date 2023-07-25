@@ -103,9 +103,8 @@ textarea.field_input {
 
 .stars {
     display: flex;
-    flex-direction: row-reverse;
     width: 100%;
-    justify-content: flex-end;
+    justify-content: flex-start;
     margin-top: .5rem;
     gap: 1rem;
 }
@@ -113,16 +112,13 @@ textarea.field_input {
 .star-btn {
     border: 0;
     background-color: transparent;
-    color: rgba(71, 74, 79, .35);
+    color: rgba(71, 74, 79, .35) !important;
+    cursor: pointer;
+    text-decoration: none;
 }
 
-.star-btn:hover {
-    color: #117add8b;
-    cursor: pointer !important;
-}
-
-.star-btn:hover ~ .star-btn {
-    color: #117add8b;
+.star-btn--active {
+    color: red !important;
 }
 
 .star-btn__icon {
@@ -160,6 +156,11 @@ textarea.field_input {
     padding: .5rem;
     font-size: 1rem;
     display: block;
+}
+
+.fields-list {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .attachments__btn-add:hover {
