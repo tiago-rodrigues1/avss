@@ -52,8 +52,8 @@ class StationsController < ApplicationController
 
       @attachments = params[:attachments]
       @station.attachments.attach(@attachments)
-      if @station.update(station_params)
 
+      if @station.save #update(station_params)
         format.turbo_stream do
           flash.now[:notice] = "Salvo!"
         end
@@ -96,6 +96,6 @@ class StationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def station_params
-      params.require(:station).permit(:title, :context, :procedure, :evaluation, :time, :difficulty, :score, :feedback, attachments:[])
+      params.require(:station).permit(:title, :context, :procedure, :evaluation, :time, :difficulty, :score, :feedback, attachments: [])
     end
 end
