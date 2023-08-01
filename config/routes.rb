@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     end
   end
 
+  delete 'foobar/:attachment_id', to: 'stations#remove_attachment', as: 'ftest'
+
   resources :question_alternatives
   resources :questions do
     resources :question_alternatives do

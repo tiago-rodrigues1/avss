@@ -48,12 +48,11 @@ class StationsController < ApplicationController
   # PATCH/PUT /stations/1 or /stations/1.json
   def update
     respond_to do |format|
-      @station = Station.find(params[:id])
-
-      @attachments = params[:attachments]
+      @attachments = params[:station][:attachments]
       @station.attachments.attach(@attachments)
+      puts "\n\n-->#{@attachments}\n>#{params[:station][:title]}<\n#{params}\n\n"
 
-      if @station.save #update(station_params)
+      if @station.update(station_params.except(:attachments))
         format.turbo_stream do
           flash.now[:notice] = "Salvo!"
         end
@@ -85,6 +84,15 @@ class StationsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream
+    end
+  end
+
+  def remove_attachment
+    @b = ActiveStorage::Blob.find_signed(params[:attachment_id])
+    @b.purge
+
+    respond_to do |f|
+      f.turbo_stream
     end
   end
 

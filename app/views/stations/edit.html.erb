@@ -108,7 +108,8 @@
         <section class="container__section" id="questions">
 			<% @station.attachments.each do |a| %>
 				<%= a.filename %>
-				<%= link_to a.filename, a %><br>
+				<%= link_to a.filename, a %>
+                <%= link_to "Remover", ftest_path(a.signed_id), data: {turbo_method: :delete } %> <br>
 			<% end %>
             <h2 class="container__section__title">Perguntas</h2>
             <div class="buttons-container">
