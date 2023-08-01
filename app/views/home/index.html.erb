@@ -2,10 +2,10 @@
 	<h1 class="section__title">Funcionalidades</h1>
 
 	<div class="section__cards">
-		<%= render "partials/new_circuit_card" %>
-		<%= render "partials/view_circuits_card" %>
-		<%= render "partials/new_station_card" %>
-		<%= render "partials/view_stations_card" %>
+    <%= render "partials/new_circuit_card_2" %>
+		<%= render "partials/view_circuits_card_2" %>
+    <%= render "partials/new_station_card_2" %>
+		<%= render "partials/view_stations_card_2" %>
 	</div>
 </section>
 
@@ -13,15 +13,22 @@
   <h1 class="section__title">Sobre nós</h1>
 
   <div class="section__cards">
-    <%= render "partials/card", 
-      title: "FACISA", 
-      iconPath: "ufrn.svg",
-      content: "Faculdade de Ciências da Saúde do Trairi (FACISA)"
-    %>
-    <%= render "partials/card", 
-      title: "IFRN", 
-      iconPath: "ifrn.svg",
-      content: "Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte | Santa Cruz"
-    %>
+    <%= link_to "https://facisa.ufrn.br/", style: 'text-decoration: none; color: #000' do %>
+        <%=
+          render "partials/card", 
+          title: "FACISA", 
+          iconPath: "ufrn.svg",
+          content: "Faculdade de Ciências da Saúde do Trairi (FACISA)"
+        %>
+    <% end %>
+
+    <%= link_to "https://portal.ifrn.edu.br/campus/santacruz/", style: 'text-decoration: none; color: #000' do %>
+        <%=
+          render "partials/card", 
+          title: "IFRN", 
+          iconPath: "ifrn.svg",
+          content: "Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte | Santa Cruz"
+        %>
+    <% end %>
   </div>
 </section>

@@ -3,8 +3,19 @@ class CircuitsController < ApplicationController
         @circuits = Circuit.all
     end
 
+    
     def new
-        @circuit = Circuit.new
+        @circuit = Circuit.new()
+
+        respond_to do |format|
+            if @circuit.save
+                format.html { redirect_to edit_circuit_path(@circuit) }
+                format.json { render :show, status: :created, location: @circuit }
+            else
+                format.html { render :new, status: :unprocessable_entity }
+                format.json { render json: @circuit.errors, status: :unprocessable_entity }
+            end
+        end
     end
 
     def create
