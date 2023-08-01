@@ -87,7 +87,7 @@
 					<legend class="field__label">Anexos</legend>
 					<ul class="fields-list" id="attachments-fields">
 						<li>
-							<%= form.file_field :attachments, class: "field__input--file", data: {action: "change->debounced#submitForm"} %>
+							<%= form.file_field :attachments, multiple: true, class: "field__input--file", data: {action: "change->debounced#submitForm"} %>
 							<%= form.label :attachments, "Escolha um arquivo", class:"field__label--file" %>
 						</li>
 					</ul>
@@ -106,6 +106,10 @@
             <% end %>
         </section>
         <section class="container__section" id="questions">
+			<% @station.attachments.each do |a| %>
+				<%= a.filename %>
+				<%= link_to a.filename, a %><br>
+			<% end %>
             <h2 class="container__section__title">Perguntas</h2>
             <div class="buttons-container">
                 <button class="button button--blue">Nova pergunta</button>
