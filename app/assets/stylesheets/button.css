@@ -16,6 +16,10 @@
     text-decoration: none;
 }
 
+.button--small {
+    padding: .25rem .5rem !important;
+}
+
 .button:hover {
     filter: brightness(.9);
 }

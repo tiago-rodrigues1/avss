@@ -85,32 +85,48 @@
 				</div>
 				<fieldset class="attachments-container">
 					<legend class="field__label">Anexos</legend>
-					<ul class="fields-list" id="attachments-fields">
+					<ul class="fields-list" id="attachments-fields" style="display: none;">
 						<li>
-							<%= form.file_field :attachments, multiple: true, class: "field__input--file", data: {action: "change->debounced#submitForm"} %>
-							<%= form.label :attachments, "Escolha um arquivo", class:"field__label--file" %>
+							
 						</li>
 					</ul>
-					<button 
-						type="button" 
-						class="attachments__btn-add" 
-						data-target="#attachments-fields"
-						data-controller="add-field"
-						data-action="click->add-field#add_field"
-					>
-						<span class="material-symbols-outlined">
-							add
-						</span>
-					</button>
+					<div class="attachments__btn-add">
+						<%= form.file_field :attachments, multiple: true, class: "field__input--file", data: {action: "change->debounced#submitForm"} %>
+						<%= form.label :attachments, class:"field__label--file" do %>
+							<span class="material-symbols-outlined">add</span>
+						<% end %>
+					</div>
+					<table class="attachments-table">
+						<thead>
+							<tr>
+								<th class="attachments-table__header">Arquivo</th>
+								<th class="attachments-table__header">Visualizar</th>
+								<th class="attachments-table__header">Remover</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @station.attachments.each do |a| %>
+								<tr>
+									<td><%= a.filename %></td>
+									<td>
+										<%= link_to a do %>
+											<span class="button button--small button--blue material-symbols-outlined">visibility</span>
+										<% end %>
+									</td>
+									<td>
+										<%= link_to ftest_path(a.signed_id), data: {turbo_method: :delete } do %>
+											<span class="button button--small button--red material-symbols-outlined">delete</span>
+										<% end %>
+									</td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
 				</fieldset>
             <% end %>
         </section>
         <section class="container__section" id="questions">
-			<% @station.attachments.each do |a| %>
-				<%= a.filename %>
-				<%= link_to a.filename, a %>
-                <%= link_to "Remover", ftest_path(a.signed_id), data: {turbo_method: :delete } %> <br>
-			<% end %>
+			
             <h2 class="container__section__title">Perguntas</h2>
             <div class="buttons-container">
                 <button class="button button--blue">Nova pergunta</button>
