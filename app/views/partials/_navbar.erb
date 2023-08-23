@@ -1,5 +1,5 @@
 <nav class="navbar">
-	<h1 class="navbar__avss"><%= link_to 'AVSS', root_path, class: 'navbar__link' %></h1>
+	<%= render 'partials/logo' %>
 
 	<ul class="navbar__items">
 		<% if user_signed_in? %>
@@ -27,7 +27,7 @@
 
 <nav class="navbar--mobile">
 	<div class="menu-container">
-		<h1 class="navbar__avss"><%= link_to 'AVSS', root_path, class: 'navbar__link' %></h1>
+		<%= render 'partials/logo' %>
 		<button class="navbar--mobile__menu-btn" data-controller="menu-mobile" data-action="click->menu-mobile#expand">
 			<span class="material-symbols-outlined menu-icon" id="btn-expand">
     			menu
