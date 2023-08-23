@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Avss</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+	<head>
+		<title>Avss</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+		<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+		<%= javascript_importmap_tags %>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;700&display=swap" rel="stylesheet">
-  </head>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;700&display=swap" rel="stylesheet">
+	</head>
 
   <body>
-    <header class="header">
-      <%= render "partials/navbar" %>
-      <%= image_tag("avss-logo.svg", class:"header__logo") %>
-    </header>
+		<header class="header">
+			<%= render "partials/navbar" %>
+			<div class="header__text-content">
+				<%= render "partials/logo" %>
+				<h2 class="header__text-content__title">Ambiente Virtual de Situações Simuladas</h2>
+				<p class="header__text-content__body">
+					Uma ferramenta elaborada mediante uma colaboração entre UFRN e IFRN, voltada exlclusivamente para realização de Exame Clínico Objetivo Estruturado (OSCE). Otimizando a experiência prática 
+					decisória sem precisão de um grande esforço logístico e espacial para tal, contribuindo, dessa 
+					forma, para obtenção de experiências que serão de grande valia pós formação.
+				</p>
+			</div>
+		</header>
 
-    <%= yield %>
-    <%= render "partials/footer" %>
+		<%= yield %>
+		<%= render "partials/footer" %>
   </body>
 </html>
