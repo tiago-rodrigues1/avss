@@ -7,6 +7,7 @@
 
 body {
     background-color: #EAF3F5;
+    height: 100vh;
 } 
 
 ul {
@@ -18,6 +19,7 @@ ul {
     place-items: center;
     padding-top: 2rem;
     padding-bottom: 2.5rem;
+    height: 100%;
 }
 
 .form-wrapper {
@@ -111,6 +113,52 @@ textarea.field_input {
     cursor: pointer;
 }
 
+.login {
+    position: relative;
+    width: 35%;
+}
+
+.blue-box {
+    background-color: #83BEDF;
+    padding: 1rem;
+    width: 80%;
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: .5rem;
+    text-align: center;
+}
+
+.new_user{
+    padding-top: 3.5rem;
+}
+
+.new_user h6 {
+    text-align: center;
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+}
+
+.new_user .fields--inline {
+    justify-content: space-between;
+}
+
+.new_user .actions {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.new_user .button {
+    width: 100%;
+    margin-bottom: .5rem;
+}
+
 @media (max-width: 768px) {
     .form-wrapper {
         width: 90%;
@@ -119,5 +167,9 @@ textarea.field_input {
     .fields--inline {
         flex-direction: column;
         gap: 0;
+    }
+
+    .new_user .fields--inline {
+        flex-direction: row;
     }
 }
