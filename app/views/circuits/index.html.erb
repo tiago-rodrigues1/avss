@@ -25,9 +25,8 @@
                 <div class="list-card__footer">
                   <span class="list-card__footer__update">Última atualização em <%= c.updated_at %></span>
                   <div class="list-card__buttons">
-                      <%= button_to 'Aplicar', root_path, class: 'button button--green', method: :get %>
-                      <%= button_to 'Acessar', c, class: 'button button--blue', method: :get, data: { turbo_frame: '_top' } %>
-                      <%= link_to 'Acessar2', c, class: 'button button--blue', data: { turbo_frame: '_top' } %>
+                      <%= link_to 'Aplicar', root_path, class: 'button button--green' %>
+                      <%= link_to 'Acessar', c, class: 'button button--blue', data: { turbo_frame: '_top' } %>
                   </div>
                 </div>
               </div>
