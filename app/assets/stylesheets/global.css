@@ -72,8 +72,8 @@ textarea.field_input {
     color: rgba(71, 74, 79, .5);
 }
 
-.field_input:focus, 
-.field_input:focus-visible {
+.field__input:focus, 
+.field__input:focus-visible {
     outline: 1px solid #83BEDF;
 }
 
@@ -89,6 +89,14 @@ textarea.field_input {
     display: flex;
     gap: 1rem;
     align-self: flex-start;
+}
+
+.radio-inputs--vertical {
+    display: flex;
+    flex-direction: column;
+    gap: .625rem;
+    padding-top: .5rem;
+    margin-bottom: 1.5rem;
 }
 
 .radio-inputs > .field__label {
