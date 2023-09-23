@@ -87,6 +87,28 @@ class StationsController < ApplicationController
     end
   end
 
+  def new_question
+    @question = Question.new
+    @question.station_id = params[:station_id]
+
+    respond_to do |format|
+      if @question.save
+        format.turbo_stream
+      end
+    end
+  end
+
+  def remove_question
+    @station = Station.find(params[:station_id])
+    @question = @station.questions.find(params[:question_id])
+
+    
+    @question.destroy
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
   def remove_attachment
     @b = ActiveStorage::Blob.find_signed(params[:attachment_id])
     @b.purge

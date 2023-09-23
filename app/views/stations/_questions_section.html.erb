@@ -1,0 +1,11 @@
+<section class="container__section" id="questions">
+    <h2 class="container__section__title">Perguntas</h2>
+    <div class="buttons-container">
+        <%= link_to "Nova pergunta", new_station_question_path(station), class: "button button--blue", data: {turbo_method: :post} %>
+        <button class="button button--blue">Nova pergunta</button>
+        <button class="button button--outlined-blue">Buscar pergunta</button>
+    </div>
+
+    <%= render "stations/questions", station: station %>
+</section> 
+

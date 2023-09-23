@@ -9,14 +9,7 @@ Rails.application.routes.draw do
     post 'set_kind/:kind', on: :member, to: 'questions#set_kind', as: :set_kind
   end
 
-  resources :stations do
-    resources :questions do
-      post :newq, on: :member, to: 'questions#new'
-      #member do
-      #  post :new, to: 'questions#new'
-      #end
-    end
-  end
+  resources :stations
 
   delete 'foobar/:attachment_id', to: 'stations#remove_attachment', as: 'ftest'
 
@@ -28,6 +21,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  post 'stations/:station_id/new_question', to: 'stations#new_question', as: 'new_station_question'
 
   post 'station/:id/difficulty/:value', to: 'stations#set_station_difficulty', as: 'set_station_difficulty'
   post 'search', to: 'circuits#search'

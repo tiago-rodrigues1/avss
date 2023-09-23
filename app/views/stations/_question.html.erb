@@ -1,0 +1,26 @@
+<%= form_with url: "/", method: :get, class: "new-question" do |qtform| %>
+    <div class="field">
+        <%= qtform.label :statement, "Enunciado", class:"field__label" %>
+        <%= qtform.text_area :statement, 
+            class:"field__input",
+            placeholder:"Enunciado da questão",
+            rows:"10"
+        %>
+    </div>
+    <div class="field">
+        <%= qtform.label :kind, "Tipo de resposta", class:"field__label" %>
+        <%= qtform.select :kind, [["Discursiva", "1"], ["Anexo", "2"], ["Objetiva", "3"]], {}, class: "field__input" %>
+    </div>
+    <div>
+        <div class="field">
+            <%= qtform.label :answer, "Espelho da resposta", class:"field__label" %>
+            <%= qtform.text_area :answer, 
+                class:"field__input",
+                placeholder:"Modelo de resposta",
+                rows:"10"
+            %>
+        </div>
+    </div>
+    <%= qtform.button "Remover", type: "button", class: "button button--outlined-red" %>
+<% end %>
+
