@@ -1,0 +1,13 @@
+<div>
+    <legend class="field__label">
+        Opções de resposta<br><small>Marque a(s) correta(s)</small>
+    </legend>
+
+    <div id="<%= dom_id(question, "alternatives") %>">
+        <% question.question_alternatives.each do |a| %>
+            <%= render "question_alternatives/question_alternative_form", alternative: a %>
+        <% end %>
+    </div>
+
+    <%= link_to "Adicionar alternativa", new_alternative_path(question), class: "button button--ghost--blue", data: {turbo_method: :post} %>
+</div>

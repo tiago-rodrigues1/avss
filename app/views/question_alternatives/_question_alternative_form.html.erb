@@ -1,0 +1,15 @@
+<%= form_with model: alternative, id: dom_id(alternative), data: {debounced_target: "form", controller: "debounced"} do |qtform| %>
+<fieldset class="radio-inputs--vertical">
+    <div class="new-question__new-alternative">
+        <%= qtform.check_box :correct,
+            data: {action: "input->debounced#submitForm"}
+        %>
+
+        <%= qtform.text_field :body , class: "field__input",
+            data: {action: "input->debounced#submitForm"}
+        %>
+
+        <%= link_to "delete", remove_alternative_path(alternative.question, alternative), class: "material-symbols-outlined button button--red", data: {turbo_method: :delete} %>
+    </div>
+</fieldset>
+<% end %>

@@ -36,22 +36,5 @@
         <% end %>
     </div>
 <% elsif question.kind == 3 %>
-    <div>
-        <%= form_with url: "/", method: :get do |qtform| %>
-        <fieldset class="radio-inputs--vertical">
-            <legend class="field__label">
-                Opções de resposta<br><small>Marque a(s) correta(s)</small>
-            </legend>
-            <div class="new-question__new-alternative">
-                <%= qtform.check_box :right_alternatives %>
-                <%= qtform.text_field :alternative_label, class: "field__input" %>
-                <%= qtform.button class:"button button--red" do %>
-                    <span class="material-symbols-outlined">
-                        delete
-                    </span>
-                <% end %>
-            </div>
-        <%= qtform.button "Adicionar alternativa", type: "button", class: "button button--ghost--blue" %>
-        <% end %>
-    </div>
+    <%= render "questions/question_kind_body_alternatives", question: question %>
 <% end %>

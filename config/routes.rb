@@ -14,16 +14,12 @@ Rails.application.routes.draw do
   delete 'foobar/:attachment_id', to: 'stations#remove_attachment', as: 'ftest'
 
   resources :question_alternatives
-  resources :questions do
-    resources :question_alternatives do
-      member do
-        post :new
-      end
-    end
-  end
+
+  post 'questions/:id/new_alternative', to: 'questions#new_alternative', as: 'new_alternative'
 
   post 'stations/:station_id/new_question', to: 'stations#new_question', as: 'new_station_question'
   delete 'stations/:station_id/question/:question_id', to: 'stations#remove_question', as: 'remove_station_question'
+  delete 'questions/:question_id/remove_alternative/:id', to: 'questions#remove_alternative', as: 'remove_alternative'
 
   post 'station/:id/difficulty/:value', to: 'stations#set_station_difficulty', as: 'set_station_difficulty'
   post 'search', to: 'circuits#search'

@@ -18,7 +18,7 @@ class QuestionAlternativesController < ApplicationController
 
     respond_to do |format|
       if @question_alternative.save
-        format.turbo_stream
+        format.html { redirect_to edit_question_alternative_path(@question_alternative) }
       end
     end
   end
@@ -46,7 +46,9 @@ class QuestionAlternativesController < ApplicationController
   def update
     respond_to do |format|
       if @question_alternative.update(question_alternative_params)
-        format.turbo_stream
+        format.turbo_stream do
+          flash.now[:notice] = "Salvo!"
+        end
         format.html { redirect_to question_alternative_url(@question_alternative), notice: "Question alternative was successfully updated." }
         format.json { render :show, status: :ok, location: @question_alternative }
       else

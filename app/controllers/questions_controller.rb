@@ -73,6 +73,31 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def new_alternative
+    @question = Question.find(params[:id])
+    @alternative = QuestionAlternative.new
+    @alternative.question = @question
+
+    respond_to do |format|
+      if @alternative.save
+        format.turbo_stream do
+          flash.now[:notice] = "Salvo!"
+        end
+      end
+    end
+  end
+
+  def remove_alternative
+    @question = Question.find(params[:question_id])
+    @alternative = QuestionAlternative.find(params[:id])
+
+    @alternative.destroy
+
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
   # DELETE /questions/1 or /questions/1.json
   def destroy
     @question.destroy
