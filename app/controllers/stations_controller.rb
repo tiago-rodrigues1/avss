@@ -88,6 +88,7 @@ class StationsController < ApplicationController
   end
 
   def new_question
+    @station = Station.find(params[:station_id])
     @question = Question.new
     @question.station_id = params[:station_id]
 

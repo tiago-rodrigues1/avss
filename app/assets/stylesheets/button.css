@@ -14,6 +14,8 @@
     transition: 200ms;
     /*width: 100%;*/
     text-decoration: none;
+    font-size: 13px;
+    text-align: center;
 }
 
 .button--small {

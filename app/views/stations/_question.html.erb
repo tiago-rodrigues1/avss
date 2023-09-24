@@ -1,26 +1,27 @@
-<%= form_with url: "/", method: :get, class: "new-question" do |qtform| %>
-    <div class="field">
-        <%= qtform.label :statement, "Enunciado", class:"field__label" %>
-        <%= qtform.text_area :statement, 
-            class:"field__input",
-            placeholder:"Enunciado da questão",
-            rows:"10"
-        %>
-    </div>
-    <div class="field">
-        <%= qtform.label :kind, "Tipo de resposta", class:"field__label" %>
-        <%= qtform.select :kind, [["Discursiva", "1"], ["Anexo", "2"], ["Objetiva", "3"]], {}, class: "field__input" %>
-    </div>
-    <div>
+<div class="new-question" id="<%= dom_id(question) %>">
+    <%= form_with model: question, data: {debounced_target: "form", controller: "debounced"} do |qtform| %>
         <div class="field">
-            <%= qtform.label :answer, "Espelho da resposta", class:"field__label" %>
-            <%= qtform.text_area :answer, 
+            <%= qtform.label :statement, "Enunciado", class:"field__label" %>
+            <%= qtform.text_area :statement, 
                 class:"field__input",
-                placeholder:"Modelo de resposta",
+                placeholder: "Enunciado da questão",
+                data: {action: "input->debounced#submitForm"},
                 rows:"10"
             %>
         </div>
-    </div>
-    <%= qtform.button "Remover", type: "button", class: "button button--outlined-red" %>
-<% end %>
+    <% end %>
 
+
+    <%= form_with url: set_kind_question_path(question), data: {debounced_target: "form", controller: "debounced"} do |qtform| %>
+        <div class="field">
+            <%= qtform.label :kind, "Tipo de resposta", class:"field__label" %>
+            <%= qtform.select :kind, [["Discursiva", "1"], ["Anexo", "2"], ["Objetiva", "3"]], {}, class: "field__input", data: {action: "input->debounced#submitFormNow"} %>
+        </div>
+    <% end %>
+
+    <div id="<%= dom_id(question, "kind_body") %>">
+        <%= render "questions/question_kind_body", question: question %>
+    </div>
+
+    <%= link_to "Remover", remove_station_question_path(station, question), class: "button button--outlined-red", data: {turbo_method: :delete} %>
+</div>

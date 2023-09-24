@@ -48,7 +48,9 @@ class QuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @question.update(question_params)
-        format.turbo_stream
+        format.turbo_stream do
+          flash.now[:notice] = "Salvo!"
+        end
         format.html { redirect_to question_url(@question), notice: "Question was successfully updated." }
         format.json { render :show, status: :ok, location: @question }
       else
@@ -64,7 +66,9 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
-        format.turbo_stream
+        format.turbo_stream do
+          flash.now[:notice] = "Salvo!"
+        end
       end
     end
   end

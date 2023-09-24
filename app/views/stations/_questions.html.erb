@@ -1,5 +1,5 @@
 <div id="questions_list">
     <% station.questions.each do |q| %>
-        <%= render "stations/question", question: q %>
+        <%= render "stations/question", station: station, question: q %>
     <% end %>
 </div>

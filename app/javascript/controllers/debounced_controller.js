@@ -15,4 +15,8 @@ export default class extends Controller {
             this.formTarget.requestSubmit()
         }, 1000)
     }
+
+    submitFormNow() {
+        this.formTarget.requestSubmit()
+    }
 }

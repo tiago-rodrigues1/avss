@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :circuits
 
   resources :questions do
-    post 'set_kind/:kind', on: :member, to: 'questions#set_kind', as: :set_kind
+    post 'set_kind', on: :member, to: 'questions#set_kind', as: :set_kind
   end
 
   resources :stations
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   end
 
   post 'stations/:station_id/new_question', to: 'stations#new_question', as: 'new_station_question'
+  delete 'stations/:station_id/question/:question_id', to: 'stations#remove_question', as: 'remove_station_question'
 
   post 'station/:id/difficulty/:value', to: 'stations#set_station_difficulty', as: 'set_station_difficulty'
   post 'search', to: 'circuits#search'

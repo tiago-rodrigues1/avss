@@ -1,0 +1,57 @@
+<% if question.kind == 1 %>
+    <%= form_with url: "/", method: :get do |qtform| %>
+        <div class="field">
+            <%= qtform.label :statement, "Enunciado", class:"field__label" %>
+            <%= qtform.text_area :statement, 
+                class:"field__input",
+                placeholder:"Enunciado da questão",
+                rows:"10"
+            %>
+        </div>
+    <% end %>
+<% elsif question.kind == 2 %>
+    <div>
+        <%= form_with url: "/", method: :get do |qtform| %>
+        <fieldset class="radio-inputs--vertical">
+            <legend class="field__label">
+                Opções de anexo
+            </legend>
+            <div class="radio-field">
+                <%= qtform.check_box :attachments_options, value: "pdf" %>
+                <%= qtform.label :attachments_options, "PDF", class:"field__label" %>
+            </div>
+            <div class="radio-field">
+                <%= qtform.check_box :attachments_options, value: "imagem" %>
+                <%= qtform.label :attachments_options, "Imagem", class:"field__label" %>
+            </div>
+            <div class="radio-field">
+                <%= qtform.check_box :attachments_options, value: "video" %>
+                <%= qtform.label :attachments_options, "Video", class:"field__label" %>
+            </div>
+            <div class="radio-field">
+                <%= qtform.check_box :attachments_options, value: "audio" %>
+                <%= qtform.label :attachments_options, "Audio", class:"field__label" %>
+            </div>
+        </fieldset>
+        <% end %>
+    </div>
+<% elsif question.kind == 3 %>
+    <div>
+        <%= form_with url: "/", method: :get do |qtform| %>
+        <fieldset class="radio-inputs--vertical">
+            <legend class="field__label">
+                Opções de resposta<br><small>Marque a(s) correta(s)</small>
+            </legend>
+            <div class="new-question__new-alternative">
+                <%= qtform.check_box :right_alternatives %>
+                <%= qtform.text_field :alternative_label, class: "field__input" %>
+                <%= qtform.button class:"button button--red" do %>
+                    <span class="material-symbols-outlined">
+                        delete
+                    </span>
+                <% end %>
+            </div>
+        <%= qtform.button "Adicionar alternativa", type: "button", class: "button button--ghost--blue" %>
+        <% end %>
+    </div>
+<% end %>

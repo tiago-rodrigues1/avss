@@ -1,3 +1,8 @@
-<%= turbo_stream.update "question_kind_#{@question.id}" do %>
-  <%= render "questions/question_kind", question: @question %>
+<%= turbo_stream.update dom_id(@question, "kind_body") do %>
+  <%= render "questions/question_kind_body", question: @question %>
 <% end %>
+
+<%= turbo_stream.update "flash" do %>
+  <%= render "layouts/flash" %>
+<% end %>
+
