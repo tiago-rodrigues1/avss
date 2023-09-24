@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: %i[ show edit update destroy set_kind ]
+  before_action :set_question, only: %i[ show edit update destroy ]
 
   # GET /questions or /questions.json
   def index
@@ -62,7 +62,7 @@ class QuestionsController < ApplicationController
 
   def set_kind
     @question = Question.find(params[:id])
-    @question.kind = params[:kind]
+    @question.kind = params[:question][:kind]
 
     respond_to do |format|
       if @question.save

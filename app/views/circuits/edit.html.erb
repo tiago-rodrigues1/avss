@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="form-wrapper">
+        <section class="container__section" id="circuits">
+            <h1>
+                Situação problema
+            </h1>
+            <%= form_with model: @circuit, class: "container__form", data: { debounced_target: "form", controller: "debounced" } do |form| %>
+                <div class="field">
+                    <%= form.label :title, 
+                        "Título", 
+                        class:"field__label"
+                    %>
+                    <%= form.text_field :title, 
+                        class:"field__input",
+                        placeholder: "Título da situação problema",
+						data: {action: "input->debounced#submitForm"},
+						value: @circuit.title
+                    %>
+                </div>
+                <div class="field">
+                    <%= form.label :resume, "Resumo", class:"field__label" %>
+                    <%= form.text_area :resume, 
+                        class:"field__input",
+                        placeholder:"Resumo da situação problema",
+						data: {action: "input->debounced#submitForm"},
+                        rows:"15"
+                    %>
+                </div>
+            <% end %>
+        </section>
+        <section class="container__section" id="stations">
+            <h2 class="container__section__title">Estações</h2>
+            <div class="buttons-container">
+                <button class="button button--blue">Nova estação</button>
+                <button class="button button--outlined-blue">Buscar estação</button>
+            </div>
+            <ul class="stations-list">
+                <li>
+                    <%= render "stations/card_station" %>
+                </li>
+            </ul>
+            <div class="buttons-container" id="new-circuits-controls">
+                <%= link_to "Voltar", dashboard_path, class: "button button--outlined-blue" %>
+                <button class="button button--red">Excluir Situação Problema</button>
+            </div>
+        </section>
+    </div>
+</div>

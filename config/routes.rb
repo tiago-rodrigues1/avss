@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :circuits
 
   resources :questions do
-    post 'set_kind', on: :member, to: 'questions#set_kind', as: :set_kind
+    patch 'set_kind', on: :member, to: 'questions#set_kind', as: :set_kind
   end
 
   resources :stations

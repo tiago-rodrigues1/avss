@@ -4,7 +4,7 @@ class StationsController < ApplicationController
 
   # GET /stations or /stations.json
   def index
-    @stations = Station.all
+    @stations = Station.where(user: current_user)
   end
 
   # GET /stations/1 or /stations/1.json
@@ -14,6 +14,7 @@ class StationsController < ApplicationController
   # GET /stations/new
   def new
     @station = Station.new(difficulty: 3, score: 5, time: 15, feedback: 1)
+    @station.user = current_user
 
     respond_to do |format|
       if @station.save

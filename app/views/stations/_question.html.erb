@@ -12,7 +12,7 @@
     <% end %>
 
 
-    <%= form_with url: set_kind_question_path(question), data: {debounced_target: "form", controller: "debounced"} do |qtform| %>
+    <%= form_with model: question, url: set_kind_question_path(question), data: {debounced_target: "form", controller: "debounced"} do |qtform| %>
         <div class="field">
             <%= qtform.label :kind, "Tipo de resposta", class:"field__label" %>
             <%= qtform.select :kind, [["Discursiva", "1"], ["Anexo", "2"], ["Objetiva", "3"]], {}, class: "field__input", data: {action: "input->debounced#submitFormNow"} %>

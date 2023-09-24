@@ -1,38 +1,22 @@
-<main class="wrapper">
-    <h1 class="page-title">Situações problema</h1>
-    <%= form_with url:"/search" , class:"circuits__filter", data:{controller:"circuit-search"} do |form| %>
-        <div class="field">
-            <%= form.label :term, "Pesquisar por título", class:"field__label" %>
-            <% form.text_field :term, class:"field__input", data:{ target:"CircuitSearch.searchInput", action:"change->circuit-search#greet" } %>
+<section class="section">  
+  <h1 class="section__title">Situações problema</h1>
+  <%= form_with url: "/search" , class:"circuits__filter", data: { controller:"circuit-search" } do |form| %>
+      <div class="field">
+          <%= form.label :term, "Pesquisar por título", class:"field__label" %>
+          <% form.text_field :term, class:"field__input", data:{ target:"CircuitSearch.searchInput", action:"change->circuit-search#greet" } %>
                         <input class="field__input" data-circuit-search-target="searchInput" data-action="input->circuit-search#greet" type="text" name="term" id="term" />
         </div>
         <% form.submit "Filtrar" %>
         <input type="submit" name="commit" value="Filtrar" data-disable-with="Filtrar" data-circuit-search-target="searchButton" />
     <% end %>
-    <div class="circuits__list">
-        <%= turbo_frame_tag "test" do %>
-            <% @circuits.each do |c| %>
-              <div class="list-card">
-                <div class="list-card__header">
-                    <h4 class="list-card__title"><%= c.title %></h4>
-                    <span class="list-card__info">Estações: 5</span>
-                </div>
 
-                <p class="list-card__text">
-                    <%= c.resume %>
-                </p>
+  <%= turbo_frame_tag "circuit-list" do %>
+    <% @circuits.each do |circuit| %>
+      <%= render "circuit_list_card", circuit: circuit %>
+    <% end %>
+  <% end %>
 
-                <div class="list-card__footer">
-                  <span class="list-card__footer__update">Última atualização em <%= c.updated_at %></span>
-                  <div class="list-card__buttons">
-                      <%= link_to 'Aplicar', root_path, class: 'button button--green' %>
-                      <%= link_to 'Acessar', c, class: 'button button--blue', data: { turbo_frame: '_top' } %>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-        <% end %>
-                      
-        <%= link_to 'Voltar', root_path, class: 'button button--blue' %>
-    </div>
-</main>
+  <div class="section__buttons section__buttons--align-center">
+    <%= link_to 'Voltar', dashboard_path, class: 'button button--blue', data: { turbo_frame: '_top' } %>
+  </div>
+</section>
