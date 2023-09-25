@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :question_alternatives
 
   post 'questions/:id/new_alternative', to: 'questions#new_alternative', as: 'new_alternative'
+  post 'circuits/:id/add_station/:station_id', to: 'circuits#add_station', as: 'add_station_to_circuit'
+  delete 'circuits/:id/remove_station/:station_id', to: 'circuits#remove_station', as: 'remove_station_from_circuit'
 
   post 'stations/:station_id/new_question', to: 'stations#new_question', as: 'new_station_question'
   delete 'stations/:station_id/question/:question_id', to: 'stations#remove_question', as: 'remove_station_question'
@@ -23,6 +25,8 @@ Rails.application.routes.draw do
 
   post 'station/:id/difficulty/:value', to: 'stations#set_station_difficulty', as: 'set_station_difficulty'
   post 'search', to: 'circuits#search'
+
+  get 'circuits/:id/add_stations', to: 'circuits#add_stations_index', as: 'add_stations_index'
   # get 'circuits/new', to: 'circuits#new'
   # get 'circuits', to: 'circuits#index'
   # post 'circuits', to: 'circuits#create'

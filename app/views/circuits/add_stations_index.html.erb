@@ -1,0 +1,24 @@
+<section class="section">  
+  <h1 class="section__title">Estações</h1>
+  <%= form_with url:"/search" , class:"circuits__filter", data:{controller:"circuit-search"} do |form| %>
+      <div class="field">
+          <%= form.label :term, "Pesquisar por título", class:"field__label" %>
+          <% form.text_field :term, class:"field__input", data:{ target:"CircuitSearch.searchInput", action:"change->circuit-search#greet" } %>
+                        <input class="field__input" data-circuit-search-target="searchInput" data-action="input->circuit-search#greet" type="text" name="term" id="term" />
+        </div>
+        <% form.submit "Filtrar" %>
+        <input type="submit" name="commit" value="Filtrar" data-disable-with="Filtrar" data-circuit-search-target="searchButton" />
+    <% end %>
+
+  <%= turbo_frame_tag "filter-list" do %>
+    <% @stations.each do |station| %>
+      <div id="<%= dom_id(station) %>">
+        <%= render "station_list_card", circuit: @circuit, station: station %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="section__buttons section__buttons--align-center">
+    <%= link_to 'Voltar', dashboard_path, class: 'button button--blue', data: { turbo_frame: '_top' } %>
+  </div>
+</section>

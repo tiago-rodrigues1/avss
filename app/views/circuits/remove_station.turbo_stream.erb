@@ -1,0 +1,3 @@
+<%= turbo_stream.update dom_id(@station) do %>
+  <%= render "station_list_card", circuit: @circuit, station: @station %>
+<% end %>

@@ -1,0 +1,20 @@
+<article class="card-station">
+    <header class="card-station__header">
+        <h4 class="card-station__title"><%= station.title %><h4>
+        <h6 class="card-station__count">Dificuldade: <%= station.difficulty %></h6>
+    </header>
+    <main class="card-station__content">
+        <p>
+          <%= station.context %>
+        </p>
+    </main>
+    <footer class="card-station__footer">
+        <span class="card-station__last-update">
+            Última atualização <%= station.updated_at %>
+        </span>
+        <div class="buttons-container">
+                <button class="button button--outlined-red">Remover</button>
+                <button class="button button--blue">Acessar</button>
+        </div>
+    </footer>
+</article>

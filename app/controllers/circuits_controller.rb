@@ -5,6 +5,39 @@ class CircuitsController < ApplicationController
   def index
     @circuits = Circuit.where(user: current_user)
   end
+
+  def add_stations_index
+    @circuit = Circuit.find(params[:id])
+    @stations = Station.where(user: current_user)
+  end
+
+  def add_station
+    @rel = CircuitStation.new
+    @rel.station_id = params[:station_id]
+    @rel.circuit_id = params[:id]
+    @station = Station.find(params[:station_id])
+    @circuit = Circuit.find(params[:id])
+
+    respond_to do |format|
+      if @rel.save
+        format.turbo_stream
+      end
+    end
+  end
+
+  def remove_station
+    @rel = CircuitStation.where(station: params[:station_id], circuit: params[:id])
+    @station = Station.find(params[:station_id])
+    @circuit = Circuit.find(params[:id])
+
+    @rel.each do |r|
+      r.destroy
+    end
+
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
   
   def new
     @circuit = Circuit.new()

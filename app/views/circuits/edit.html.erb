@@ -31,13 +31,14 @@
         <section class="container__section" id="stations">
             <h2 class="container__section__title">Estações</h2>
             <div class="buttons-container">
-                <button class="button button--blue">Nova estação</button>
-                <button class="button button--outlined-blue">Buscar estação</button>
+                <%= link_to "Adicionar estações", add_stations_index_path(@circuit), class: "button button--blue" %>
             </div>
             <ul class="stations-list">
-                <li>
-                    <%= render "stations/card_station" %>
-                </li>
+                <% @circuit.stations.each do |station| %>
+                  <li>
+                    <%= render "added_station_card", station: station %>
+                  </li>
+                <% end %>
             </ul>
             <div class="buttons-container" id="new-circuits-controls">
                 <%= link_to "Voltar", dashboard_path, class: "button button--outlined-blue" %>
