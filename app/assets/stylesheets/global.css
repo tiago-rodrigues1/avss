@@ -121,6 +121,40 @@ textarea.field_input {
     cursor: pointer;
 }
 
+.radio-field {
+    display: flex;
+    align-items: center;
+    gap: .5rem
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    margin: 0;
+    width: 1.125rem;
+    height: 1.125rem;
+    border: 2px solid #0C5598;
+    border-radius: 4px;
+    display: grid;
+    place-content: center;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65rem;
+    height: 0.65rem;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    background-color: #0C5598;
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
 .login {
     position: relative;
     width: 35%;
@@ -165,6 +199,10 @@ textarea.field_input {
 .new_user .button {
     width: 100%;
     margin-bottom: .5rem;
+}
+
+#filter-list {
+    width: 100%;
 }
 
 @media (max-width: 768px) {
