@@ -2,16 +2,27 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="circuit-search"
 export default class extends Controller {
-	static targets = ['searchInput', 'searchButton'];
+	static targets = ['searchInput', 'filterBtn'];
+
 	connect() {
 		console.log('connecting to data-controller="circuit-search');
 	}
 
-	greet() {
-		const element = this.searchInputTarget;
-		const term = element.value;
+	handleFilterFormSubmit() {
+		const filterFormSelector = this.searchInputTarget.dataset.filterFormTarget;
+		const filterForm = document.querySelector(filterFormSelector);
+		clearTimeout(this.timeOut);
 
-		const button = this.searchButtonTarget;
-		button.click();
+        this.timeOut = setTimeout(() => {
+			filterForm.requestSubmit();
+        }, 300);
+	}
+
+	handleFiltersButton() {
+		const filterBtn = this.filterBtnTarget;
+		const optionsElementSelector = filterBtn.dataset.optsSelector;
+		const optionsElement = document.querySelector(optionsElementSelector);
+
+		optionsElement.hidden = !optionsElement.hidden;	
 	}
 }
