@@ -3,7 +3,8 @@ class CircuitsController < ApplicationController
   before_action :set_circuit, only: %i[ show edit update destroy ]
 
   def index
-    @circuits = Circuit.where(user: current_user)
+    @term = params[:term] != nil ? params[:term] : ""
+    @circuits = Circuit.where(user: current_user).where("title LIKE ?", "%#{@term}%")
   end
 
   def add_stations_index

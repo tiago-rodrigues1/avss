@@ -26,11 +26,16 @@
     text-decoration: none;
     font-weight: 700;
 	font-size: 1.25rem;
-    color: #000000;
+    color: #485B97;
+	transition: 200ms;
 }
 
 .navbar__link:visited {
-    color: #000000;
+    color: #485B97;
+}
+
+.navbar__link:hover {
+	text-decoration: underline;
 }
 
 .navbar--mobile {

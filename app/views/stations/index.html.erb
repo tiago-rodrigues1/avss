@@ -1,22 +1,38 @@
 <section class="section">  
-  <h1 class="section__title">Estações</h1>
-  <%= form_with url:"/search" , class:"circuits__filter", data:{controller:"circuit-search"} do |form| %>
-      <div class="field">
-          <%= form.label :term, "Pesquisar por título", class:"field__label" %>
-          <% form.text_field :term, class:"field__input", data:{ target:"CircuitSearch.searchInput", action:"change->circuit-search#greet" } %>
-                        <input class="field__input" data-circuit-search-target="searchInput" data-action="input->circuit-search#greet" type="text" name="term" id="term" />
-        </div>
-        <% form.submit "Filtrar" %>
-        <input type="submit" name="commit" value="Filtrar" data-disable-with="Filtrar" data-circuit-search-target="searchButton" />
+	<h1 class="section__title">Estações</h1>
+  	<%= form_with url: "/search" , class:"circuits", data: { controller:"circuit-search" } do |form| %>
+        <div class="circuits__filters">
+			<!-- <input type="submit" name="commit" value="Filtrar" data-disable-with="Filtrar" data-circuit-search-target="searchButton" /> -->
+			<div class="field">
+				<%= form.label :term, "Pesquisar por título", class:"field__label" %>
+				<%= form.text_field :term, class:"field__input", data:{ target:"CircuitSearch.searchInput", action:"change->circuit-search#greet" } %>
+				<!-- <input class="field__input" data-circuit-search-target="searchInput" data-action="input->circuit-search#greet" type="text" name="term" id="term" /> -->
+			</div>
+			<%= form.button :filters, 
+				type:"button", 
+				class:"button button--outlined-blue circuits__filters__button",
+				data: { action: "click->circuit-search#handleFiltersButton", circuit_search_target: "filterBtn", opts_selector: "#circuits__filters__options" } do 
+			%>
+				<span>Filtros</span>
+				<span class="material-symbols-outlined">
+					filter_list
+				</span>
+			<% end %>
+			<ul class="circuits__filters__options" hidden id="circuits__filters__options">
+				<li>
+					<div class="radio-field">
+                		<%= form.check_box :filters_options, value: "byme" %>
+                		<%= form.label :filters_options, "Criados por mim", class:"field__label" %>
+            		</div>
+				</li>
+			</ul>
+		</div>
+		<%= turbo_frame_tag "filter-list" do %>
+    		<% @stations.each do |station| %>
+    			<%= render "station_list_card", station: station %>
+    		<% end %>
+		<% end %>
+		
+		<%= link_to 'Voltar', dashboard_path, class: "button button--blue", style:"width: 60%;", data: { turbo_frame: '_top' } %>
     <% end %>
-
-  <%= turbo_frame_tag "filter-list" do %>
-    <% @stations.each do |station| %>
-      <%= render "station_list_card", station: station %>
-    <% end %>
-  <% end %>
-
-  <div class="section__buttons section__buttons--align-center">
-    <%= link_to 'Voltar', dashboard_path, class: 'button button--blue', data: { turbo_frame: '_top' } %>
-  </div>
 </section>

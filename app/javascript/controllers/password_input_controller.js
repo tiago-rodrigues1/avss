@@ -5,12 +5,14 @@ export default class extends Controller {
     
     showPassword() {
         let isChecked = this.showpassTarget.checked;
-        let passwordInput = document.querySelector(this.showpassTarget.dataset.inputTarget);
+        let passwordInputs = document.querySelectorAll(this.showpassTarget.dataset.inputTarget);
 
-        if (isChecked) {
-            passwordInput.type = "text";
-        } else {
-            passwordInput.type = "password";
-        }
+        passwordInputs.forEach((input) => {
+            if (isChecked) {
+                input.type = "text";
+            } else {
+                input.type = "password";
+            }
+        });
     }
 }

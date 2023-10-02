@@ -77,9 +77,21 @@
 .button--ghost--blue {
     color: #117BDD;
     background-color: transparent;
-    margin-top: 1.25rem;
 }
 
 .button--ghost--blue:hover {
     background-color: #117add25;
+}
+
+.button--naked {
+    text-decoration: underline;
+    transition: 200ms;
+}
+
+.button--naked:hover {
+    font-size: 105%;
+}
+
+.button--naked--blue {
+    color: #117BDD;
 }
