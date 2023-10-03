@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
+  resources :circuit_submissions
+  resources :circuit_applications
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   get 'home', to: 'home#index', as: 'home'
 
   devise_for :users
-  resources :circuits
+  resources :circuits do
+    resources :circuit_applications
+  end
+
+  resources :circuit_applications do
+    resources :circuit_submissions
+  end
 
   resources :questions do
     patch 'set_kind', on: :member, to: 'questions#set_kind', as: :set_kind

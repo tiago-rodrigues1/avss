@@ -1,0 +1,37 @@
+<%= form_with(model: circuit_submission) do |form| %>
+  <% if circuit_submission.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(circuit_submission.errors.count, "error") %> prohibited this circuit_submission from being saved:</h2>
+
+      <ul>
+        <% circuit_submission.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :circuit_application_id, style: "display: block" %>
+    <%= form.text_field :circuit_application_id %>
+  </div>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :registration, style: "display: block" %>
+    <%= form.text_field :registration %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @circuit_submission %>
+
+<div>
+  <%= link_to "Edit this circuit submission", edit_circuit_submission_path(@circuit_submission) %> |
+  <%= link_to "Back to circuit submissions", circuit_submissions_path %>
+
+  <%= button_to "Destroy this circuit submission", @circuit_submission, method: :delete %>
+</div>
+
+<p><%= @circuit.title %><p>
+<p><%= @circuit.resume %></p>
+
+<% @circuit.stations.each do |s| %>
+  <p><%= s.title %></p>
+<% end %>

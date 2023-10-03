@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Circuit submissions</h1>
+
+<div id="circuit_submissions">
+  <% @circuit_submissions.each do |circuit_submission| %>
+    <%= render circuit_submission %>
+    <p>
+      <%= link_to "Show this circuit submission", circuit_submission %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New circuit submission", new_circuit_submission_path %>

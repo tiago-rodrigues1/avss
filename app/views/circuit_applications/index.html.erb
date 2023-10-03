@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Circuit applications</h1>
+
+<div id="circuit_applications">
+  <% @circuit_applications.each do |circuit_application| %>
+    <%= render circuit_application %>
+    <p>
+      <%= link_to "Show this circuit application", circuit_application %>
+    </p>
+    <p>Link para a aplicação: <%= link_to "Link", new_circuit_application_circuit_submission_path(circuit_application) %></p>
+  <% end %>
+</div>
+
+<%= link_to "New circuit application", new_circuit_application_path %>
