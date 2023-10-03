@@ -1,0 +1,7 @@
+<%= turbo_stream.update "new_form" do %>
+  <%= render "new_circuit_application_form", circuit: @circuit %>
+<% end %>
+
+<%= turbo_stream.prepend "application_list" do %>
+  <%= render "circuit_application_card", circuit_application: @application %>
+<% end %>

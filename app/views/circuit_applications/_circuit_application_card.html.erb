@@ -1,0 +1,19 @@
+<div class="list-card" id="<%= dom_id circuit_application %>">
+  <div class="list-card__header">
+      <h4 class="list-card__title">Descrição</h4>
+      <span class="list-card__info">Quantidade de submissões: 5</span>
+  </div>
+
+  <p class="list-card__text">
+    <%= circuit_application.description %>
+  </p>
+
+  <div class="list-card__footer">
+    <span class="list-card__footer__update">Última atualização em <%= circuit_application.updated_at %></span>
+    <div class="list-card__buttons">
+      <%= link_to "Copiar link", "#", class: "button button--outlined-blue" %>
+      <%= link_to 'Visualizar respostas', '#', class: 'button button--blue', data: { turbo_frame: '_top' } %>
+      <%= link_to 'Excluir', circuit_application, class: 'button button--red', data: { turbo_method: :delete } %>
+    </div>
+  </div>
+</div>

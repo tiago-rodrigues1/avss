@@ -3,7 +3,8 @@ class CircuitApplicationsController < ApplicationController
 
   # GET /circuit_applications or /circuit_applications.json
   def index
-    @circuit_applications = CircuitApplication.where(circuit: params[:circuit_id])
+    @circuit = Circuit.find(params[:circuit_id])
+    @circuit_applications = CircuitApplication.where(circuit: @circuit)
   end
 
   # GET /circuit_applications/1 or /circuit_applications/1.json
@@ -52,8 +53,21 @@ class CircuitApplicationsController < ApplicationController
     @circuit_application.destroy
 
     respond_to do |format|
+      format.turbo_stream
       format.html { redirect_to circuit_applications_url, notice: "Circuit application was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def create_application
+    @application = CircuitApplication.new(circuit_application_params)
+    @circuit = Circuit.find(params[:circuit_id])
+    @application.circuit = @circuit
+
+    respond_to do |format|
+      if @application.save!
+        format.turbo_stream
+      end
     end
   end
 
@@ -65,6 +79,6 @@ class CircuitApplicationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def circuit_application_params
-      params.require(:circuit_application).permit(:circuit_id, :link)
+      params.require(:circuit_application).permit(:circuit_id, :description, :link)
     end
 end

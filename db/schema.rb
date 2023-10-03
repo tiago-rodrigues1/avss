@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_02_235444) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_03_180742) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -97,6 +97,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_02_235444) do
     t.index ["station_id"], name: "index_questions_on_station_id"
   end
 
+  create_table "station_submissions", force: :cascade do |t|
+    t.bigint "circuit_submission_id", null: false
+    t.bigint "station_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["circuit_submission_id"], name: "index_station_submissions_on_circuit_submission_id"
+    t.index ["station_id"], name: "index_station_submissions_on_station_id"
+  end
+
   create_table "stations", force: :cascade do |t|
     t.text "context"
     t.text "procedure"
@@ -134,5 +143,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_02_235444) do
   add_foreign_key "circuits", "users"
   add_foreign_key "question_alternatives", "questions"
   add_foreign_key "questions", "stations"
+  add_foreign_key "station_submissions", "circuit_submissions"
+  add_foreign_key "station_submissions", "stations"
   add_foreign_key "stations", "users"
 end

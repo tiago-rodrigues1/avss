@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  circuit_submission: one
+  station: one
+
+two:
+  circuit_submission: two
+  station: two

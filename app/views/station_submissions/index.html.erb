@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Station submissions</h1>
+
+<div id="station_submissions">
+  <% @station_submissions.each do |station_submission| %>
+    <%= render station_submission %>
+    <p>
+      <%= link_to "Show this station submission", station_submission %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New station submission", new_station_submission_path %>

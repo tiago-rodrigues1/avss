@@ -1,0 +1,19 @@
+<article class="card-station">
+    <header class="card-station__header">
+        <h4 class="card-station__title"><%= station.title %><h4>
+        <h6 class="card-station__count">Dificuldade: <%= station.difficulty %></h6>
+    </header>
+    <main class="card-station__content">
+        <p>
+          <%= station.context %>
+        </p>
+    </main>
+    <footer class="card-station__footer">
+        <span class="card-station__last-update">
+            
+        </span>
+        <div class="buttons-container">
+            <%= link_to "Responder", create_station_submission_for_circuit_path(circuit_submission, station), class: 'button button--blue', data: { turbo_method: :post } %>
+        </div>
+    </footer>
+</article>

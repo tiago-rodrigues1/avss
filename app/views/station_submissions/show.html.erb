@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @station_submission %>
+
+<div>
+  <%= link_to "Edit this station submission", edit_station_submission_path(@station_submission) %> |
+  <%= link_to "Back to station submissions", station_submissions_path %>
+
+  <%= button_to "Destroy this station submission", @station_submission, method: :delete %>
+</div>
