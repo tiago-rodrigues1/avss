@@ -1,23 +1,21 @@
-<section class="section">
-  <h1 class="section__title">Lista de aplicações</h1>
-
-  <div id="new_form">
-    <%= render "new_circuit_application_form", circuit: @circuit %>
-  </div>
-
-  <%= render "circuit_application_list", circuit_applications: @circuit_applications %>
-
-  <div class="buttons-container">
-    <%= link_to "Voltar", circuits_path, class: "button button--blue" %>
-  </div>
+<section class="section" style="padding-bottom: 2rem;">  
+	<h1 class="section__title">Lista de aplicações</h1>
+	<div id="new_form" class="form-wrapper">
+		<h2 class="new-aplication-form__title">Criar aplicação</h2>
+		<%= render "new_circuit_application_form", circuit: @circuit %>
+	</div>
+	<div class="circuits">
+		<%= render "circuit_application_list", circuit_applications: @circuit_applications %>
+	</div>
+	<%= link_to 'Voltar', circuits_path, class: "button button--blue", style:"width: 60%;"%>
 </section>
 
 <script>
-function copy_link(value) {
-   // Copy the text inside the text field
-  navigator.clipboard.writeText(value);
+	function copy_link(value) {
+   		// Copy the text inside the text field
+		navigator.clipboard.writeText(value);
 
-  // Alert the copied text
-  alert("Link copiado!");
-}
+		// Alert the copied text
+		alert("Link copiado!");
+	}
 </script>

@@ -46,6 +46,20 @@
     width: 100%;
 }
 
+.new-aplication-form {
+    padding: 0 !important;
+}
+
+.new-aplication-form .button {
+    width: 30%;
+    margin-top: 1rem;
+}
+
+.new-aplication-form__title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
 @media (max-width: 768px) {
     .circuits {
         width: 90%;
