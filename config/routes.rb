@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :objective_answers
   resources :station_submissions
   resources :circuit_submissions
   resources :circuit_applications
