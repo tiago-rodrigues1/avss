@@ -1,7 +1,7 @@
-<%= form_with model: CircuitApplication.new, url: create_application_path(circuit), class: "container__form" do |f| %>
-  <div class="field">
-    <%= f.label :description, "Descrição", class: "field__label" %>
-    <%= f.text_field :description, class: "field__input" %>
-    <%= f.submit "Criar", class: 'button button--blue' %>
-  </div>
+<%= form_with model: CircuitApplication.new, url: create_application_path(circuit), class:"new-aplication-form wrapper" do |f| %>
+	<div class="field">
+		<%= f.label :description, "Descrição", class: "field__label" %>
+		<%= f.text_area :description, class:"field__input", rows:"7" %>
+		<%= f.submit "Criar", class: 'button button--outlined-blue' %>
+	</div>
 <% end %>

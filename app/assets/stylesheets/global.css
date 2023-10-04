@@ -201,7 +201,8 @@ input[type="checkbox"]:checked::before {
     margin-bottom: .5rem;
 }
 
-#filter-list {
+#filter-list,
+#application_list {
     width: 100%;
 }
 
