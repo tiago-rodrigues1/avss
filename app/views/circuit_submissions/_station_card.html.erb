@@ -13,7 +13,11 @@
             
         </span>
         <div class="buttons-container">
+          <% if StationSubmission.where(station: station, circuit_submission: circuit_submission).size > 0 %>
+            <button class="button button--outlined-blue">Respondido!</button>
+          <% else %>
             <%= link_to "Responder", create_station_submission_for_circuit_path(circuit_submission, station), class: 'button button--blue', data: { turbo_method: :post } %>
+          <% end %>
         </div>
     </footer>
 </article>
