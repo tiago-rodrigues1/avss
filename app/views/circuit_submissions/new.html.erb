@@ -1,9 +1,6 @@
-<h1>New circuit submission</h1>
-
-<%= render "form", circuit_submission: @circuit_submission %>
-
-<br>
-
-<div>
-  <%= link_to "Back to circuit submissions", circuit_submissions_path %>
-</div>
+<section class="container" style="padding-bottom: 2rem;">  
+	<div class="form-wrapper circuit-submissions__new">
+		<h1 class="section__title" style="text-align: left; margin-bottom: 1.5rem;">Dados pessoais</h1>
+		<%= render "form", circuit_submission: @circuit_submission %>
+	</div>
+</section>
