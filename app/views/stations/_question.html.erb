@@ -9,8 +9,15 @@
                 rows:"10"
             %>
         </div>
-    <% end %>
 
+        <div class="field">
+          <%= qtform.label :score, "Pontuação", class: "field__label" %>
+          <%= qtform.text_field :score,
+              class: "field__input",
+              data: {action: "input->debounced#submitForm"}
+           %>
+        </div>
+    <% end %>
 
     <%= form_with model: question, url: set_kind_question_path(question), data: {debounced_target: "form", controller: "debounced"} do |qtform| %>
         <div class="field">

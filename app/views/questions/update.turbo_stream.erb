@@ -2,3 +2,6 @@
   <%= render "layouts/flash" %>
 <% end %>
 
+<%= turbo_stream.update "station_score" do %>
+  <input type="text" disabled value="<%= @question.station.score %>" class="field__input">
+<% end %>

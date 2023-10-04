@@ -13,7 +13,7 @@ class StationsController < ApplicationController
 
   # GET /stations/new
   def new
-    @station = Station.new(difficulty: 3, score: 5, time: 15, feedback: 1)
+    @station = Station.new(difficulty: 3, score: 0, time: 15, feedback: 1)
     @station.user = current_user
 
     respond_to do |format|
@@ -92,9 +92,12 @@ class StationsController < ApplicationController
     @station = Station.find(params[:station_id])
     @question = Question.new
     @question.station_id = params[:station_id]
+    @question.kind = 1
+    @question.score = 10
+    @station.score += 10
 
     respond_to do |format|
-      if @question.save
+      if @question.save and @station.save
         format.turbo_stream
       end
     end
@@ -103,9 +106,11 @@ class StationsController < ApplicationController
   def remove_question
     @station = Station.find(params[:station_id])
     @question = @station.questions.find(params[:question_id])
-
+    @station.score -= @question.score
     
     @question.destroy
+    @station.save
+
     respond_to do |format|
       format.turbo_stream
     end

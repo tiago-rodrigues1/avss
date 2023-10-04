@@ -1,4 +1,4 @@
-<h1>Editing station submission</h1>
+<!--<h1>Editing station submission</h1>
 
 <%= render "form", station_submission: @station_submission %>
 
@@ -10,7 +10,7 @@
 </div>
 
 <%= link_to "Finalizar", circuit_submission_path(@station_submission.circuit_submission), class: 'button button--blue' %>
-
+-->
 
 <div class="container">
     <div class="form-wrapper">
@@ -26,7 +26,19 @@
             <h2>Avaliação</h2>
             <p><%= @station.evaluation %></p>
 
+            <h2>Tempo</h2>
+            <p>Você tem <%= @station.time %> minutos para resolver essa estação</p>
 
+            <h2>Dificuldade</h2>
+            <p><%= @station.difficulty %></p>
+
+            <h2>Pontuação</h2>
+            <p><%= @station.score %></p>
+
+            <h2>Anexos</h2>
+            <p>Os anexos para esta estação são:</p>
+
+<!--
             <%= form_with model: @station, class: "container__form", multipart: true, data: {debounced_target: "form"} do |form| %>
                 <div class="field">
                     <%= form.label :title, "Título", class:"field__label" %>
@@ -148,8 +160,8 @@
 				</fieldset>
             <% end %>
         </section>
-
-        <%= render "stations/questions_section", station: @station %>
+-->
+        <%= render "questions_section", station: @station %>
 
         <%= link_to "Voltar", :back, class: "button button--outlined-red", style:"margin-top: 2rem;" %>
     </div>

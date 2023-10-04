@@ -1,1 +1,5 @@
 <%= turbo_stream.remove @question %>
+
+<%= turbo_stream.update "station_score" do %>
+  <input type="text" disabled value="<%= @station.score %>" class="field__input">
+<% end %>

@@ -46,8 +46,12 @@ class QuestionsController < ApplicationController
 
   # PATCH/PUT /questions/1 or /questions/1.json
   def update
+    old = @question.score
+
     respond_to do |format|
       if @question.update(question_params)
+        @question.station.score += @question.score - old
+        @question.station.save
         format.turbo_stream do
           flash.now[:notice] = "Salvo!"
         end
@@ -117,6 +121,6 @@ class QuestionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def question_params
-      params.require(:question).permit(:statement, :kind)
+      params.require(:question).permit(:statement, :kind, :score)
     end
 end

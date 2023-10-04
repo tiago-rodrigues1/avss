@@ -10,10 +10,7 @@
 			</ul>
 		</div>
 	<% end %>
-	<div class="field">
-		<%= form.label :circuit_application_id, "Situação problema", class:"field__label" %>
-		<%= form.text_field :circuit_application_id, class:"field__input"%>
-	</div>
+    <%= form.hidden_field :circuit_application_id, value: circuit_submission.circuit_application_id %>
 
 	<div class="field">
 		<%= form.label :name, "Nome", class:"field__label" %>

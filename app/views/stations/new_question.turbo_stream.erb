@@ -1,3 +1,7 @@
 <%= turbo_stream.append "questions_list" do %>
     <%= render "stations/question", station: @station, question: @question %>
 <% end %>
+
+<%= turbo_stream.update "station_score" do %>
+  <input type="text" disabled value="<%= @station.score %>" class="field__input">
+<% end %>
