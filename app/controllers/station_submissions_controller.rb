@@ -17,6 +17,8 @@ class StationSubmissionsController < ApplicationController
 
   # GET /station_submissions/1/edit
   def edit
+    @station = @station_submission.station
+    @circuit_submission = @station_submission.circuit_submission
   end
 
   # POST /station_submissions or /station_submissions.json
