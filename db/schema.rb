@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_08_165049) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_08_172844) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_08_165049) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "attachment_answers", force: :cascade do |t|
+    t.bigint "question_id", null: false
+    t.bigint "station_submission_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_attachment_answers_on_question_id"
+    t.index ["station_submission_id"], name: "index_attachment_answers_on_station_submission_id"
   end
 
   create_table "circuit_applications", force: :cascade do |t|
@@ -158,6 +167,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_08_165049) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "attachment_answers", "questions"
+  add_foreign_key "attachment_answers", "station_submissions"
   add_foreign_key "circuit_applications", "circuits"
   add_foreign_key "circuit_stations", "circuits"
   add_foreign_key "circuit_stations", "stations"

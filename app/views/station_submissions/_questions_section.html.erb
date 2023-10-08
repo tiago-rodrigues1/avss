@@ -4,6 +4,8 @@
   <% station.questions.each_with_index do |q, index| %>
     <% if q.kind == 1 %>
       <%= render "discursive_question", question: q, index: index + 1, answer: DiscursiveAnswer.where(station_submission: station_submission, question: q).first %>
+    <% elsif q.kind == 2 %>
+      <%= render "attachment_question", question: q, index: index + 1, answer: AttachmentAnswer.where(station_submission: station_submission, question: q).first %>
     <% elsif q.kind == 3 %>
       <%= render "objective_question", question: q, index: index + 1, answer: ObjectiveAnswer.where(station_submission: station_submission, question: q).first %>
     <% end %>

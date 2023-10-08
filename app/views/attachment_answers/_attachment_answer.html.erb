@@ -1,0 +1,17 @@
+<div id="<%= dom_id attachment_answer %>">
+  <p>
+    <strong>Question:</strong>
+    <%= attachment_answer.question_id %>
+  </p>
+
+  <p>
+    <strong>Station submission:</strong>
+    <%= attachment_answer.station_submission_id %>
+  </p>
+
+  <p>
+    <strong>Payload:</strong>
+    <%= link_to attachment_answer.payload.filename, attachment_answer.payload if attachment_answer.payload.attached? %>
+  </p>
+
+</div>

@@ -5,6 +5,8 @@ class Question < ApplicationRecord
   def create_answer(station_submission)
     if kind == 1
       create_discursive_answer(station_submission)
+    elsif kind == 2
+      create_attachment_answer(station_submission)
     elsif kind == 3
       create_objective_answer(station_submission)
     end
@@ -18,6 +20,17 @@ class Question < ApplicationRecord
       ans.question_id = id
       ans.station_submission = station_submission
       ans.question_alternative = QuestionAlternative.first
+      ans.save
+    end
+  end
+
+  def create_attachment_answer(station_submission)
+    ans = AttachmentAnswer.where(station_submission: station_submission, question: self)
+  
+    if ans.size == 0
+      ans = AttachmentAnswer.new
+      ans.question_id = id
+      ans.station_submission = station_submission
       ans.save
     end
   end

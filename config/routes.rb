@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :attachment_answers
   resources :discursive_answers
   resources :objective_answers
   resources :station_submissions

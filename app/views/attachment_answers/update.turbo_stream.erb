@@ -1,0 +1,7 @@
+<%= turbo_stream.update "flash" do %>
+  <%= render "layouts/flash" %>
+<% end %>
+
+<%= turbo_stream.update dom_id(@attachment_answer, "link") do %>
+  <%= link_to @attachment_answer.payload.filename, @attachment_answer.payload if @attachment_answer.payload.attached? %>
+<% end %>
