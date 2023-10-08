@@ -1,0 +1,11 @@
+<p>Q<%= index %> - <%= question.statement %><p>
+
+<%= form_with model: answer, data: {debounced_target: "form", controller: "debounced"} do |form| %>
+  <% question.question_alternatives.each do |a| %>
+    <%= form.radio_button :question_alternative_id, a.id,
+        data: {action: "input->debounced#submitForm"}
+    %>
+        <span><%= a.body %></span>
+        <br />
+  <% end %>
+<% end %>

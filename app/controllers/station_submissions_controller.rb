@@ -19,6 +19,10 @@ class StationSubmissionsController < ApplicationController
   def edit
     @station = @station_submission.station
     @circuit_submission = @station_submission.circuit_submission
+
+    @station.questions.each do |q|
+      q.create_answer(@station_submission)
+    end
   end
 
   # POST /station_submissions or /station_submissions.json

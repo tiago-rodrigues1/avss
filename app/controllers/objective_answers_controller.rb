@@ -38,6 +38,10 @@ class ObjectiveAnswersController < ApplicationController
   def update
     respond_to do |format|
       if @objective_answer.update(objective_answer_params)
+        format.turbo_stream do
+          flash.now[:notice] = "Salvo!"
+        end
+
         format.html { redirect_to objective_answer_url(@objective_answer), notice: "Objective answer was successfully updated." }
         format.json { render :show, status: :ok, location: @objective_answer }
       else

@@ -1,8 +1,13 @@
 <section class="container__section" id="questions">
-    <h2 class="container__section__title">Perguntas</h2>
-    <%= render "stations/questions", station: station %>
-    <div class="buttons-container">
-    </div>
+  <h2 class="container__section__title">Perguntas</h2>
 
+  <% station.questions.each_with_index do |q, index| %>
+    <% if q.kind == 3 %>
+      <%= render "objective_question", question: q, index: index + 1, answer: ObjectiveAnswer.where(station_submission: station_submission, question: q).first %>
+    <% end %>
+  <% end %>
+
+  <div class="buttons-container">
+  </div>
 </section> 
 
