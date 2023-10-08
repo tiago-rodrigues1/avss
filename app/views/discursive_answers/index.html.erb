@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Discursive answers</h1>
+
+<div id="discursive_answers">
+  <% @discursive_answers.each do |discursive_answer| %>
+    <%= render discursive_answer %>
+    <p>
+      <%= link_to "Show this discursive answer", discursive_answer %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New discursive answer", new_discursive_answer_path %>

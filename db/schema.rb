@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_04_213210) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_08_165049) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,6 +77,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_213210) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_circuits_on_user_id"
+  end
+
+  create_table "discursive_answers", force: :cascade do |t|
+    t.bigint "question_id", null: false
+    t.bigint "station_submission_id", null: false
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_discursive_answers_on_question_id"
+    t.index ["station_submission_id"], name: "index_discursive_answers_on_station_submission_id"
   end
 
   create_table "objective_answers", force: :cascade do |t|
@@ -153,6 +163,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_213210) do
   add_foreign_key "circuit_stations", "stations"
   add_foreign_key "circuit_submissions", "circuit_applications"
   add_foreign_key "circuits", "users"
+  add_foreign_key "discursive_answers", "questions"
+  add_foreign_key "discursive_answers", "station_submissions"
   add_foreign_key "objective_answers", "question_alternatives"
   add_foreign_key "objective_answers", "questions"
   add_foreign_key "objective_answers", "station_submissions"

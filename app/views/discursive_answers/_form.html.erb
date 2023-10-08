@@ -1,0 +1,32 @@
+<%= form_with(model: discursive_answer) do |form| %>
+  <% if discursive_answer.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(discursive_answer.errors.count, "error") %> prohibited this discursive_answer from being saved:</h2>
+
+      <ul>
+        <% discursive_answer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :question_id, style: "display: block" %>
+    <%= form.text_field :question_id %>
+  </div>
+
+  <div>
+    <%= form.label :station_submission_id, style: "display: block" %>
+    <%= form.text_field :station_submission_id %>
+  </div>
+
+  <div>
+    <%= form.label :body, style: "display: block" %>
+    <%= form.text_area :body %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,5 @@
+<p>Q<%= index %> - <%= question.statement %><p>
+
+<%= form_with model: answer, data: {debounced_target: "form", controller: "debounced"} do |form| %>
+  <%= form.text_area :body, data: {action: "input->debounced#submitForm"} %>
+<% end %>
