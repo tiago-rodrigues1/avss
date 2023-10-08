@@ -166,3 +166,43 @@
         <%= link_to "Voltar", :back, class: "button button--outlined-red", style:"margin-top: 2rem;" %>
     </div>
 </div>
+
+<div style="position: fixed; bottom: 0">
+  <span id="timer">Tempo restante: 10 minutos</span>
+</div>
+
+<script>
+    var remaining_time = <%= @remaining_time %>;
+
+    function solveTime() {
+        setTimeout(returnPreviousPage, remaining_time * 1000);
+    }
+
+    function returnPreviousPage() {
+        alert("Seu tempo acabou!")
+        history.back();
+    }
+
+    function displayTime() {
+        var v = document.getElementById("timer");
+        v.innerHTML = "Tempo restante: " + getTime(remaining_time);
+        remaining_time = remaining_time - 1;
+
+        setTimeout(displayTime, 1000);
+    }
+
+    function getTime(value) {
+        var hours = Math.floor(value / 3600);
+        value = value - hours * 3600;
+
+        var minutes = Math.floor(value / 60);
+        value = value - minutes * 60;
+
+        var seconds = Math.floor(value);
+
+        return "" + hours + ":" + minutes + ":" + seconds;
+    }
+
+    solveTime();
+    displayTime();
+</script>

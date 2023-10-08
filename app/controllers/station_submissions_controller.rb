@@ -19,6 +19,13 @@ class StationSubmissionsController < ApplicationController
   def edit
     @station = @station_submission.station
     @circuit_submission = @station_submission.circuit_submission
+    @remaining_time = @station.time * 60 - (Time.now - @station_submission.created_at)
+
+    if @remaining_time > 0
+      @remaining_time = @remaining_time
+    else
+      @remaining_time = 0
+    end
 
     @station.questions.each do |q|
       q.create_answer(@station_submission)
