@@ -1,11 +1,14 @@
-<p>Q<%= index %> - <%= question.statement %><p>
+<fielset class="field">
+	<legend class="field__label">Q<%= index %> - <%= question.statement %></legend>
 
-<%= form_with model: answer, data: {debounced_target: "form", controller: "debounced"} do |form| %>
-  <% question.question_alternatives.each do |a| %>
-    <%= form.radio_button :question_alternative_id, a.id,
-        data: {action: "input->debounced#submitForm"}
-    %>
-        <span><%= a.body %></span>
-        <br />
-  <% end %>
-<% end %>
+	<%= form_with model: answer, class:"radio-inputs--vertical", data: {debounced_target: "form", controller: "debounced"} do |form| %>
+		<% question.question_alternatives.each do |a| %>
+			<div class="radio-field">
+				<%= form.radio_button :question_alternative_id, a.id,
+					data: {action: "input->debounced#submitForm"}
+				%>
+				<label class="field__label"><%= a.body %></label>
+			</div>
+		<% end %>
+	<% end %>
+</fielset>
