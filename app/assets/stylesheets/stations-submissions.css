@@ -1,0 +1,42 @@
+.submission__header__info,
+.submission__time {
+    display: flex;
+    align-items: center;
+}
+
+.submission__header__info {
+    margin-bottom: 1rem;
+    justify-content: space-between; 
+}
+
+.submission__time {
+    gap: .5rem;
+    color: #117add;
+    font-weight: bold;
+}
+
+.submission__infos {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+}
+
+.submission__infos__label {
+    font-size: 1.25rem;
+    margin-bottom: .5rem;
+}
+
+.submission__infos .attachments-table {
+    margin: 0;
+}
+
+#questions .field {
+    margin-bottom: 2rem;
+}
+
+#questions .attachments__btn-add, 
+#questions .radio-inputs--vertical {
+    margin: 0 !important;
+    padding: 0;
+}

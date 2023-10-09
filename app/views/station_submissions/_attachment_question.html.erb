@@ -1,9 +1,12 @@
-<p>Q<%= index %> - <%= question.statement %><p>
+<div class="field">
+	<label class="field__label">Q<%= index %> - <%= question.statement %></label>
 
-<%= form_with model: answer, data: {debounced_target: "form", controller: "debounced"} do |form| %>
-  <%= form.file_field :payload, data: {action: "input->debounced#submitForm"} %>
-<% end %>
+	<%= form_with model: answer, class:"attachments__btn-add", data: {debounced_target: "form", controller: "debounced"} do |form| %>
+		<%= form.file_field :payload, class: "field__input--file", data: {action: "input->debounced#submitForm"} %>
+		<%= form.label "Adicionar arquivo", class:"field__label--file", style:"padding: .5rem 0;" %>
+	<% end %>
 
-<div id="<%= dom_id(answer, "link") %>">
-  <%= link_to answer.payload.filename, answer.payload if answer.payload.attached? %>
+	<div id="<%= dom_id(answer, "link") %>">
+		<%= link_to answer.payload.filename, answer.payload if answer.payload.attached? %>
+	</div>
 </div>
