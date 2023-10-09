@@ -15,28 +15,62 @@
 <div class="container">
     <div class="form-wrapper">
         <section class="container__section" id="circuits" data-controller="debounced">
-            <h1 style="text-align: center"><%= @station.title %></h1>
-
-            <h2>Contextualização</h2>
-            <p><%= @station.context %></p>
-
-            <h2>Procedimentos</h2>
-            <p><%= @station.procedure %></p>
-
-            <h2>Avaliação</h2>
-            <p><%= @station.evaluation %></p>
-
-            <h2>Tempo</h2>
-            <p>Você tem <%= @station.time %> minutos para resolver essa estação</p>
-
-            <h2>Dificuldade</h2>
-            <p><%= @station.difficulty %></p>
-
-            <h2>Pontuação</h2>
-            <p><%= @station.score %></p>
-
-            <h2>Anexos</h2>
-            <p>Os anexos para esta estação são:</p>
+			<header class="submission__header">
+				<div class="submission__header__info">
+					<h1 class="section__title" style="text-align: left;"><%= @station.title %></h1>
+					<p class="submission__time">
+						<span class="material-symbols-outlined">
+							alarm
+						</span>
+						<span><%= @station.time %> min</span>
+					</p>
+				</div>
+				<div class="submission__header__info">
+					<p><strong>Pontuação:</strong> <%= @station.score %> pontos</p>
+					<p><strong>Dificuldade:</strong> <%= @station.difficulty %></p>
+				</div>
+			</header>
+			<ul class="submission__infos">
+				<li>
+					<h2 class="submission__infos__label">Contextualização</h2>
+            		<p><%= @station.context %></p>
+				</li>
+				<li>
+					<h2 class="submission__infos__label">Procedimentos</h2>
+					<p><%= @station.procedure %></p>
+				</li>
+				<li>
+            		<h2 class="submission__infos__label">Avaliação</h2>
+					<p><%= @station.evaluation %></p>
+				</li>
+				<li>
+					<h2 class="submission__infos__label">Anexos</h2>
+					<% if @station.attachments.length > 0 %>
+						<table class="attachments-table">
+							<thead>
+								<tr>
+									<th class="attachments-table__header">Arquivo</th>
+									<th class="attachments-table__header">Visualizar</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% @station.attachments.each do |a| %>
+									<tr>
+										<td><%= a.filename %></td>
+										<td>
+											<%= link_to a do %>
+												<span class="button button--small button--blue material-symbols-outlined">visibility</span>
+											<% end %>
+										</td>
+									</tr>
+								<% end %>
+							</tbody>
+						</table>
+					<% else %>
+						<p> Essa estação não possui anexos</p>
+					<% end %>
+				</li>
+			</ul>        
 
 <!--
             <%= form_with model: @station, class: "container__form", multipart: true, data: {debounced_target: "form"} do |form| %>
@@ -163,6 +197,6 @@
 -->
         <%= render "questions_section", station_submission: @station_submission, station: @station %>
 
-        <%= link_to "Voltar", :back, class: "button button--outlined-red", style:"margin-top: 2rem;" %>
+        <%= link_to "Voltar", :back, class: "button button--outlined-red" %>
     </div>
 </div>
