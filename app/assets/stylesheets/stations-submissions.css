@@ -40,3 +40,13 @@
     margin: 0 !important;
     padding: 0;
 }
+
+.timer-container {
+    background-color: #C3E0FA;
+    color: #0C5598;
+    border-radius: 1rem;
+    padding: 1rem;
+    position: fixed; 
+    bottom: 0;
+    margin: 0 0 .5rem .5rem;
+}
