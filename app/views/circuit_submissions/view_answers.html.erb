@@ -1,0 +1,6 @@
+<% @circuit_submission.station_submissions.each do |station| %>
+  <%= station.station.title %>
+  <%= link_to "Visualizar", "#", class: 'button button--blue' %>
+<% end %>
+
+<%= link_to "Voltar", view_circuit_submissions_path(@circuit_submission.circuit_application), class: 'button button--blue' %>

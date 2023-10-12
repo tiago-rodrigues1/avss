@@ -71,6 +71,10 @@ class CircuitApplicationsController < ApplicationController
     end
   end
 
+  def view_submissions
+    @circuit_application = CircuitApplication.find(params[:id])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_circuit_application

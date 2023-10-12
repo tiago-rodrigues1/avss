@@ -1,0 +1,11 @@
+<% @circuit_application.circuit_submissions.each do |submission| %>
+  <div style="display: flex">
+    <%= submission.name %><br />
+
+    <div class="buttons-container">
+      <%= link_to "Visualizar", view_circuit_submission_answers_path(submission), class: 'button button--blue' %>
+    </div>
+  </div>
+<% end %>
+
+<%= link_to "Voltar", circuit_circuit_applications_path(@circuit_application.circuit), class: "button button--blue" %>

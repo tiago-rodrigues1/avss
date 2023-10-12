@@ -1,6 +1,10 @@
 class CircuitSubmissionsController < ApplicationController
-  before_action :set_circuit_submission, only: %i[ show edit update destroy ]
+  before_action :set_circuit_submission, only: %i[ show edit update destroy view_answers ]
 
+  def view_answers
+
+  end
+  
   # GET /circuit_submissions or /circuit_submissions.json
   def index
     @circuit_submissions = CircuitSubmission.all

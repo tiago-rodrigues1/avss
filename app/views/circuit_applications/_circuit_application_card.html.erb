@@ -1,7 +1,7 @@
 <div class="list-card" id="<%= dom_id circuit_application %>">
   <div class="list-card__header">
       <h4 class="list-card__title">Descrição</h4>
-      <span class="list-card__info">Quantidade de submissões: 5</span>
+      <span class="list-card__info">Quantidade de submissões: <%= circuit_application.submissions_count %></span>
   </div>
 
   <p class="list-card__text">
@@ -16,7 +16,7 @@
       >
         Copiar link
       </button>
-      <%= link_to 'Visualizar respostas', '#', class: 'button button--blue', data: { turbo_frame: '_top' } %>
+      <%= link_to 'Visualizar respostas', view_circuit_submissions_path(circuit_application), class: 'button button--blue', data: { turbo_frame: '_top' } %>
       <%= link_to 'Excluir', circuit_application, class: 'button button--red', data: { turbo_method: :delete } %>
     </div>
   </div>
