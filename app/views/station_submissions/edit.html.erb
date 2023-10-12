@@ -16,7 +16,7 @@
     <div class="form-wrapper">
         <section class="container__section" id="circuits" data-controller="debounced">
 			<header class="submission__header">
-				<div class="submission__header__info">
+				<div class="submission__header__info" id="info-time">
 					<h1 class="section__title" style="text-align: left;"><%= @station.title %></h1>
 					<p class="submission__time">
 						<span class="material-symbols-outlined">
@@ -201,7 +201,7 @@
     </div>
 </div>
 
-<div style="position: fixed; bottom: 0">
+<div class="timer-container">
   <span id="timer">Tempo restante: 10 minutos</span>
 </div>
 
