@@ -1,11 +1,37 @@
-<% @circuit_application.circuit_submissions.each do |submission| %>
-  <div style="display: flex">
-    <%= submission.name %><br />
+<section class="container" style="padding-bottom: 2rem;">  
+	<div class="form-wrapper" style="overflow-x:auto">
+		<h1 class="section__title" style="text-align: left; margin-bottom: 1.5rem;">Respostas</h1>
+		<table class="attachments-table">
+			<thead>
+				<tr>
+					<th class="attachments-table__header">Nome</th>
+					<th class="attachments-table__header">Matrícula</th>
+					<th class="attachments-table__header">Email</th>
+					<th class="attachments-table__header">Visualizar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @circuit_application.circuit_submissions.each do |submission| %>
+					<tr>
+						<td>
+							<%= submission.name %>
+						</td>
+						<td>
+							<%= submission.registration %>
+						</td>
+						<td>
+							<%= submission.email %>
+						</td>
+						<td>
+							<%= link_to view_circuit_submission_answers_path(submission) do %>
+								<span class="button button--small button--blue material-symbols-outlined">visibility</span>
+							<% end %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<%= link_to "Voltar", circuit_circuit_applications_path(@circuit_application.circuit), class: "button button--blue" %>
+	</div>
+</section>
 
-    <div class="buttons-container">
-      <%= link_to "Visualizar", view_circuit_submission_answers_path(submission), class: 'button button--blue' %>
-    </div>
-  </div>
-<% end %>
-
-<%= link_to "Voltar", circuit_circuit_applications_path(@circuit_application.circuit), class: "button button--blue" %>
