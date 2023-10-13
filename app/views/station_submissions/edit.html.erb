@@ -72,129 +72,6 @@
 				</li>
 			</ul>        
 
-<!--
-            <%= form_with model: @station, class: "container__form", multipart: true, data: {debounced_target: "form"} do |form| %>
-                <div class="field">
-                    <%= form.label :title, "Título", class:"field__label" %>
-                    <%= form.text_field :title, 
-                        class:"field__input",
-                        placeholder: "Título da estação",
-						data: {action: "input->debounced#submitForm"},
-						value: @station.title
-                    %>
-                </div>
-                <div class="field">
-                    <%= form.label :context, "Contextualização", class:"field__label" %>
-                    <%= form.text_area :context, 
-                        class:"field__input",
-                        placeholder:"Descreva um contexto para que o aluno se situe para realização da Estação. Texto que será apresentado aos alunos no ato de selecionar a Estação!",
-                        rows:"15",
-						data: {action: "input->debounced#submitForm"},
-						value: @station.context
-                    %>
-                </div>
-				<div class="field">
-                    <%= form.label :procedure, "Procedimento", class:"field__label" %>
-                    <%= form.text_area :procedure, 
-                        class:"field__input",
-                        placeholder:"Descreva o procedimento esperado na realização da Estação",
-                        rows:"15",
-						data: {action: "input->debounced#submitForm"},
-						value: @station.procedure
-                    %>
-                </div>
-				<div class="field">
-                    <%= form.label :evaluation, "Avaliação", class:"field__label" %>
-                    <%= form.text_area :evaluation, 
-                        class:"field__input",
-                        placeholder:"Entregas esperadas",
-                        rows:"10",
-						data: {action: "input->debounced#submitForm"},
-						value: @station.evaluation
-                    %>
-                </div>
-				<div class="fields--inline">
-					<div class="field">
-						<%= form.label :time, "Tempo (minutos)", class:"field__label" %>
-						<%= form.number_field  :time, 
-							class:"field__input",
-							placeholder: "Tempo da situação problema",
-							data: {action: "input->debounced#submitForm"},
-							value: @station.time
-						%>
-                	</div>
-					<div class="field">
-						<%= form.label :score, "Pontuação", class:"field__label" %>
-						<%= form.number_field  :score, 
-							class:"field__input",
-							placeholder: "Pontuação da situação problema",
-							data: {action: "input->debounced#submitForm"},
-							value: @station.score
-						%>
-                	</div>
-				</div>
-				<div class="fields--inline">
-					<fieldset class="difficulty-container">
-						<legend>Dificuldade</legend>
-						<div id="station_difficulty">
-							<%= render "stations/difficulty_rating", station: @station %>
-						</div>
-					</fieldset>
-					<fieldset class="radio-inputs">
-						<legend class="field__label">Receber feedback</legend>
-						<div class="radio-field">
-							<%= form.radio_button :feedback, "1", checked: @station.feedback, data: {action: "click->debounced#submitForm"} %>
-							<%= form.label :feedback, "Sim", class:"field__label" %>
-						</div>
-						<div class="radio-field">
-							<%= form.radio_button :feedback, "0", checked: !@station.feedback, data: {action: "click->debounced#submitForm"} %>
-							<%= form.label :feedback, "Não", class:"field__label" %>
-						</div>
-					</fieldset>
-				</div>
-				<fieldset class="attachments-container">
-					<legend class="field__label">Anexos</legend>
-					<ul class="fields-list" id="attachments-fields" style="display: none;">
-						<li>
-							
-						</li>
-					</ul>
-					<div class="attachments__btn-add">
-						<%= form.file_field :attachments, multiple: true, class: "field__input--file", data: {action: "change->debounced#submitForm"} %>
-						<%= form.label :attachments, class:"field__label--file" do %>
-							<span class="material-symbols-outlined">add</span>
-						<% end %>
-					</div>
-					<table class="attachments-table">
-						<thead>
-							<tr>
-								<th class="attachments-table__header">Arquivo</th>
-								<th class="attachments-table__header">Visualizar</th>
-								<th class="attachments-table__header">Remover</th>
-							</tr>
-						</thead>
-						<tbody>
-							<% @station.attachments.each do |a| %>
-								<tr>
-									<td><%= a.filename %></td>
-									<td>
-										<%= link_to a do %>
-											<span class="button button--small button--blue material-symbols-outlined">visibility</span>
-										<% end %>
-									</td>
-									<td>
-										<%= link_to ftest_path(a.signed_id), data: {turbo_method: :delete } do %>
-											<span class="button button--small button--red material-symbols-outlined">delete</span>
-										<% end %>
-									</td>
-								</tr>
-							<% end %>
-						</tbody>
-					</table>
-				</fieldset>
-            <% end %>
-        </section>
--->
         <%= render "questions_section", station_submission: @station_submission, station: @station %>
 
         <%= link_to "Voltar", :back, class: "button button--outlined-red" %>
@@ -225,6 +102,14 @@
         setTimeout(displayTime, 1000);
     }
 
+    function getTimeAsStr(value) {
+        if (value < 10) {
+            return "0" + value;
+        }
+
+        return "" + value;
+    }
+
     function getTime(value) {
         var hours = Math.floor(value / 3600);
         value = value - hours * 3600;
@@ -234,7 +119,7 @@
 
         var seconds = Math.floor(value);
 
-        return "" + hours + ":" + minutes + ":" + seconds;
+        return "" + getTimeAsStr(hours) + ":" + getTimeAsStr(minutes) + ":" + getTimeAsStr(seconds);
     }
 
     solveTime();

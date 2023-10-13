@@ -3,7 +3,7 @@
 
 	<%= form_with model: answer, class:"attachments__btn-add", data: {debounced_target: "form", controller: "debounced"} do |form| %>
 		<%= form.file_field :payload, class: "field__input--file", data: {action: "input->debounced#submitForm"} %>
-		<%= form.label "Adicionar arquivo", class:"field__label--file", style:"padding: .5rem 0;" %>
+		<%= form.label :payload, "Adicionar arquivo", class:"field__label--file", style:"padding: .5rem 0;" %>
 	<% end %>
 
 	<div id="<%= dom_id(answer, "link") %>">
