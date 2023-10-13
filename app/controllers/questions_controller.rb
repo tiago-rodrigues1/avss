@@ -50,11 +50,10 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.update(question_params)
-        @question.station.score += @question.score - old
-        @question.station.save
         format.turbo_stream do
           flash.now[:notice] = "Salvo!"
         end
+
         format.html { redirect_to question_url(@question), notice: "Question was successfully updated." }
         format.json { render :show, status: :ok, location: @question }
       else

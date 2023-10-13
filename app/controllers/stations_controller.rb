@@ -13,7 +13,7 @@ class StationsController < ApplicationController
 
   # GET /stations/new
   def new
-    @station = Station.new(difficulty: 3, score: 0, time: 15, feedback: 1)
+    @station = Station.new(difficulty: 3, time: 15, feedback: 1)
     @station.user = current_user
 
     respond_to do |format|
@@ -94,10 +94,9 @@ class StationsController < ApplicationController
     @question.station_id = params[:station_id]
     @question.kind = 1
     @question.score = 10
-    @station.score += 10
 
     respond_to do |format|
-      if @question.save and @station.save
+      if @question.save
         format.turbo_stream
       end
     end
@@ -106,10 +105,8 @@ class StationsController < ApplicationController
   def remove_question
     @station = Station.find(params[:station_id])
     @question = @station.questions.find(params[:question_id])
-    @station.score -= @question.score
     
     @question.destroy
-    @station.save
 
     respond_to do |format|
       format.turbo_stream
@@ -133,6 +130,6 @@ class StationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def station_params
-      params.require(:station).permit(:title, :context, :procedure, :evaluation, :time, :difficulty, :score, :feedback, attachments: [])
+      params.require(:station).permit(:title, :context, :procedure, :evaluation, :time, :difficulty, :feedback, attachments: [])
     end
 end

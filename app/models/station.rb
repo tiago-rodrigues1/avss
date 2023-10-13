@@ -4,4 +4,14 @@ class Station < ApplicationRecord
   belongs_to :user
   has_many :circuit_stations
   has_many :circuits, through: :circuit_stations
+
+  def score
+    acc = 0
+
+    questions.each do |q|
+      acc += q.score
+    end
+
+    acc
+  end
 end
