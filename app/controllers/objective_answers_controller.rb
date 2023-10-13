@@ -69,6 +69,6 @@ class ObjectiveAnswersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def objective_answer_params
-      params.require(:objective_answer).permit(:question_alternative_id, :question_id, :station_submission_id)
+      params.require(:objective_answer).permit(:question_alternative_id, :question_id, :station_submission_id, :points)
     end
 end

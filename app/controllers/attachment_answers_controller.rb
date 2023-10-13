@@ -68,6 +68,6 @@ class AttachmentAnswersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def attachment_answer_params
-      params.require(:attachment_answer).permit(:question_id, :station_submission_id, :payload)
+      params.require(:attachment_answer).permit(:question_id, :station_submission_id, :payload, :points)
     end
 end

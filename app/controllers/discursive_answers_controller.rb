@@ -68,6 +68,6 @@ class DiscursiveAnswersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def discursive_answer_params
-      params.require(:discursive_answer).permit(:question_id, :station_submission_id, :body)
+      params.require(:discursive_answer).permit(:question_id, :station_submission_id, :body, :points)
     end
 end

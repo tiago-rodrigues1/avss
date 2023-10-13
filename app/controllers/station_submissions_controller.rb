@@ -82,6 +82,10 @@ class StationSubmissionsController < ApplicationController
     end
   end
 
+  def correct
+    @submission = StationSubmission.find(params[:id])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_station_submission

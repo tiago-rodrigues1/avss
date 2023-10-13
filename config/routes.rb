@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   get 'circuit_applications/:id/view_submissions', to: 'circuit_applications#view_submissions', as: 'view_circuit_submissions'
 
   get 'circuit_submission/:id/view_answers', to: 'circuit_submissions#view_answers', as: 'view_circuit_submission_answers'
+  get 'station_submissions/:id/correct', to: 'station_submissions#correct', as: 'correct_station_submission'
   # get 'circuits/new', to: 'circuits#new'
   # get 'circuits', to: 'circuits#index'
   # post 'circuits', to: 'circuits#create'
