@@ -4,7 +4,8 @@ class StationsController < ApplicationController
 
   # GET /stations or /stations.json
   def index
-    @stations = Station.where(user: current_user)
+    @term = params[:term] != nil ? params[:term] : ""
+    @stations = Station.where(user: current_user).where("title LIKE ?", "%#{@term}%")
   end
 
   # GET /stations/1 or /stations/1.json

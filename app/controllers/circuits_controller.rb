@@ -9,7 +9,9 @@ class CircuitsController < ApplicationController
 
   def add_stations_index
     @circuit = Circuit.find(params[:id])
-    @stations = Station.where(user: current_user)
+
+    @term = params[:term] != nil ? params[:term] : ""
+    @stations = Station.where(user: current_user).where("title LIKE ?", "%#{@term}%")
   end
 
   def add_station
