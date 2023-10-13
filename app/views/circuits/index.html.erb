@@ -1,24 +1,25 @@
 <section class="section" data-turbo="true">  
 	<h1 class="section__title">Situações problema</h1>
   	<%= form_with url: circuits_path, 
-		class:"circuits",
+		class:"filters",
 		id:"circuits__filter__form",
 		method: :get,
-		data: { controller:"circuit-search", turbo_frame:"circuit-list", action:"advance" } do |form|
+		data: { controller:"filter", turbo_frame:"circuit-list", action:"advance" } do |form|
 	%>
-        <div class="circuits__filters">
+        <div class="filters__controls">
 			<div class="field">
 				<%= form.label :term, "Pesquisar por título", class:"field__label" %>
 				<%= form.text_field :term, 
 					class:"field__input", 
 					data:{ 
-						action:"input->circuit-search#handleFilterFormSubmit",
-						circuit_search_target:"searchInput", 
+						action:"input->filter#handleFilterFormSubmit",
+						filter_target:"searchInput", 
 						filter_form_target:"#circuits__filter__form"
 					}
 
 				%>
 			</div>
+			<!--
 			<%= form.button :filters, 
 				type:"button", 
 				class:"button button--outlined-blue circuits__filters__button",
@@ -37,6 +38,7 @@
             		</div>
 				</li>
 			</ul>
+			-->
 		</div>
 		<%= turbo_frame_tag "circuit-list" do %>
 			<% @circuits.each do |circuit| %>
