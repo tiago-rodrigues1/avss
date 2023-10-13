@@ -1,4 +1,4 @@
-.circuits {
+.filters {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -6,7 +6,7 @@
     width: 65%;
 }
 
-.circuits__filters {
+.filters__controls {
     width: 100%;
     display: flex;
     align-items: center;
@@ -15,7 +15,7 @@
     position: relative;
 }
 
-.circuits__filters__button {
+.filters__button {
     display: flex !important;
     align-items: center;
     justify-content: center;
@@ -44,6 +44,10 @@
 
 #circuit-list {
     width: 100%;
+}
+
+#new-circuits-controls {
+    margin-top: 1.5rem;
 }
 
 .new-aplication-form {
