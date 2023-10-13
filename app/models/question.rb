@@ -1,6 +1,9 @@
 class Question < ApplicationRecord
   belongs_to :station
   has_many :question_alternatives, dependent: :destroy
+  has_many :discursive_answers, dependent: :destroy
+  has_many :objective_answers, dependent: :destroy
+  has_many :attachment_answers, dependent: :destroy
 
   def create_answer(station_submission)
     if kind == 1
@@ -31,6 +34,7 @@ class Question < ApplicationRecord
       ans = AttachmentAnswer.new
       ans.question_id = id
       ans.station_submission = station_submission
+      ans.points = 0
       ans.save
     end
   end
@@ -42,6 +46,7 @@ class Question < ApplicationRecord
       ans = DiscursiveAnswer.new
       ans.question_id = id
       ans.station_submission = station_submission
+      ans.points = 0
       ans.save
     end
 
