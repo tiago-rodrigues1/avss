@@ -14,6 +14,10 @@ ul {
     list-style: none;
 }
 
+hr {
+    border-top: 1px solid #474a4f26;
+}
+
 .container {
     display: grid;
     place-items: center;
@@ -73,7 +77,9 @@ textarea.field_input {
 }
 
 .field__input:focus, 
-.field__input:focus-visible {
+.field__input:focus-visible,
+.field__input--points:focus, 
+.field__input--points:focus-visible {
     outline: 1px solid #83BEDF;
 }
 
@@ -82,6 +88,12 @@ textarea.field_input {
     display: flex;
     align-items: center;
     gap: 1.5rem;
+}
+
+.field__input--points {
+    border: none;
+    border-bottom: 1px solid rgba(71, 74, 79, .5);
+    padding: .25rem;
 }
 
 .radio-inputs {
