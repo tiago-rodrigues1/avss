@@ -1,10 +1,16 @@
 <div class="field">
-	<label class="field__label">Q<%= index %> - <%= question.statement %></label>
-
-		Visualizar anexo: <%= link_to answer.payload.filename, answer.payload if answer.payload.attached? %>
-
-  <%= form_with model: answer, data: {debounced_target: "form", controller: "debounced"} do |form| %>
-    <%= form.label :points, "Pontuação", class: "field__label" %>
-    <%= form.number_field :points, data: {action: "input->debounced#submitForm"}, class:"field__input", min: 0, max: question.score %>
-  <% end %>
+	<div class="answer">
+		<label class="field__label statement">Q<%= index %> - <%= question.statement %></label>
+		<%= form_with model: answer, data: {debounced_target: "form", controller: "debounced"} do |form| %>
+			<div class="answer__points" title="Atribuir pontuação">
+				<%= form.number_field :points, data: {action: "input->debounced#submitForm"}, class:"field__input--points", min: 0, max: question.score %>
+				<span class="field__label">/ <%= question.score %></span>
+			</div>
+		<% end %>
+	</div>
+	
+	<div class="field">
+		<label class="field__label">Anexo</label>
+		<%= link_to answer.payload.filename, answer.payload if answer.payload.attached? %>
+	</div>
 </div>
