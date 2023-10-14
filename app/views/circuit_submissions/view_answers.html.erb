@@ -1,7 +1,39 @@
-<% @circuit_submission.station_submissions.each do |sb| %>
-  Estação: <%= sb.station.title %>
-  Pontos: <%= sb.points %>
-  <%= link_to "Visualizar", correct_station_submission_path(sb), class: 'button button--blue' %>
-<% end %>
 
-<%= link_to "Voltar", view_circuit_submissions_path(@circuit_submission.circuit_application), class: 'button button--blue' %>
+<section class="container" style="padding-bottom: 2rem;">  
+	<div class="form-wrapper" style="overflow-x:auto">
+		<h1 class="section__title" style="text-align: left; margin-bottom: 1.5rem;">
+			Estações respondidas
+			<br>
+			<small class="section__detail">
+				Aluno: <%= @circuit_submission.name %>
+			</small>
+		</h1>
+		<table class="attachments-table">
+			<thead>
+				<tr>
+					<th class="attachments-table__header">Estação</th>
+					<th class="attachments-table__header">Pontos obtidos</th>
+					<th class="attachments-table__header">Visualizar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @circuit_submission.station_submissions.each do |sb| %>
+  					<tr>
+						<td>
+							<%= sb.station.title %>
+						</td>
+  						<td>
+							<%= sb.points %>
+						</td>
+  						<td>
+							<%= link_to correct_station_submission_path(sb) do %>
+								<span class="button button--small button--blue material-symbols-outlined">visibility</span>
+							<% end %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<%= link_to "Voltar", view_circuit_submissions_path(@circuit_submission.circuit_application), class: "button button--blue" %>
+	</div>
+</section>
