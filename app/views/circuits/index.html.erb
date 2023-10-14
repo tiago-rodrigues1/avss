@@ -1,7 +1,7 @@
 <section class="section" data-turbo="true">  
 	<h1 class="section__title">Situações problema</h1>
   	<%= form_with url: circuits_path, 
-		class:"filters",
+		class:"list-container",
 		id:"circuits__filter__form",
 		method: :get,
 		data: { controller:"filter", turbo_frame:"circuit-list", action:"advance" } do |form|

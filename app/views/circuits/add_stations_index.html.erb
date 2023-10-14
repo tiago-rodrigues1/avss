@@ -1,7 +1,7 @@
 <section class="section" data-turbo="true">  
 	<h1 class="section__title">Estações</h1>
   	<%= form_with url: add_stations_index_path, 
-		class:"filters",
+		class:"list-container",
 		id:"add_stations__filter__form",
 		method: :get,
 		data: { controller:"filter", turbo_frame:"add-stations-list", action:"advance" } do |form|

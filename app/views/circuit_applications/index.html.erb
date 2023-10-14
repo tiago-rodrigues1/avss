@@ -4,7 +4,7 @@
 		<h2 class="new-aplication-form__title">Criar aplicação</h2>
 		<%= render "new_circuit_application_form", circuit: @circuit %>
 	</div>
-	<div class="circuits">
+	<div class="list-container">
 		<%= render "circuit_application_list", circuit_applications: @circuit_applications %>
 	</div>
 	<%= link_to 'Voltar', circuits_path, class: "button button--blue", style:"width: 60%;"%>
