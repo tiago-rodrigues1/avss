@@ -1,4 +1,4 @@
-.filters {
+.list-container {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -65,7 +65,7 @@
 }
 
 @media (max-width: 768px) {
-    .circuits {
+    .list-container {
         width: 90%;
     }
 }
