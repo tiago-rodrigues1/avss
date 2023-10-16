@@ -1,27 +1,28 @@
 <div class="container">
     <div class="form-wrapper">
         <section class="container__section" id="circuits">
-            <h1>Seus dados</h1>
-            <p>Nome: <%= @circuit_submission.name %></p>
-            <p>Matrícula: <%= @circuit_submission.registration %></p>
-            <p>E-mail: <%= @circuit_submission.email %></p>
-            <h1>
-                Dados da situação problema
-            </h1>
-
-            <p class="field__label">Título</p>
-            <p><%= @circuit.title %></p>
-
-            <p class="field__label">Resumo</p>
-            <p><%= @circuit.resume %></p>
+            <h1 class="container__section__title">Seus dados</h1>
+            <p><strong>Nome: </strong> <%= @circuit_submission.name %></p>
+            <p><strong>Matrícula: </strong> <%= @circuit_submission.registration %></p>
+            <p><strong>E-mail: </strong> <%= @circuit_submission.email %></p>
+            <br>
+            <hr>
         </section>
-
         <section class="container__section" id="stations">
+            <br>
+            <h1 class="container__section__title">Situação problema</h1>
+            <div>
+                <h4 style="margin-bottom: .5rem;">Título</h4>
+                <p class="field__label" style="margin-bottom: 1rem;"><%= @circuit.title %></p>
+
+                <h4 style="margin-bottom: .5rem;">Resumo</h4>
+                <p class="field__label"  style="margin-bottom: 1rem;"><%= @circuit.resume %></p>
+            </div>
             <h2 class="container__section__title">Estações</h2>
 
-            <ul class="stations-list">
+            <ul>
                 <% @circuit.stations.each do |station| %>
-                  <li>
+                  <li style="margin-bottom: 1rem;">
                     <%= render "station_card", station: station, circuit_submission: @circuit_submission %>
                   </li>
                 <% end %>

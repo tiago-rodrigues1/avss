@@ -1,27 +1,26 @@
 <fielset class="field">
-    <legend class="field__label">Q<%= index %> - <%= question.statement %></legend>
+	<div class="answer">
+		<legend class="field__label statement">Q<%= index %> - <%= question.statement %></legend>
+		<%= form_with model: answer, data: {debounced_target: "form", controller: "debounced"} do |form| %>
+			<div title="Atribuir pontuação">
+				<%= form.number_field :points, data: {action: "input->debounced#submitForm"}, class:"field__input--points", min: 0, max: question.score, value: answer.points, disabled: true %>
+				<span class="field__label">/ <%= question.score %></span>
+			</div>
+		<% end %>
+	</div>
 
     <%= form_with model: answer, class:"radio-inputs--vertical", data: {debounced_target: "form", controller: "debounced"} do |form| %>
         <% question.question_alternatives.each do |a| %>
-            <div class="radio-field">
-                <% if answer.question_alternative_id == a.id %>
-                  <% if a.correct %>
-                      <div style="background: green">
-                  <% else %>
-                      <div style="background: red">
-                  <% end %>
-                <% else %>
-                  <div>
-                <% end %>
-                <%= form.radio_button :question_alternative_id, a.id, disabled: true %>
-                <label class="field__label"><%= a.body %></label>
-              </div>
-            </div>
+			<div class="radio-field">
+				<% if answer.question_alternative_id == a.id %>
+					<div class="<%= a.correct ? "right" : "wrong" %>">
+				<% else %>
+					<div>
+				<% end %>
+						<%= form.radio_button :question_alternative_id, a.id, disabled: answer.question_alternative_id != a.id %>
+						<label class="field__label"><%= a.body %></label>
+					</div>
+			</div>
         <% end %>
     <% end %>
-
-  <%= form_with model: answer, data: {debounced_target: "form", controller: "debounced"} do |form| %>
-    <%= form.label :points, "Pontuação", class: "field__label" %>
-    <%= form.number_field :points, data: {action: "input->debounced#submitForm"}, class:"field__input", min: 0, max: question.score, value: answer.points, disabled: true %>
-  <% end %>
 </fielset>

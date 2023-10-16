@@ -1,19 +1,17 @@
-<section class="container__section" id="questions">
-	<h2 class="submission__infos__label">Perguntas</h2>
+<div class="container">
+    <div class="form-wrapper">
+        <section class="container__section" id="questions">
+			<h2 class="submission__infos__label">Perguntas</h2>
+			<% @submission.station.questions.each_with_index do |q, index| %>
+				<% if q.kind == 1 %>
+					<%= render "discursive_question_correct", question: q, index: index + 1, answer: DiscursiveAnswer.where(station_submission: @submission, question: q).first %>
+				<% elsif q.kind == 2 %>
+					<%= render "attachment_question_correct", question: q, index: index + 1, answer: AttachmentAnswer.where(station_submission: @submission, question: q).first %>
+				<% elsif q.kind == 3 %>
+					<%= render "objective_question_correct", question: q, index: index + 1, answer: ObjectiveAnswer.where(station_submission: @submission, question: q).first %>
+				<% end %>
+			<% end %>    
 
-	<% @submission.station.questions.each_with_index do |q, index| %>
-		<% if q.kind == 1 %>
-			<%= render "discursive_question_correct", question: q, index: index + 1, answer: DiscursiveAnswer.where(station_submission: @submission, question: q).first %>
-		<% elsif q.kind == 2 %>
-			<%= render "attachment_question_correct", question: q, index: index + 1, answer: AttachmentAnswer.where(station_submission: @submission, question: q).first %>
-		<% elsif q.kind == 3 %>
-			<%= render "objective_question_correct", question: q, index: index + 1, answer: ObjectiveAnswer.where(station_submission: @submission, question: q).first %>
-		<% end %>
-	<% end %>
-
-	<div class="buttons-container">
-	</div>
-</section> 
-
-
-<%= link_to "Voltar", view_circuit_submission_answers_path(@submission.circuit_submission), class: 'button button--blue' %>
+        <%= link_to "Voltar", view_circuit_submission_answers_path(@submission.circuit_submission), class: 'button button--blue' %>
+    </div>
+</div>

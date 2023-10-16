@@ -1,15 +1,4 @@
-<% if question.kind == 1 %>
-    <%= form_with url: "/", method: :get do |qtform| %>
-        <div class="field">
-            <%= qtform.label :statement, "Enunciado", class:"field__label" %>
-            <%= qtform.text_area :statement, 
-                class:"field__input",
-                placeholder:"Enunciado da questão",
-                rows:"10"
-            %>
-        </div>
-    <% end %>
-<% elsif question.kind == 2 %>
+<% if question.kind == 2 %>
     <div>
         <%= form_with url: "/", method: :get do |qtform| %>
         <fieldset class="radio-inputs--vertical">
