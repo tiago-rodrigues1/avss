@@ -60,7 +60,7 @@
 
         <%= render "questions_section", station_submission: @station_submission, station: @station %>
 
-        <%= link_to "Encerrar", circuit_submission_path(@station_submission.circuit_submission), class: 'button button--outlined-red' %>
+        <%= link_to "Encerrar", circuit_submission_path(@station_submission.circuit_submission), class: 'button button--outlined-red', data: {turbo_confirm: 'Tem certeza?', turbo_method: :get} %>
     </div>
 </div>
 
