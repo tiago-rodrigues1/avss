@@ -1,4 +1,5 @@
 <% if question.kind == 2 %>
+<!--
     <div>
         <%= form_with url: "/", method: :get do |qtform| %>
         <fieldset class="radio-inputs--vertical">
@@ -24,6 +25,7 @@
         </fieldset>
         <% end %>
     </div>
+    -->
 <% elsif question.kind == 3 %>
     <%= render "questions/question_kind_body_alternatives", question: question %>
 <% end %>

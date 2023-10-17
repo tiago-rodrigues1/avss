@@ -1,7 +1,7 @@
 <div class="field">
 	<label class="field__label">Q<%= index %> - <%= question.statement %></label>
 
-	<%= form_with model: answer, class:"attachments__btn-add", data: {debounced_target: "form", controller: "debounced"} do |form| %>
+	<%= form_with model: answer, class:"attachments__btn-add", id: "a#{answer.id}", namespace: "a#{answer.id}", data: {debounced_target: "form", controller: "debounced"} do |form| %>
 		<%= form.file_field :payload, class: "field__input--file", data: {action: "input->debounced#submitForm"} %>
 		<%= form.label :payload, "Adicionar arquivo", class:"field__label--file", style:"padding: .5rem 0;" %>
 	<% end %>
