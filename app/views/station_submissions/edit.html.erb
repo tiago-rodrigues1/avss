@@ -1,17 +1,3 @@
-<!--<h1>Editing station submission</h1>
-
-<%= render "form", station_submission: @station_submission %>
-
-<br>
-
-<div>
-  <%= link_to "Show this station submission", @station_submission %> |
-  <%= link_to "Back to station submissions", station_submissions_path %>
-</div>
-
-<%= link_to "Finalizar", circuit_submission_path(@station_submission.circuit_submission), class: 'button button--blue' %>
--->
-
 <div class="container">
     <div class="form-wrapper">
         <section class="container__section" id="circuits" data-controller="debounced">
@@ -74,7 +60,7 @@
 
         <%= render "questions_section", station_submission: @station_submission, station: @station %>
 
-        <%= link_to "Encerrar", :back, class: "button button--outlined-red" %>
+        <%= link_to "Encerrar", circuit_submission_path(@station_submission.circuit_submission), class: 'button button--outlined-red' %>
     </div>
 </div>
 
@@ -84,9 +70,12 @@
 
 <script>
     var remaining_time = <%= @remaining_time %>;
+    var solveTimeId;
+    var displayId;
 
     function solveTime() {
-        setTimeout(returnPreviousPage, remaining_time * 1000);
+        clearTimeout(solveTimeId);
+        solveTimeId = setTimeout(returnPreviousPage, remaining_time * 1000);
     }
 
     function returnPreviousPage() {
@@ -99,7 +88,8 @@
         v.innerHTML = "Tempo restante: " + getTime(remaining_time);
         remaining_time = remaining_time - 1;
 
-        setTimeout(displayTime, 1000);
+        clearTimeout(displayId);
+        displayId = setTimeout(displayTime, 1000);
     }
 
     function getTimeAsStr(value) {
