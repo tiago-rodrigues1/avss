@@ -7,6 +7,7 @@
 					<th class="attachments-table__header">Nome</th>
 					<th class="attachments-table__header">Matrícula</th>
 					<th class="attachments-table__header">Email</th>
+					<th class="attachments-table__header">Pontuação</th>
 					<th class="attachments-table__header">Visualizar</th>
 				</tr>
 			</thead>
@@ -22,6 +23,9 @@
 						<td>
 							<%= submission.email %>
 						</td>
+                        <td>
+                            <%= submission.points %>
+                        </td>
 						<td>
 							<%= link_to view_circuit_submission_answers_path(submission) do %>
 								<span class="button button--small button--blue material-symbols-outlined">visibility</span>

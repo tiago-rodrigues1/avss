@@ -2,10 +2,7 @@ class CircuitSubmissionsController < ApplicationController
   before_action :set_circuit_submission, only: %i[ show edit update destroy view_answers ]
 
   def view_answers
-    @total_points = 0
-    @circuit_submission.station_submissions.each do |sb|
-      @total_points += sb.points
-    end
+    @total_points = @circuit_submission.points
   end
   
   # GET /circuit_submissions or /circuit_submissions.json
