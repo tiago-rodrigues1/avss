@@ -7,6 +7,6 @@
 	<% end %>
 
 	<div id="<%= dom_id(answer, "link") %>">
-		<%= link_to answer.payload.filename, answer.payload if answer.payload.attached? %>
+		<%= link_to answer.payload.filename, answer.payload, target: "_blank" if answer.payload.attached? %>
 	</div>
 </div>

@@ -3,5 +3,5 @@
 <% end %>
 
 <%= turbo_stream.update dom_id(@attachment_answer, "link") do %>
-  <%= link_to @attachment_answer.payload.filename, @attachment_answer.payload if @attachment_answer.payload.attached? %>
+  <%= link_to @attachment_answer.payload.filename, @attachment_answer.payload, target: "_blank" if @attachment_answer.payload.attached? %>
 <% end %>

@@ -11,7 +11,7 @@
 
   <p>
     <strong>Payload:</strong>
-    <%= link_to attachment_answer.payload.filename, attachment_answer.payload if attachment_answer.payload.attached? %>
+    <%= link_to attachment_answer.payload.filename, attachment_answer.payload, target: "_blank" if attachment_answer.payload.attached? %>
   </p>
 
 </div>
