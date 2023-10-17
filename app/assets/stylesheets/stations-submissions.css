@@ -51,6 +51,11 @@
     margin: 0 0 .5rem .5rem;
 }
 
+.timer-container--alert {
+    background-color: #f00;
+    color: #fff;
+}
+
 .answer {
     width: 100%;
     display: flex;
