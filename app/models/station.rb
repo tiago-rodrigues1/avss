@@ -10,7 +10,9 @@ class Station < ApplicationRecord
     acc = 0
 
     questions.each do |q|
-      acc += q.score
+      if q.score
+        acc += q.score
+      end
     end
 
     acc
